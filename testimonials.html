@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Registration</title>
+    <link rel="icon" href="images/logoFinal.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/364-3647802_blood-symbol-png-blood-donation-app-logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+
+         html {
+        scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #900000;
+            --primary-light: #ff6b7a;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: rgb(30, 241, 93);
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --dark-green: rgb(11, 106, 39);
+            --navbar-dark: #900000;
+            --navbar-primary: rgb(11, 106, 39);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('images/Med.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Main Content Padding */
+        .main-content {
+            padding-top: 40px;
+            padding-bottom: 30px;
+            min-height: calc(100vh - 200px);
+        }
+        
+        /* Testimonials Section Styles */
+        .testimonials-section {
+            /* padding: 60px 0; */
+            /* background-color: transparent rgba(245, 241, 241, 0.3); */
+            /* backdrop-filter: blur(10px) brightness(1.4); */
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+            /* margin: 30px 0; */
+            /* border-radius: 15px; */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--light);
+            font-size: 2.5rem;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: rgb(88, 221, 48);
+            border-radius: 2px;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            /* background: white; */
+            border-radius: 10px;
+            border: 1px solid rgb(0, 130, 39);
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .testimonial-card:hover {
+            border: 1px solid white;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-header {
+            background: rgb(11, 106, 39);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+            margin-right: 15px;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-info p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            color: white;
+        }
+        
+        .testimonial-body {
+            padding: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            color: rgb(240, 239, 239);
+        }
+        
+        .testimonial-blood {
+            display: inline-block;
+            background: var(--primary);
+            border: 1.5px solid white;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .testimonial-rating {
+            color: rgb(88, 221, 48);
+            margin-top: 10px;
+        }
+        /* .testimonial-rating:hover {
+            color: white;
+            margin-top: 10px;
+        } */
+        
+        /* Success Stories Section */
+        .success-stories {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+        }
+        
+        .story-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .story-tab {
+            padding: 10px 20px;
+            background: white;
+            /* border: 2px solid var(--primary); */
+            color: var(--primary);
+            border-radius: 30px;
+            margin: 0 10px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .story-tab.active, .story-tab:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .stories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .story-card {
+            /* background: white; */
+            border: 1px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .story-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .story-card:hover .story-image img {
+            transform: scale(1.05);
+        }
+        
+        .story-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .story-content {
+            padding: 20px;
+        }
+        
+        .story-content h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: rgb(26, 141, 61);
+            font-weight: 600;
+        }
+        
+        .story-content p {
+            color: white;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .story-date {
+            color: rgb(26, 141, 61);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-date i {
+            margin-right: 5px;
+        }
+        
+    
+        /* Navbar fixes */
+        .navbar {
+            background: #900000;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            padding: 0 12px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .logo img {
+            max-width: 180px;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .nav-link {
+            color: #f5f5f5;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(11, 106, 39);
+            z-index: -1;
+            border-radius: 6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .nav-link:hover:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            /* box-shadow: 0 5px 15px rgba(138, 3, 3, 0.4); */
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+        }
+        
+     
+        /* Footer fixes */
+        footer {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/download (8).jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 20px;
+        }
+        
+        .footerContainer {
+            width: 100%;
+            padding: 20px 0;
+        }
+        
+        .socialIcons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .socialIcons a {
+            text-decoration: none;
+            padding: 12px;
+            background-color: rgb(0, 130, 39);
+            margin: 10px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footerNav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            flex-wrap: wrap;
+        }
+        
+        .footerNav ul li a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        
+        /* Chatbot Styles */
+        /* Chat Button Styles */
+        .chat-button-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background-color: #900000;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+            background-color: #b80000;
+        }
+        
+        .chat-button i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 90%;
+            max-width: 380px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            height: 600px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-container.active {
+            display: flex;
+        }
+        
+        .chatbot-header {
+            background-color: rgb(0, 130, 39);
+            color: white;
+            padding: 0px 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h2 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chatbot-header p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            display: flex;
+            align-items: flex-start;
+            max-width: 80%;
+        }
+        
+        .message.bot {
+            align-self: flex-start;
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        
+        .message-content {
+            padding: 12px 15px;
+            border-radius: 18px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .bot .message-content {
+            background-color: #900000;
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user .message-content {
+            background-color: #e6e6e6;
+            color: #333;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .bot .message-avatar {
+            background-color: rgb(0, 130, 39);
+        }
+        
+        .user .message-avatar {
+            background-color: rgb(11, 106, 39);
+        }
+        
+        .chatbot-input {
+            padding: 15px;
+            background-color: white;
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+        
+        .input-field {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .send-btn {
+            background-color: rgb(0, 130, 39);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .send-btn:hover {
+            background-color: rgb(22, 182, 70);
+        }
+        
+        .suggestions {
+            padding: 15px;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid #eee;
+        }
+        
+        .suggestion-btn {
+            padding: 8px 12px;
+            background-color: #f1f1f1;
+            color: black;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestion-btn:hover {
+            background-color: #900000;
+            color: white;
+            border-color: #900000;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            padding: 15px;
+            align-items: center;
+        }
+        
+        .typing-indicator span {
+            height: 10px;
+            width: 10px;
+            background-color: #900000;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Responsive Chatbot */
+        @media (max-width: 768px) {
+            .chatbot-container {
+                width: 90%;
+                height: 70vh;
+                bottom: 80px;
+                right: 5%;
+                max-width: none;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .chat-button-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .chat-button {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .chat-button i {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chatbot-container {
+                width: 95%;
+                height: 75vh;
+                bottom: 70px;
+                right: 2.5%;
+            }
+            
+            .chatbot-header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .chatbot-header p {
+                font-size: 0.8rem;
+            }
+            
+            .message-content {
+                font-size: 0.9rem;
+            }
+            
+            .suggestion-btn {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+        }
+        
+        /* Responsive design */
+        @media screen and (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: #900000;
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.3s ease;
+                z-index: 100;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .nav-link {
+                width: 80%;
+                justify-content: center;
+                margin: 0 auto;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .footerNav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footerNav ul li {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .chatbot-container {
+                width: 95%;
+                right: 10px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .about-image, .about-text {
+                min-width: 100%;
+            }
+            
+            .timeline-step {
+                width: 120px;
+                margin: 10px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .socialIcons a {
+                padding: 8px;
+                margin: 5px;
+            }
+            
+            .chatbot-container {
+                height: 70vh;
+                bottom: 100px;
+            }
+            
+            .robot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* Utility classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .mb-10 {
+            margin-bottom: 2.5rem;
+        }
+        
+        .md\\:mb-0 {
+            margin-bottom: 0;
+        }
+        
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .grid {
+            display: grid;
+        }
+        
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        .sm\\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        
+        .lg\\:grid-cols-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        
+        .gap-6 {
+            gap: 1.5rem;
+        }
+        
+        .bg-white {
+            background-color: #fff;
+        }
+        
+        .p-6 {
+            padding: 1.5rem;
+        }
+        
+        .shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .w-24 {
+            width: 6rem;
+        }
+        
+        .h-1 {
+            height: 0.25rem;
+        }
+        
+        .bg-\\[rgb\\(30\\,241\\,93\\)\\] {
+            background-color: rgb(30, 241, 93);
+        }
+        
+
+         :root {
+            --primary: rgb(11, 106, 39);
+            --dark: #900000;
+            --light: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            /* background: linear-gradient(135deg, #f8f8f8 0%, #e6e6e6 100%); */
+            padding-top: 80px; 
+        }
+        
+        .navbar {
+            background: #900000;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            padding: 0 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+       .logo img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-item {
+            position: relative;
+            margin: 0 5px;
+        }
+        .nav-link {
+            color: #f5f5f5;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        /* Unique Hover Effect */
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(11, 106, 39);
+            z-index: -1;
+            border-radius: 6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        .nav-link:hover:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            padding: 5px;
+        }
+        .content {
+            max-width: 800px;
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+   
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 968px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--dark);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.5s ease;
+                z-index: 100;
+                overflow-y: auto;
+                border-radius: 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .nav-link {
+                width: 80%;
+                justify-content: center;
+                margin: 0 auto;
+                padding: 15px;
+            }
+        }
+        
+        /* Extra small screens */
+        @media screen and (max-width: 576px) {
+            .nav-menu {
+                padding-top: 20px;
+            }
+            
+            .nav-link {
+                width: 90%;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .nav-link i {
+                font-size: 16px;
+                margin-right: 6px;
+            }
+            
+            .logo img {
+                max-width: 120px;
+            }
+        }
+        
+
+
+               /* Footer */
+        footer{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Dark overlay */
+                url('images/download (8).jpg');;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;       
+        }
+        .footerContainer{
+            width: 100%;
+            padding: 20px 30px;
+        }
+        .socialIcons{
+            display: flex;
+            justify-content: center;
+        }
+        .socialIcons a {
+            text-decoration: none;
+            padding: 12px;
+            background-color: rgb(0, 130, 39); 
+            margin: 15px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .socialIcons a i {
+            font-size: 1.9em;
+            color: white; /* white icons */
+            opacity: 0.9;
+        }
+        /* Hover effect */
+        .socialIcons a:hover {
+            background-color: white;
+            transition: 0.5s;
+        }
+        .socialIcons a:hover i {
+            color: rgb(0, 130, 39); 
+            transition: 0.5s;
+        }
+        .footerNav ul{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        .footerNav ul li a{
+            color: white;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        .footerNav ul li a:hover{
+            color: rgb(30, 241, 93);
+            opacity: 1;
+        }
+        .footerBottom {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Dark overlay */
+                url('images/download (8).jpg'); /* Original image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 10px;
+            text-align: center;
+        }
+        .footerBottom p{
+            color: white;
+            margin-top: 0; 
+        }
+        .designer{
+            color: white;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin: 0px 5px;
+        }
+        .footerBottom {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .footerBottom p {
+            display: inline-block;
+            position: relative;
+            padding: 10px 20px;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            margin-top: 0;   
+        }
+        .footerBottom p::before {
+            content: "";
+            position: absolute;
+            top: 0;  
+            left: -20px; 
+            right: -20px; 
+            height: 1px;
+            background-color: #ccc;
+        }
+        .footerBottom .designer {
+            font-weight: bold;
+            color: rgb(220, 225, 221);
+        }
+        .logo-foot {
+            height: 50px;
+            margin: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 30px;
+            padding-top: 60px;
+        }
+       .logo-foot img {
+            width: 100%;
+            max-width: 180px; 
+            height: auto;
+            transition: var(--transition);
+        }
+        .logo-foot img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 700px){
+            .footerNav ul{
+                flex-direction: column;
+            } 
+            .footerNav ul li{
+                width:100%;
+                text-align: center;
+                margin: 10px;
+            }
+            .socialIcons a{
+                padding: 8px;
+                margin: 4px;
+            }
+        }  
+        
+    </style>
+</head>
+<body>
+    
+   <!-- navbar -->
+      <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+             <a class="brand-logo" href="index.html">
+                <img loading="eager" decoding="async" src="images/finalLogo-01.png"
+                    alt="D Cake Shop | Delicious Cakes for Everyone" width="130" height="25">
+            </a>            
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="index.html#abt" class="nav-link">
+                        <i class="fas fa-info-circle"></i>About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="bloodTypeCompatibility.html" class="nav-link">  <!-- Updated href -->
+                        <i class="fas fa-tint"></i>Blood Type
+                    </a>
+                </li>
+                <li class="nav-item">
+                <a href="donateBlood.html" class="nav-link">
+                    <i class="fas fa-hand-holding-heart"></i>Donate Blood
+                </a>
+                 </li>
+                <li class="nav-item">
+                    <a href="hospital.html" class="nav-link">
+                        <i class="fas fa-hospital"></i>Hospital
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>Impact
+                    </a>
+                </li>
+                
+            </ul>
+            
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <!-- Navbar ends -->
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">Donor Testimonials</h2>
+                <div class="testimonials-container">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Smith">
+                            </div>
+                            <div class="testimonial-info">
+                                <h3>John Smith</h3>
+                                <p>Regular Donor</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-body">
+                            <!-- <div class="blood-drop drop-1"></div>
+                            <div class="blood-drop drop-2"></div> -->
+                            <p class="testimonial-text">
+                                I've been donating blood for 5 years now through Khoon-e-Hayaat. The process is always smooth, and the staff make you feel like a hero. Knowing my blood has helped save multiple lives gives me immense satisfaction.
+                            </p>
+                            <div class="testimonial-blood">O+</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                            </div>
+                            <div class="testimonial-info">
+                                <h3>Sarah Johnson</h3>
+                                <p>First-time Donor</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-body">
+                            <!-- <div class="blood-drop drop-1"></div>
+                            <div class="blood-drop drop-2"></div> -->
+                            <p class="testimonial-text">
+                                I was nervous about donating blood for the first time, but the team at Khoon-e-Hayaat made me feel completely at ease. They guided me through every step and now I'm proud to be part of this life-saving mission.
+                            </p>
+                            <div class="testimonial-blood">A-</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="David Wilson">
+                            </div>
+                            <div class="testimonial-info">
+                                <h3>David Wilson</h3>
+                                <p>Plasma Donor</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-body">
+                            <!-- <div class="blood-drop drop-1"></div>
+                            <div class="blood-drop drop-2"></div> -->
+                            <p class="testimonial-text">
+                                After recovering from COVID-19, I donated plasma through Khoon-e-Hayaat. Their efficient system matched me with patients in need quickly. It's rewarding to know my antibodies helped others fight the virus.
+                            </p>
+                            <div class="testimonial-blood">AB+</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Success Stories Section -->
+        <section class="success-stories">
+            <div class="container">
+                <h2 class="section-title">Success Stories</h2>
+                
+                <div class="story-tabs">
+                    <div class="story-tab active" data-category="all">All Stories</div>
+                    <div class="story-tab" data-category="emergency">Emergency Cases</div>
+                    <div class="story-tab" data-category="regular">Regular Donations</div>
+                    <div class="story-tab" data-category="children">Children Saved</div>
+                </div>
+                
+                <div class="stories-container">
+                    <!-- Story 1 -->
+                    <div class="story-card" data-category="emergency">
+                        <div class="story-image">
+                            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Emergency Blood Donation">
+                            <div class="story-type">Emergency</div>
+                        </div>
+                        <div class="story-content">
+                            <h3>Accident Victim Saved</h3>
+                            <p>23-year-old car accident victim received 12 units of blood and made full recovery thanks to timely donations.</p>
+                            <div class="story-date">
+                                <i class="far fa-calendar-alt"></i> March 15, 2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 2 -->
+                    <div class="story-card" data-category="children">
+                        <div class="story-image">
+                            <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Child Cancer Patient">
+                            <div class="story-type">Children</div>
+                        </div>
+                        <div class="story-content">
+                            <h3>Leukemia Battle Won</h3>
+                            <p>8-year-old leukemia patient completed treatment with support from 35 blood donors over 2 years.</p>
+                            <div class="story-date">
+                                <i class="far fa-calendar-alt"></i> January 8, 2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 3 -->
+                    <div class="story-card" data-category="regular">
+                        <div class="story-image">
+                            <img src="images/110985779.avif" alt="Surgery Patient">
+                            <div class="story-type">Regular</div>
+                        </div>
+                        <div class="story-content">
+                            <h3>Complex Surgery Success</h3>
+                            <p>Heart surgery patient received multiple blood donations during 8-hour procedure, now living healthy life.</p>
+                            <div class="story-date">
+                                <i class="far fa-calendar-alt"></i> November 30, 2022
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Chat Button -->
+    <div class="chat-button-container" id="chatButtonContainer">
+        <button class="chat-button" id="chatButton">
+            <i class="fas fa-comment"></i>
+        </button>
+    </div>
+    
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div>
+                <h2><i class="fas fa-tint"></i> Khoon-e-Hayaat</h2>
+                <p style="color: white; font-size: 17px;">Blood Donation Chatbot</p>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! I'm your blood donation assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggestions" id="suggestions">
+            <button class="suggestion-btn" data-question="eligibility">Eligibility Criteria</button>
+            <button class="suggestion-btn" data-question="process">Donation Process</button>
+            <button class="suggestion-btn" data-question="benefits">Benefits</button>
+            <button class="suggestion-btn" data-question="find">Find Donors</button>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" class="input-field" id="userInput" placeholder="Type your message...">
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+     <!-- Footer -->
+    <footer>
+             <a class="brand-logo logo-foot" href="index.html">
+                <img loading="eager" decoding="async" src="images/finalLogo-01.png">
+            </a>            
+        <div class="footerContainer">
+
+            <div class="socialIcons">
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://aboutme.google.com/"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+             <div class="footerNav">
+                <ul><li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#abt">About</a></li>
+                    <li><a href="donateBlood.html">Donate Blood</a></li>
+                    <li><a href="hospital.html">Hospital</a></li>
+                    <!-- <li><a href="">our Team</a></li> -->
+                </ul>
+            </div>
+
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2023; Designed by <span class="designer">Fatima Manzoor.</span></p>
+        </div>
+    </footer>
+    
+    <script>
+     // Navbar mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Change icon
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        
+        // Story tabs functionality
+        const storyTabs = document.querySelectorAll('.story-tab');
+        const storyCards = document.querySelectorAll('.story-card');
+        
+        storyTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                storyTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const category = tab.getAttribute('data-category');
+                
+                // Show/hide stories based on category
+                storyCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Blood donation FAQ data in JSON format
+        const faqData = [
+            {
+                "id": "eligibility",
+                "question": "What are the eligibility criteria for blood donation?",
+                "answer": "To donate blood, you must: be at least 17 years old, weigh at least 50 kg, be in good health, not have donated blood in the last 56 days, and not have certain medical conditions or risk factors."
+            },
+            {
+                "id": "process",
+                "question": "What is the blood donation process?",
+                "answer": "The donation process involves: registration, medical history review, physical examination, the actual donation (which takes about 10 minutes), and a refreshment period afterward. The entire process usually takes about an hour."
+            },
+            {
+                "id": "benefits",
+                "question": "What are the benefits of blood donation?",
+                "answer": "Benefits include: free health screening, reduced risk of heart disease, potential cancer risk reduction, burning calories, and the satisfaction of saving lives. Most importantly, your donation can help up to three patients."
+            },
+            {
+                "id": "find",
+                "question": "How can I find blood donors?",
+                "answer": "You can find blood donors through: our Khoon-e-Hayat website, our mobile app, by calling our helpline at 123-456-7890, or by visiting our donation centers. We also have emergency donor search services."
+            },
+            {
+                "id": "frequency",
+                "question": "How often can I donate blood?",
+                "answer": "You can donate whole blood every 56 days (8 weeks). For platelets, you can donate more frequently - up to 24 times a year. Plasma donations can be made every 28 days."
+            },
+            {
+                "id": "types",
+                "question": "What blood types are needed most?",
+                "answer": "O-negative blood is always in high demand as it's the universal donor type. However, all blood types are needed regularly. Type O-positive is the most common blood type, so it's frequently needed as well."
+            },
+            {
+                "id": "after",
+                "question": "What should I do after donating blood?",
+                "answer": "After donation: rest for at least 10 minutes, enjoy the provided refreshments, drink extra fluids for the next 24-48 hours, avoid strenuous activity for 5 hours, and keep the bandage on for at least 4 hours."
+            },
+            {
+                "id": "safety",
+                "question": "Is blood donation safe?",
+                "answer": "Yes, blood donation is very safe. All equipment is sterile and used only once. You cannot get any disease from donating blood. The staff are trained professionals who follow strict safety protocols."
+            },
+            {
+                "id": "duration",
+                "question": "How long does a blood donation take?",
+                "answer": "The actual blood collection takes about 8-10 minutes. The entire process from registration to refreshments takes about 45 minutes to an hour."
+            },
+            {
+                "id": "storage",
+                "question": "How long can donated blood be stored?",
+                "answer": "Red blood cells can be stored for up to 42 days. Platelets can be stored for only 5 days. Plasma can be frozen and stored for up to a year."
+            },
+            // Basic Chat
+            {
+                "id": "how_are_you",
+                "question": "how are you?",
+                "answer": "I'm a chatbot, so I'm doing great! Thanks for asking."
+            },
+            {
+                "id": "hello",
+                "question": "hello",
+                "answer": "Hello there! How can I help you with Khoon-e-Hayat?"
+            },
+            {
+                "id": "hi",
+                "question": "hi",
+                "answer": "Hi there! Feel free to ask me anything about blood donation."
+            },
+            {
+                "id": "thank_you",
+                "question": "thank you",
+                "answer": "You're welcome! Is there anything else I can assist you with?"
+            },
+            {
+                "id": "bye",
+                "question": "bye",
+                "answer": "Goodbye! Stay safe and consider donating blood. Every drop counts!"
+            },
+            {
+                "id": "thanks",
+                "question": "thanks",
+                "answer": "You're welcome!"
+            },
+            // General Questions about Blood Donation
+            {
+                "id": "what_is_blood_donation",
+                "question": "what is blood donation?",
+                "answer": "Blood donation is a voluntary procedure where a person gives blood to be used for transfusions. It's a noble act that can save lives."
+            },
+            {
+                "id": "is_blood_donation_safe",
+                "question": "is blood donation safe?",
+                "answer": "Yes, blood donation is a very safe process. All equipment used is sterile, single-use, and disposed of after your donation."
+            },
+            {
+                "id": "how_long_donation_take",
+                "question": "how long does a blood donation take?",
+                "answer": "The donation process, including the health screening and recovery time, usually takes about 30-45 minutes. The actual blood collection takes only 10-15 minutes."
+            },
+            {
+                "id": "what_eat_before",
+                "question": "what should i eat before donating blood?",
+                "answer": "Before donating, it's best to have a healthy meal rich in iron and drink plenty of water. Avoid fatty foods."
+            },
+            {
+                "id": "what_do_after",
+                "question": "what should i do after donating blood?",
+                "answer": "After donating, rest for a few minutes and have some refreshments provided. Drink plenty of fluids and avoid strenuous activities for the rest of the day."
+            },
+            {
+                "id": "minimum_age",
+                "question": "how old do i have to be to donate blood?",
+                "answer": "You must be at least 18 years old to donate blood."
+            },
+            {
+                "id": "minimum_weight",
+                "question": "what is the minimum weight requirement for donating blood?",
+                "answer": "The minimum weight to donate blood is usually around 50 kg (110 lbs)."
+            },
+            {
+                "id": "donate_during_periods",
+                "question": "can a woman donate blood during her periods?",
+                "answer": "Yes, a woman can donate blood during her menstrual period as long as she feels well."
+            },
+            {
+                "id": "donate_with_tattoo",
+                "question": "can i donate blood if i have a tattoo?",
+                "answer": "You can donate blood, but you may need to wait for a certain period (e.g., 6 months to 1 year) after getting a tattoo, depending on the regulations in your area."
+            },
+            {
+                "id": "benefits_of_donation",
+                "question": "what are the benefits of donating blood?",
+                "answer": "Donating blood can reduce the risk of heart disease, burn calories, and provide a free health check-up. Most importantly, you get to save a life!"
+            },
+            {
+                "id": "donation_frequency",
+                "question": "how often can i donate blood?",
+                "answer": "You can usually donate blood every 56 days (about 8 weeks)."
+            },
+            {
+                "id": "importance_of_donation",
+                "question": "why is blood donation important?",
+                "answer": "Blood donation saves lives. It's crucial for patients undergoing surgeries, accident victims, and those with chronic illnesses like anemia or cancer."
+            },
+            {
+                "id": "types_of_donation",
+                "question": "what are the different types of blood donation?",
+                "answer": "There are several types, including whole blood donation, plasma donation, and platelet donation. The type of donation depends on what a patient needs."
+            },
+            {
+                "id": "what_happens_after",
+                "question": "what happens to the blood after donation?",
+                "answer": "Donated blood is tested for infectious diseases and then separated into its components (red cells, plasma, and platelets) to be given to different patients."
+            },
+            {
+                "id": "eat_before_donation",
+                "question": "can i eat before donating blood?",
+                "answer": "Yes, it is very important to eat a healthy meal and drink plenty of water before you donate. This helps prevent dizziness and light-headedness."
+            },
+            {
+                "id": "pain_during_donation",
+                "question": "is there any pain during blood donation?",
+                "answer": "You might feel a small pinch when the needle is inserted, but the process is generally not painful."
+            },
+            {
+                "id": "side_effects",
+                "question": "what are the side effects of donating blood?",
+                "answer": "Most people feel fine after donating. Some may experience minor side effects like dizziness, bruising, or feeling tired, but these usually go away quickly."
+            },
+            {
+                "id": "prepare_for_donation",
+                "question": "how do i prepare for a blood donation?",
+                "answer": "Make sure you get a good night's sleep, eat a healthy meal, and drink extra fluids before you go to the donation center."
+            },
+            {
+                "id": "types_of_blood",
+                "question": "what are the types of blood?",
+                "answer": "The main blood types are A, B, AB, and O. Each can be Rh-positive (+) or Rh-negative (-)."
+            },
+            {
+                "id": "pregnant_donate",
+                "question": "can a pregnant woman donate blood?",
+                "answer": "No, a woman cannot donate blood during pregnancy. It is recommended to wait at least 6 weeks after giving birth before donating."
+            },
+            {
+                "id": "donate_after_pregnancy",
+                "question": "how long after pregnancy can i donate blood?",
+                "answer": "You must wait at least 6 weeks after giving birth to donate blood. This waiting period ensures your body has enough time to recover."
+            },
+            {
+                "id": "donate_while_breastfeeding",
+                "question": "can i donate blood while breastfeeding?",
+                "answer": "Yes, you can generally donate blood while breastfeeding, as long as you meet all the other eligibility criteria. It is important to stay well-hydrated."
+            },
+            {
+                "id": "rules_after_pregnancy",
+                "question": "what are the rules for blood donation after pregnancy?",
+                "answer": "After pregnancy, the waiting period is typically 6 weeks. After that, you can donate as long as you are healthy and meet the standard donation requirements."
+            },
+            // Eligibility and Health-Related Questions
+            {
+                "id": "who_is_eligible",
+                "question": "who is eligible to donate blood?",
+                "answer": "Most healthy adults between 18 and 65 years old can donate. There are specific criteria regarding weight, health, and recent travel, which you can check on our website."
+            },
+            {
+                "id": "who_cannot_donate",
+                "question": "who cannot donate blood?",
+                "answer": "People with certain medical conditions, recent surgeries, or those on certain medications may not be able to donate. It's best to consult our eligibility guidelines."
+            },
+            {
+                "id": "high_blood_pressure",
+                "question": "can people with high blood pressure donate blood?",
+                "answer": "You can donate blood if your blood pressure is within a normal, controlled range on the day of donation."
+            },
+            {
+                "id": "diabetes_donate",
+                "question": "can people with diabetes donate blood?",
+                "answer": "Yes, if your diabetes is well-controlled through diet or oral medication, you may be able to donate. Please consult a doctor first."
+            },
+            {
+                "id": "sick_donate",
+                "question": "can i donate if i am feeling sick?",
+                "answer": "No, if you are feeling unwell or have a fever, it's best to wait until you are fully recovered before donating."
+            },
+            // Questions about Khoon-e-Hayaat
+            {
+                "id": "what_is_khoon_e_hayaat",
+                "question": "what is khoon-e-hayaat?",
+                "answer": "Khoon-e-Hayaat is a platform dedicated to saving lives by connecting blood donors with those in need. We encourage everyone to donate blood and be a lifesaver!"
+            },
+            {
+                "id": "mission_of_khoon_e_hayaat",
+                "question": "what is the mission of khoon-e-hayaat?",
+                "answer": "Our mission is to create a strong network of blood donors to ensure no one suffers due to a lack of blood."
+            },
+            {
+                "id": "join_khoon_e_hayaat",
+                "question": "how can i join khoon-e-hayaat?",
+                "answer": "You can join us by registering as a donor on our website. It's a simple and quick process!"
+            },
+            {
+                "id": "register_as_donor",
+                "question": "how do i register as a blood donor?",
+                "answer": "You can register on our website's 'Donate' page. Just fill in your details, and you'll be a part of our life-saving community."
+            },
+            {
+                "id": "find_donor_near_me",
+                "question": "how can i find a blood donor near me?",
+                "answer": "You can use our website's search feature to find registered donors in your area. Simply enter your location and blood type."
+            },
+            {
+                "id": "more_information",
+                "question": "i need more information about khoon-e-hayaat.",
+                "answer": "For detailed information, please visit the 'About Us' section on our website or contact us directly."
+            }
+        ];
+        
+        // DOM elements
+        const chatButtonContainer = document.getElementById('chatButtonContainer');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeBtn = document.getElementById('closeBtn');
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+        
+        // Event listeners
+        chatButtonContainer.addEventListener('click', () => {
+            chatbotContainer.classList.add('active');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+        
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        suggestionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const questionId = btn.getAttribute('data-question');
+                const faqItem = faqData.find(item => item.id === questionId);
+                if (faqItem) {
+                    displayUserMessage(faqItem.question);
+                    setTimeout(() => {
+                        displayBotMessage(faqItem.answer);
+                    }, 500);
+                }
+            });
+        });
+        
+        // Functions
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return;
+            
+            displayUserMessage(message);
+            userInput.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Process message and respond
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = findResponse(message);
+                displayBotMessage(response);
+            }, 1500);
+        }
+        
+        function displayUserMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `
+                <div class="message-content">${message}</div>
+                <div class="message-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function displayBotMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">${message}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+        
+        function findResponse(message) {
+            const lowerCaseMessage = message.toLowerCase();
+            
+            // Check for exact matches in FAQ data
+            for (const item of faqData) {
+                if (lowerCaseMessage.includes(item.id) || 
+                    lowerCaseMessage.includes(item.question.toLowerCase().substring(0, 15))) {
+                    return item.answer;
+                }
+            }
+            
+            // Check for keywords
+            if (lowerCaseMessage.includes('eligibility') || lowerCaseMessage.includes('eligible') || lowerCaseMessage.includes('requirement')) {
+                return faqData.find(item => item.id === 'eligibility').answer;
+            }
+            
+            if (lowerCaseMessage.includes('process') || lowerCaseMessage.includes('how to donate') || lowerCaseMessage.includes('procedure')) {
+                return faqData.find(item => item.id === 'process').answer;
+            }
+            
+            if (lowerCaseMessage.includes('benefit') || lowerCaseMessage.includes('advantage') || lowerCaseMessage.includes('why donate')) {
+                return faqData.find(item => item.id === 'benefits').answer;
+            }
+            
+            if (lowerCaseMessage.includes('find donor') || lowerCaseMessage.includes('need blood') || lowerCaseMessage.includes('where to find')) {
+                return faqData.find(item => item.id === 'find').answer;
+            }
+            
+            if (lowerCaseMessage.includes('how often') || lowerCaseMessage.includes('frequency') || lowerCaseMessage.includes('next donation')) {
+                return faqData.find(item => item.id === 'frequency').answer;
+            }
+            
+            if (lowerCaseMessage.includes('blood type') || lowerCaseMessage.includes('which blood') || lowerCaseMessage.includes('blood group')) {
+                return faqData.find(item => item.id === 'types').answer;
+            }
+            
+            if (lowerCaseMessage.includes('after donation') || lowerCaseMessage.includes('post donation') || lowerCaseMessage.includes('after giving')) {
+                return faqData.find(item => item.id === 'after').answer;
+            }
+            
+            if (lowerCaseMessage.includes('safe') || lowerCaseMessage.includes('risk') || lowerCaseMessage.includes('danger')) {
+                return faqData.find(item => item.id === 'safety').answer;
+            }
+            
+            if (lowerCaseMessage.includes('how long') || lowerCaseMessage.includes('duration') || lowerCaseMessage.includes('time')) {
+                return faqData.find(item => item.id === 'duration').answer;
+            }
+            
+            if (lowerCaseMessage.includes('storage') || lowerCaseMessage.includes('store') || lowerCaseMessage.includes('keep blood')) {
+                return faqData.find(item => item.id === 'storage').answer;
+            }
+            
+            // Default response
+            return "I'm sorry, I don't have information about that specific question. You can try asking about eligibility, donation process, benefits, or finding donors. You can also call our helpline at 123-456-7890 for more assistance.";
+        }
+        
+    </script>
+</body>
+</html>

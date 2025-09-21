@@ -1,0 +1,3856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Blood Availability System</title>
+    <link rel="icon" href="images/logoFinal.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/364-3647802_blood-symbol-png-blood-donation-app-logo.png">
+    <style>
+
+ /* Base styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+
+         html {
+        scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        
+        /* Navbar fixes */
+        .navbar {
+            background: #900000;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            padding: 0 12px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .logo img {
+            max-width: 180px;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .nav-link {
+            color: #f5f5f5;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(11, 106, 39);
+            z-index: -1;
+            border-radius: 6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .nav-link:hover:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            /* box-shadow: 0 5px 15px rgba(138, 3, 3, 0.4); */
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+        }
+        
+      /* Hero section fixes */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; /* Fallback background color */
+}
+
+.hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Video layer */
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 7, 7, 0.7); /* 70% opacity black overlay */
+    z-index: 2; /* Overlay layer above video */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3; /* Content layer above overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+    width: 100%;
+    max-width: 800px;
+}
+
+.hero h1 {
+    color: #fff;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    color: #ffffff;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+        
+        /* About section fixes */
+        .about-section {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/download (8).jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            justify-content: center;
+        }
+        
+        .about-image, .about-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .about-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-text h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #c23616;
+            border-radius: 2px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: white;
+            text-align: left;
+        }
+        
+        /* Mission section fixes */
+        .mission-section {
+            background-image: url('images/med2.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .mission-section .flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mission-section .md\\:w-1\\/2 {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+        
+        /* Timeline fixes */
+        .donation-timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 150px;
+            margin: 15px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgb(11, 106, 39);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.7rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step-content {
+            text-align: center;
+            font-size: 1rem;
+            color: white;
+        }
+        
+        /* Impact stats fixes */
+        .impact-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-image: url('images/download (8).jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            padding: 40px 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            min-width: 200px;
+            flex: 1;
+        }
+        
+        /* Footer fixes */
+        footer {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/download (8).jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+        
+        .footerContainer {
+            width: 100%;
+            /* padding: 20px 0; */
+        }
+        
+        .socialIcons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .socialIcons a {
+            text-decoration: none;
+            padding: 12px;
+            background-color: rgb(0, 130, 39);
+            margin-top: 0px;
+            margin: 10px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footerNav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            flex-wrap: wrap;
+        }
+        
+        .footerNav ul li a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        
+        /* Chatbot responsive fixes */
+        .chatbot-container {
+            position: fixed;
+            bottom: 130px;
+            right: 20px;
+            width: 90%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            height: 500px;
+            z-index: 100;
+        }
+        
+        .robot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10;
+            cursor: pointer;
+        }
+        
+        /* Responsive design */
+        @media screen and (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: #900000;
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.3s ease;
+                z-index: 100;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .nav-link {
+                width: 80%;
+                justify-content: center;
+                margin: 0 auto;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            /* .about-text p {
+                text-align: center;
+            }
+            
+            .mission-section .md\\:pl-12 {
+                padding-left: 0;
+            }
+            
+            .impact-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                width: 100%;
+                max-width: 300px;
+            }
+             */
+            .footerNav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footerNav ul li {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .chatbot-container {
+                width: 95%;
+                right: 10px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .about-image, .about-text {
+                min-width: 100%;
+            }
+            
+            .timeline-step {
+                width: 120px;
+                margin: 10px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .socialIcons a {
+                padding: 8px;
+                margin: 5px;
+            }
+            
+            .chatbot-container {
+                height: 70vh;
+                bottom: 100px;
+            }
+            
+            .robot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* Utility classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .mb-10 {
+            margin-bottom: 2.5rem;
+        }
+        
+        .md\\:mb-0 {
+            margin-bottom: 0;
+        }
+        
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .grid {
+            display: grid;
+        }
+        
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        .sm\\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        
+        .lg\\:grid-cols-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        
+        .gap-6 {
+            gap: 1.5rem;
+        }
+        
+        .bg-white {
+            background-color: #fff;
+        }
+        
+        .p-6 {
+            padding: 1.5rem;
+        }
+        
+        .shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .w-24 {
+            width: 6rem;
+        }
+        
+        .h-1 {
+            height: 0.25rem;
+        }
+        
+        .bg-\\[rgb\\(30\\,241\\,93\\)\\] {
+            background-color: rgb(30, 241, 93);
+        }
+        
+
+
+
+
+
+
+
+        
+        /* Custom CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #900000;
+            --primary-light: #c40000;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --hospital-blue: #0d6efd;
+            --hospital-green: #198754;
+            --border-radius: 12px;
+            --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --navbar-dark: #900000;
+            --navbar-primary: rgb(11, 106, 39);
+        }
+        
+        body {
+            background-image: url('images/Med.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: var(--navbar-dark);
+            width: 100%;
+            max-width: 2000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: fixed;     
+            top: 0;              
+            left: 0;             
+            right: 0;           
+            z-index: 999;       
+            padding: 0 20px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 100%;
+            max-width: 180px; 
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        .nav-item {
+            position: relative;
+            margin: 0 5px;
+        }
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        /* Unique Hover Effect */
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--navbar-primary);
+            z-index: -1;
+            border-radius: 6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        .nav-link:hover:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-link:hover {
+            color: white;
+            box-shadow: 0 5px 15px rgba(138, 3, 3, 0.4);
+        }
+        
+        /* Blood Drop Effect */
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover:after {
+            opacity: 1;
+            animation: drip 0.5s linear forwards;
+        }
+        @keyframes drip {
+            0% {
+                bottom: -5px;
+                opacity: 1;
+            }
+            100% {
+                bottom: -15px;
+                opacity: 0;
+                transform: translateX(-50%) scale(1.5);
+            }
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            padding-top: 100px; /* Space for fixed navbar */
+            min-height: calc(100vh - 80px); /* Full height minus navbar */
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            color: var(--light);
+            font-weight: 700;
+            /* margin-bottom: 1.5rem; */
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--success);
+            font-size: 1.9rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            color: white;
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary-light);
+        }
+        
+        .btn-sec {
+            color: #fff;
+            background-color: var(--hospital-green);
+            border-color: var(--secondary);
+        }
+        
+        .btn-sec:hover {
+            background-color: #469e49;
+        }
+        
+        .btn-danger {
+            color: #fff;
+            background-color: var(--danger);
+            border-color: var(--danger);
+        }
+        
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        
+        .btn-outline-secondary {
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: var(--secondary);
+        }
+        
+        /* Form Elements */
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #28a745;
+            border-radius: var(--border-radius);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: 0;
+            /* box-shadow: 0 0 0 0.2rem rgba(144, 0, 0, 0.25); */
+        }
+        
+        .form-select {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 2rem 0.8rem 1.2rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        .form-select:focus {
+            border-color: var(--primary);
+            outline: 0;
+            /* box-shadow: 0 0 0 0.2rem rgba(144, 0, 0, 0.25); */
+        }
+        
+        label {
+            display: inline-block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        /* Utility Classes */
+        .text-muted {
+            color: #6c757d !important;
+        }
+        
+        .mb-0 { margin-bottom: 0 !important; }
+        .mb-1 { margin-bottom: 0.4rem !important; }
+        .mb-3 { margin-bottom: 1rem !important; }
+        .mb-4 { margin-bottom: 1.5rem !important; }
+        .mt-2 { margin-top: 0.8rem !important; }
+        
+        .d-flex {
+            display: flex !important;
+        }
+        
+        .justify-content-between {
+            justify-content: space-between !important;
+        }
+        
+        .align-items-center {
+            align-items: center !important;
+        }
+        
+        .w-100 {
+            width: 100% !important;
+        }
+        
+        .me-1 { margin-right: 0.4rem !important; }
+        .me-2 { margin-right: 0.8rem !important; }
+        .ms-1 { margin-left: 0.4rem !important; }
+        .ms-2 { margin-left: 0.8rem !important; }
+        
+        .text-center {
+            text-align: center !important;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.35em 0.65em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.375rem;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary) !important;
+            color: white;
+        }
+        
+        .bg-danger {
+            background-color: var(--danger) !important;
+            color: white;
+        }
+        
+        /* Layout Components */
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .info-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-box {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .info-box h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        
+        .fact-box, .highlight-box, .do-dont {
+            margin-top: 15px;
+        }
+        
+        .fact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .fact-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .fact-box, .highlight-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .do-dont {
+            display: flex;
+            column-gap: 20px;
+        }
+        
+        .do, .dont {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .do {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .dont {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+        
+        .do h3, .dont h3 {
+            margin-top: 10;
+        }
+        
+        .do h3 { color: #4caf50; }
+        .dont h3 { color: #f44336; }
+        
+        .steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* New Hospital List Design */
+        .hospital-list {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .hospital-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .hospital-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+        }
+        
+        .hospital-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--success);
+        }
+        
+        .hospital-item.urgent::before {
+            background-color: var(--danger);
+        }
+        
+        .hospital-header {
+            padding: 20px 25px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hospital-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .hospital-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .hospital-urgent-badge {
+            background: var(--danger);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        
+        .hospital-urgent-badge i {
+            margin-right: 5px;
+        }
+        
+        .hospital-location {
+            display: flex;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+        
+        .hospital-location i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        .hospital-body {
+            padding: 20px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .hospital-info {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .hospital-contact {
+            display: flex;
+            align-items: center;
+            color: var(--hospital-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        
+        .hospital-contact i {
+            margin-right: 10px;
+        }
+        
+        .hospital-hours {
+            display: flex;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+        
+        .hospital-hours i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .hospital-blood {
+            flex: 2;
+            min-width: 250px;
+        }
+        
+        .blood-availability-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blood-availability-title i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        .blood-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .blood-badge {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .blood-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .blood-badge.available {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .blood-badge.low {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .blood-badge.urgent {
+            background: var(--danger);
+            color: white;
+            border: 1px solid #c82333;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .blood-badge i {
+            margin-right: 6px;
+        }
+        
+        .no-hospitals {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .no-hospitals i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Filter Styles */
+        .filter-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            color: #900000;
+        }
+        .filter-section  label{
+            color: #900000;
+        }
+        
+        .filter-control {
+            flex: 1;
+            min-width: 220px;
+        }
+        
+        /* Modal Styles - Responsive Updates */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+        }
+        
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 0;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-header {
+            padding: 1.2rem 1.8rem;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+        
+        .modal-close {
+            background: transparent;
+            border: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+        
+        .modal-close:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .modal-body {
+            padding: 1.8rem;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        
+        .modal-footer {
+            padding: 1.2rem 1.8rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        
+        /* Hospital Details Modal - Responsive Updates */
+        .hospital-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .hospital-detail {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hospital-detail:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .detail-value {
+            color: #555;
+        }
+        
+        .blood-availability {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .blood-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .blood-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blood-card.urgent {
+            border-left: 4px solid var(--danger);
+            background: #fff0f0;
+        }
+        
+        .blood-type {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        
+        .blood-status {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blood-status i {
+            margin-right: 6px;
+        }
+        
+        .blood-status.available {
+            color: var(--hospital-green);
+        }
+        
+        .blood-status.low {
+            color: var(--warning);
+        }
+        
+        .blood-status.urgent {
+            color: var(--danger);
+            font-weight: bold;
+        }
+        
+        .blood-quantity {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+        
+        .hospital-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .service-badge {
+            background: #e9ecef;
+            color: #495057;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+        
+        .service-badge:hover {
+            background-color: #dee2e6;
+        }
+        
+        /* Emergency Banner */
+        .emergency-banner {
+            background-color: #198754;
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .emergency-icon {
+            font-size: 2.5rem;
+            color: #f8f9fa;
+        }
+        
+        .emergency-banner h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Search Section */
+        .search-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .btn-reset {
+            padding: 12px 18px;
+            border-radius: 6px;
+            background: transparent;
+            border: 2px solid #28a745;
+            color: #900000;
+            margin-left: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.5s;
+            z-index: 1;
+            overflow: hidden;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        .btn-reset::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            z-index: -1;
+            background-color: #fff;
+            transition: .5s;
+        }
+        
+        .btn-reset:hover::before {
+            height: 100%;
+        }
+        
+        .btn-reset:hover {
+            color: rgb(107, 16, 16);
+        } 
+        
+        /* Footer Styles */
+        footer{
+            background-image: url('images/download (8).jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;       
+        }
+        .footerContainer{
+            width: 100%;
+            /* padding: 20px 30px; */
+        }
+        .socialIcons{
+            display: flex;
+            justify-content: center;
+        }
+        .socialIcons a {
+            text-decoration: none;
+            /* padding: 12px; */
+            background-color: rgb(0, 130, 39); /* green background */
+            /* margin: 15px; */
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .socialIcons a i {
+            font-size: 1.9em;
+            color: white; /* white icons */
+            opacity: 0.9;
+        }
+        /* Hover effect */
+        .socialIcons a:hover {
+            background-color: white; /* circle turns white */
+            transition: 0.5s;
+        }
+        .socialIcons a:hover i {
+            color: rgb(0, 130, 39); /* icons turn green */
+            transition: 0.5s;
+        }
+        .footerNav ul{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        .footerNav ul li a{
+            color: white;
+            /* margin: 20px; */
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        .footerNav ul li a:hover{
+            color: rgb(30, 241, 93);
+            opacity: 1;
+        }
+        .footerBottom{
+            background-image: url('images/download (8).jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;  
+            padding: 10px;
+            text-align: center;
+        }
+        .footerBottom p{
+            color: white;
+            margin-top: 0; 
+        }
+        .designer{
+            color: white;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin: 0px 5px;
+        }
+        .footerBottom {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .footerBottom p {
+            display: inline-block;
+            position: relative;
+            padding: 10px 20px;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            margin-top: 0;   
+        }
+        .footerBottom p::before {
+            content: "";
+            position: absolute;
+            top: 0;  
+            left: -20px; 
+            right: -20px; 
+            height: 1px;
+            background-color: #ccc;
+        }
+        .footerBottom .designer {
+            font-weight: bold;
+            color: rgb(220, 225, 221);
+        }
+        .logo-foot {
+            /* margin: 0 0 0;  */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .logo-foot img {
+            margin-bottom: 5px;
+            width: 100%;
+            max-width: 210px; 
+            height: 50%;
+            transition: all 0.3s ease;
+        }
+        .logo-foot img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .do-dont {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .info-box {
+                padding: 20px;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+            }
+            
+            .blood-card {
+                width: 100%;
+            }
+            
+            .hospital-body {
+                flex-direction: column;
+            }
+            
+            /* Modal adjustments for tablets */
+            .modal-content {
+                max-width: 85%;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .modal-header, .modal-footer {
+                padding: 1rem 1.5rem;
+            }
+            
+            .blood-availability {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: var(--navbar-dark);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.3s ease;
+                z-index: 100;
+                border-radius: 0 0 12px 12px;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            .nav-link {
+                width: 80%;
+                justify-content: center;
+                margin: 0 auto;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .search-section {
+                padding: 20px;
+            }
+            
+            .filter-control {
+                min-width: 100%;
+            }
+            
+            .hospital-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hospital-urgent-badge {
+                margin-top: 8px;
+            }
+            
+            /* Modal adjustments for mobile */
+            .modal-content {
+                max-width: 95%;
+                max-height: 95vh;
+                border-radius: 8px;
+            }
+            
+            .modal-header {
+                padding: 0.8rem 1.2rem;
+            }
+            
+            .modal-title {
+                font-size: 1.2rem;
+            }
+            
+            .modal-body {
+                padding: 1.2rem;
+                font-size: 15px;
+            }
+            
+            .modal-footer {
+                padding: 0.8rem 1.2rem;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .modal-footer .btn {
+                width: 100%;
+            }
+            
+            .hospital-image {
+                height: 180px;
+            }
+            
+            .blood-availability {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .detail-label {
+                font-size: 1rem;
+            }
+            
+            .footerNav ul{
+                flex-direction: column;
+            } 
+            .footerNav ul li{
+                width:100%;
+                text-align: center;
+                margin: 10px;
+            }
+            .socialIcons a{
+                padding: 8px;
+                margin: 4px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .emergency-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .hospital-header {
+                padding: 15px;
+            }
+            
+            .hospital-body {
+                padding: 15px;
+            }
+            
+            /* Modal adjustments for small mobile */
+            .modal {
+                padding: 10px;
+            }
+            
+            .modal-content {
+                max-width: 100%;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+            
+            .modal-header {
+                padding: 0.8rem;
+            }
+            
+            .modal-title {
+                font-size: 1.1rem;
+            }
+            
+            .modal-body {
+                padding: 1rem;
+            }
+            
+            .modal-footer {
+                padding: 0.8rem;
+            }
+            
+            .hospital-image {
+                height: 150px;
+                margin-bottom: 15px;
+            }
+            
+            .hospital-detail {
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+            }
+            
+            .blood-card {
+                padding: 12px;
+            }
+            
+            .blood-type {
+                font-size: 1.1rem;
+            }
+            
+            .service-badge {
+                padding: 4px 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+
+
+
+         /* Footer */
+        footer{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Dark overlay */
+                url('images/download (8).jpg');;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;       
+        }
+        .footerContainer{
+            width: 100%;
+            padding: 20px 30px;
+        }
+        .socialIcons{
+            display: flex;
+            justify-content: center;
+        }
+        .socialIcons a {
+            text-decoration: none;
+            padding: 12px;
+            background-color: rgb(0, 130, 39); 
+            margin: 15px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .socialIcons a i {
+            font-size: 1.9em;
+            color: white; /* white icons */
+            opacity: 0.9;
+        }
+        /* Hover effect */
+        .socialIcons a:hover {
+            background-color: white;
+            transition: 0.5s;
+        }
+        .socialIcons a:hover i {
+            color: rgb(0, 130, 39); 
+            transition: 0.5s;
+        }
+        .footerNav ul{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        .footerNav ul li a{
+            color: white;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        .footerNav ul li a:hover{
+            color: rgb(30, 241, 93);
+            opacity: 1;
+        }
+        .footerBottom {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Dark overlay */
+                url('images/download (8).jpg'); /* Original image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 10px;
+            text-align: center;
+        }
+        .footerBottom p{
+            color: white;
+            margin-top: 0; 
+        }
+        .designer{
+            color: white;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin: 0px 5px;
+        }
+        .footerBottom {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .footerBottom p {
+            display: inline-block;
+            position: relative;
+            padding: 10px 20px;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            margin-top: 0;   
+        }
+        .footerBottom p::before {
+            content: "";
+            position: absolute;
+            top: 0;  
+            left: -20px; 
+            right: -20px; 
+            height: 1px;
+            background-color: #ccc;
+        }
+        .footerBottom .designer {
+            font-weight: bold;
+            color: rgb(220, 225, 221);
+        }
+        .logo-foot {
+            height: 50px;
+            margin: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 30px;
+            padding-top: 60px;
+        }
+       .logo-foot img {
+            width: 100%;
+            max-width: 180px; 
+            height: auto;
+            transition: var(--transition);
+        }
+        .logo-foot img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 700px){
+            .footerNav ul{
+                flex-direction: column;
+            } 
+            .footerNav ul li{
+                width:100%;
+                text-align: center;
+                margin: 10px;
+            }
+            .socialIcons a{
+                padding: 8px;
+                margin: 4px;
+            }
+        }   
+
+        /* Chat Button Styles */
+        .chat-button-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background-color: #900000;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+            background-color: #b80000;
+        }
+        
+        .chat-button i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 90%;
+            max-width: 380px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            height: 600px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-container.active {
+            display: flex;
+        }
+        
+        .chatbot-header {
+            background-color: rgb(0, 130, 39);
+            color: white;
+            padding: 0px 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h2 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chatbot-header p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            display: flex;
+            align-items: flex-start;
+            max-width: 80%;
+        }
+        
+        .message.bot {
+            align-self: flex-start;
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        
+        .message-content {
+            padding: 12px 15px;
+            border-radius: 18px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .bot .message-content {
+            background-color: #900000;
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user .message-content {
+            background-color: #e6e6e6;
+            color: #333;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .bot .message-avatar {
+            background-color: rgb(0, 130, 39);
+        }
+        
+        .user .message-avatar {
+            background-color: rgb(11, 106, 39);
+        }
+        
+        .chatbot-input {
+            padding: 15px;
+            background-color: white;
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+        
+        .input-field {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .send-btn {
+            background-color: rgb(0, 130, 39);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .send-btn:hover {
+            background-color: rgb(22, 182, 70);
+        }
+        
+        .suggestions {
+            padding: 15px;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid #eee;
+        }
+        
+        .suggestion-btn {
+            padding: 8px 12px;
+            background-color: #f1f1f1;
+            color: black;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestion-btn:hover {
+            background-color: #900000;
+            color: white;
+            border-color: #900000;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            padding: 15px;
+            align-items: center;
+        }
+        
+        .typing-indicator span {
+            height: 10px;
+            width: 10px;
+            background-color: #900000;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Responsive Chatbot */
+        @media (max-width: 768px) {
+            .chatbot-container {
+                width: 90%;
+                height: 70vh;
+                bottom: 80px;
+                right: 5%;
+                max-width: none;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .chat-button-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .chat-button {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .chat-button i {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chatbot-container {
+                width: 95%;
+                height: 75vh;
+                bottom: 70px;
+                right: 2.5%;
+            }
+            
+            .chatbot-header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .chatbot-header p {
+                font-size: 0.8rem;
+            }
+            
+            .message-content {
+                font-size: 0.9rem;
+            }
+            
+            .suggestion-btn {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+        }
+
+    .searchable-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.searchable-dropdown input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.searchable-dropdown .dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ced4da;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 1000;
+    display: none;
+}
+
+.searchable-dropdown .dropdown-list.show {
+    display: block;
+}
+
+.searchable-dropdown .dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.searchable-dropdown .dropdown-option:hover {
+    background-color: #f8f9fa;
+}
+
+.searchable-dropdown .dropdown-option.highlighted {
+    background-color: #e9ecef;
+}
+
+    </style>
+</head>
+<body>
+    <!-- navbar -->
+      <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+             <a class="brand-logo" href="index.html">
+                <img loading="eager" decoding="async" src="images/finalLogo-01.png"
+                    alt="D Cake Shop | Delicious Cakes for Everyone" width="130" height="25">
+            </a>            
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="index.html#abt" class="nav-link">
+                        <i class="fas fa-info-circle"></i>About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="bloodTypeCompatibility.html" class="nav-link">  <!-- Updated href -->
+                        <i class="fas fa-tint"></i>Blood Type
+                    </a>
+                </li>
+                <li class="nav-item">
+                <a href="donateBlood.html" class="nav-link">
+                    <i class="fas fa-hand-holding-heart"></i>Donate Blood
+                </a>
+                 </li>
+                <li class="nav-item">
+                    <a href="hospital.html" class="nav-link">
+                        <i class="fas fa-hospital"></i>Hospital
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>Impact
+                    </a>
+                </li>
+                
+            </ul>
+            
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <!-- Navbar ends -->
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <main class="container">
+            <!-- Emergency Blood Needed Banner -->
+            <div class="emergency-banner">
+                <div class="emergency-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div>
+                    <h3 class="mb-1">Emergency Blood Needed!</h3>
+                    <p class="mb-0">O- blood group is critically low in multiple hospitals - Urgent donations required</p>
+                </div>
+            </div>
+            
+            <!-- Search Section -->
+            <section class="search-section">
+                <h2 style="color: #900000;" class="section-title">Find Blood Availability</h2>
+                <p class="text-muted mb-4">Search for available blood groups in hospitals by location or blood type</p>
+                
+                <div class="filter-section">
+                    <div class="filter-control">
+                        <label for="bloodGroupFilter">Filter by Blood Group</label>
+                        <select id="bloodGroupFilter" class="form-select">
+                            <option  style="color: #900000;" value="">All Blood Groups</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    
+
+
+                    
+                   <!-- Area Filter Dropdown -->
+
+                       <div class="filter-control">
+    <label for="areaFilter">Filter by Area / District</label>
+    <div class="searchable-dropdown">
+        <input type="text" id="areaFilter" class="form-control" placeholder="Type or select area" autocomplete="off">
+        <div class="dropdown-list">
+            <div class="dropdown-option" data-value="all areas">All Areas</div>
+            <div class="dropdown-option" data-value="clifton">Clifton</div>
+            <div class="dropdown-option" data-value="dha defence housing authority">DHA (Defence Housing Authority)</div>
+            <div class="dropdown-option" data-value="gulshan e iqbal">Gulshan-e-Iqbal</div>
+            <div class="dropdown-option" data-value="north nazimabad">North Nazimabad</div>
+            <div class="dropdown-option" data-value="federal b area">Federal B Area</div>
+            <div class="dropdown-option" data-value="gulistan e jauhar">Gulistan-e-Jauhar</div>
+            <div class="dropdown-option" data-value="saddar">Saddar</div>
+            <div class="dropdown-option" data-value="nazimabad">Nazimabad</div>
+            <div class="dropdown-option" data-value="liaquatabad">Liaquatabad</div>
+            <div class="dropdown-option" data-value="malir">Malir</div>
+            <div class="dropdown-option" data-value="korangi">Korangi</div>
+            <div class="dropdown-option" data-value="landhi">Landhi</div>
+            <div class="dropdown-option" data-value="new karachi">New Karachi</div>
+            <div class="dropdown-option" data-value="gulberg">Gulberg</div>
+            <div class="dropdown-option" data-value="jamshed town">Jamshed Town</div>
+            <div class="dropdown-option" data-value="site town">SITE Town</div>
+            <div class="dropdown-option" data-value="baldia town">Baldia Town</div>
+            <div class="dropdown-option" data-value="kiamari">Kiamari</div>
+            <div class="dropdown-option" data-value="bin qasim">Bin Qasim</div>
+            <div class="dropdown-option" data-value="orangi town">Orangi Town</div>
+            <div class="dropdown-option" data-value="shah faisal colony">Shah Faisal Colony</div>
+            <div class="dropdown-option" data-value="korangi industrial area">Korangi Industrial Area</div>
+            <div class="dropdown-option" data-value="landhi industrial area">Landhi Industrial Area</div>
+            <div class="dropdown-option" data-value="north karachi">North Karachi</div>
+            <div class="dropdown-option" data-value="buffer zone">Buffer Zone</div>
+            <div class="dropdown-option" data-value="gulshan e hadeed">Gulshan-e-Hadeed</div>
+            <div class="dropdown-option" data-value="safora goth">Safora Goth</div>
+            <div class="dropdown-option" data-value="scheme 33">Scheme 33</div>
+            <div class="dropdown-option" data-value="bahadurabad">Bahadurabad</div>
+            <div class="dropdown-option" data-value="pechs">PECHS</div>
+            <div class="dropdown-option" data-value="tariq road">Tariq Road</div>
+            <div class="dropdown-option" data-value="bahadur yar jang byj chs">Bahadur Yar Jang (BYJ) CHS</div>
+            <div class="dropdown-option" data-value="joharabad">Joharabad</div>
+            <div class="dropdown-option" data-value="gulshan e maymar">Gulshan-e-Maymar</div>
+            <div class="dropdown-option" data-value="surjani town">Surjani Town</div>
+            <div class="dropdown-option" data-value="taiser town">Taiser Town</div>
+            <div class="dropdown-option" data-value="gadap town">Gadap Town</div>
+            <div class="dropdown-option" data-value="machar colony">Machar Colony</div>
+            <div class="dropdown-option" data-value="lyari">Lyari</div>
+            <div class="dropdown-option" data-value="keamari">Keamari</div>
+            <div class="dropdown-option" data-value="mauripur">Mauripur</div>
+            <div class="dropdown-option" data-value="manora">Manora</div>
+            <div class="dropdown-option" data-value="baldia">Baldia</div>
+            <div class="dropdown-option" data-value="ittehad town">Ittehad Town</div>
+            <div class="dropdown-option" data-value="hawkesbay">Hawkesbay</div>
+            <div class="dropdown-option" data-value="sandspit">Sandspit</div>
+            <div class="dropdown-option" data-value="marine drive">Marine Drive</div>
+            <div class="dropdown-option" data-value="sea view">Sea View</div>
+            <div class="dropdown-option" data-value="do darya">Do Darya</div>
+            <div class="dropdown-option" data-value="cantt">Cantt</div>
+            <div class="dropdown-option" data-value="karachi cantonment">Karachi Cantonment</div>
+            <div class="dropdown-option" data-value="manzoor colony">Manzoor Colony</div>
+            <div class="dropdown-option" data-value="akhtar colony">Akhtar Colony</div>
+            <div class="dropdown-option" data-value="mehmoodabad">Mehmoodabad</div>
+            <div class="dropdown-option" data-value="kharadar">Kharadar</div>
+            <div class="dropdown-option" data-value="mithadar">Mithadar</div>
+            <div class="dropdown-option" data-value="jodia bazaar">Jodia Bazaar</div>
+            <div class="dropdown-option" data-value="burns road">Burns Road</div>
+            <div class="dropdown-option" data-value="arts council">Arts Council</div>
+            <div class="dropdown-option" data-value="empress market">Empress Market</div>
+            <div class="dropdown-option" data-value="frere hall">Frere Hall</div>
+            <div class="dropdown-option" data-value="civil lines">Civil Lines</div>
+            <div class="dropdown-option" data-value="karachi port trust">Karachi Port Trust</div>
+            <div class="dropdown-option" data-value="karachi shipyard">Karachi Shipyard</div>
+            <div class="dropdown-option" data-value="karachi nuclear power plant">Karachi Nuclear Power Plant</div>
+            <div class="dropdown-option" data-value="karachi airport">Karachi Airport</div>
+            <div class="dropdown-option" data-value="jinnah international airport">Jinnah International Airport</div>
+            <div class="dropdown-option" data-value="model colony">Model Colony</div>
+            <div class="dropdown-option" data-value="malir cantonment">Malir Cantonment</div>
+            <div class="dropdown-option" data-value="faisal cantonment">Faisal Cantonment</div>
+            <div class="dropdown-option" data-value="karachi university">Karachi University</div>
+            <div class="dropdown-option" data-value="ned university">NED University</div>
+            <div class="dropdown-option" data-value="jinnah postgraduate medical centre">Jinnah Postgraduate Medical Centre</div>
+            <div class="dropdown-option" data-value="national stadium">National Stadium</div>
+            <div class="dropdown-option" data-value="kpt sports complex">KPT Sports Complex</div>
+            <div class="dropdown-option" data-value="hawke s bay beach">Hawke's Bay Beach</div>
+            <div class="dropdown-option" data-value="clifton beach">Clifton Beach</div>
+            <div class="dropdown-option" data-value="french beach">French Beach</div>
+            <div class="dropdown-option" data-value="paradise point">Paradise Point</div>
+            <div class="dropdown-option" data-value="sandspit beach">Sandspit Beach</div>
+            <div class="dropdown-option" data-value="manora beach">Manora Beach</div>
+            <div class="dropdown-option" data-value="turtle beach">Turtle Beach</div>
+            <div class="dropdown-option" data-value="cape monze">Cape Monze</div>
+            <div class="dropdown-option" data-value="churna island">Churna Island</div>
+            <div class="dropdown-option" data-value="bhit island">Bhit Island</div>
+            <div class="dropdown-option" data-value="bundal island">Bundal Island</div>
+            <div class="dropdown-option" data-value="shams pir">Shams Pir</div>
+            <div class="dropdown-option" data-value="ibrahim hyderi">Ibrahim Hyderi</div>
+            <div class="dropdown-option" data-value="rehri goth">Rehri Goth</div>
+            <div class="dropdown-option" data-value="bhitaiabad">Bhitaiabad</div>
+            <div class="dropdown-option" data-value="qayyumabad">Qayyumabad</div>
+            <div class="dropdown-option" data-value="shahrah e faisal">Shahrah-e-Faisal</div>
+            <div class="dropdown-option" data-value="sharea faisal">Sharea Faisal</div>
+            <div class="dropdown-option" data-value="university road">University Road</div>
+            <div class="dropdown-option" data-value="m a jinnah road">M.A. Jinnah Road</div>
+            <div class="dropdown-option" data-value="shahrah e quaideen">Shahrah-e-Quaideen</div>
+            <div class="dropdown-option" data-value="shahrah e pakistan">Shahrah-e-Pakistan</div>
+            <div class="dropdown-option" data-value="shahrah e noorjahan">Shahrah-e-Noorjahan</div>
+            <div class="dropdown-option" data-value="shahrah e ghalib">Shahrah-e-Ghalib</div>
+            <div class="dropdown-option" data-value="shahrah e iran">Shahrah-e-Iran</div>
+            <div class="dropdown-option" data-value="shahrah e liaquat">Shahrah-e-Liaquat</div>
+            <div class="dropdown-option" data-value="shahrah e sher shah suri">Shahrah-e-Sher Shah Suri</div>
+            <div class="dropdown-option" data-value="shahrah e usman">Shahrah-e-Usman</div>
+            <div class="dropdown-option" data-value="shahrah e altaf hussain">Shahrah-e-Altaf Hussain</div>
+            <div class="dropdown-option" data-value="shahrah e millat">Shahrah-e-Millat</div>
+            <div class="dropdown-option" data-value="shahrah e jahangir">Shahrah-e-Jahangir</div>
+            <div class="dropdown-option" data-value="shahrah e hafeez">Shahrah-e-Hafeez</div>
+            <div class="dropdown-option" data-value="shahrah e roomi">Shahrah-e-Roomi</div>
+            <div class="dropdown-option" data-value="shahrah e syed">Shahrah-e-Syed</div>
+            <div class="dropdown-option" data-value="shahrah e tipu sultan">Shahrah-e-Tipu Sultan</div>
+        </div>
+    </div>
+</div>
+
+
+
+                        <!-- Hospital Filter Dropdown -->
+                        <div class="filter-control">
+                            <label for="hospitalFilter">Filter by Hospital Name</label>
+                            <div class="searchable-dropdown">
+                                <input type="text" id="hospitalFilter" class="form-control" placeholder="Type or select hospital" autocomplete="off">
+                                <div class="dropdown-list">
+                                    <div class="dropdown-option" data-value="">All Hospitals</div>
+                                    <div class="dropdown-option" data-value="aga khan university hospital">Aga Khan University Hospital</div>
+                                    <div class="dropdown-option" data-value="abbasi shaheed hospital">Abbasi Shaheed Hospital</div>
+                                    <div class="dropdown-option" data-value="jinnah postgraduate medical centre">Jinnah Postgraduate Medical Centre</div>
+                                    <div class="dropdown-option" data-value="liaquat national hospital & medical college">Liaquat National Hospital & Medical College</div>
+                                    <div class="dropdown-option" data-value="the indus hospital (korangi campus)">The Indus Hospital (Korangi Campus)</div>
+                                    <div class="dropdown-option" data-value="civil hospital karachi">Civil Hospital Karachi</div>
+                                    <div class="dropdown-option" data-value="national institute of cardiovascular diseases (nicvd)">National Institute of Cardiovascular Diseases (NICVD)</div>
+                                    <div class="dropdown-option" data-value="ziauddin hospital clifton">Ziauddin Hospital Clifton</div>
+                                    <div class="dropdown-option" data-value="patel hospital">Patel Hospital</div>
+                                    <div class="dropdown-option" data-value="south city hospital">South City Hospital</div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="filter-control">
+                        <label>&nbsp;</label>
+                        <button id="resetFilters" class="btn-reset w-100">
+                            <i class="fas fa-sync-alt me-1"></i> Reset Filters
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Hospital Availability Section -->
+            <section id="availability-section">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="section-title">Available Blood in Hospitals</h2>
+                </div>
+                
+                <div class="hospital-list" id="hospitalList">
+                    <!-- Hospital items will be populated here -->
+                    <div class="no-hospitals">
+                        <i class="fas fa-hospital"></i>
+                        <p>Searching hospitals with available blood...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Hospital Details Modal -->
+    <div class="modal" id="hospitalDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-hospital me-2"></i><span id="modal-hospital-name">Hospital Details</span></h5>
+                <button type="button" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img id="hospital-image" src="" alt="Hospital Image" class="hospital-image">
+                
+                <div class="hospital-detail">
+                    <div class="detail-label">Address</div>
+                    <div class="detail-value" id="detail-address"></div>
+                </div>
+                
+                <div class="hospital-detail">
+                    <div class="detail-label">Contact Information</div>
+                    <div class="detail-value" id="detail-contact"></div>
+                </div>
+                
+                <div class="hospital-detail">
+                    <div class="detail-label">Available Blood Groups</div>
+                    <div class="detail-value">Current blood availability status</div>
+                    <div class="blood-availability" id="blood-availability">
+                        <!-- Blood availability cards will be added here -->
+                    </div>
+                </div>
+                
+                <div class="hospital-detail">
+                    <div class="detail-label">Hospital Services</div>
+                    <div class="hospital-services" id="hospital-services">
+                        <!-- Service badges will be added here -->
+                    </div>
+                </div>
+                
+                <div class="hospital-detail">
+                    <div class="detail-label">Operating Hours</div>
+                    <div class="detail-value" id="operating-hours"></div>
+                </div>
+                
+                <div class="hospital-detail">
+                    <div class="detail-label">Blood Donation Center</div>
+                    <div class="detail-value">
+                        <p id="donation-center-info"></p>
+                        <p><strong>Donation Hours:</strong> <span id="donation-hours"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sec" id="modalCloseBtn">Close</button>
+                <button type="button" class="btn btn-primary">
+                    <i class="fas fa-directions me-1"></i> Get Directions
+                </button>
+                <button type="button" class="btn btn-danger">
+                    <i class="fas fa-phone-alt me-1"></i> Emergency Contact
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chat Button -->
+    <div class="chat-button-container" id="chatButtonContainer">
+        <button class="chat-button" id="chatButton">
+            <i class="fas fa-comment"></i>
+        </button>
+    </div>
+    
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div>
+                <h2><i class="fas fa-tint"></i> Khoon-e-Hayaat</h2>
+                <p style="color: white; font-size: 17px;">Blood Donation Chatbot</p>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! I'm your blood donation assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggestions" id="suggestions">
+            <button class="suggestion-btn" data-question="eligibility">Eligibility Criteria</button>
+            <button class="suggestion-btn" data-question="process">Donation Process</button>
+            <button class="suggestion-btn" data-question="benefits">Benefits</button>
+            <button class="suggestion-btn" data-question="find">Find Donors</button>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" class="input-field" id="userInput" placeholder="Type your message...">
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <a class="brand-logo logo-foot" href="index.html">
+            <img loading="eager" decoding="async" src="images/finalLogo-01.png">
+        </a> 
+
+       <div class="socialIcons">
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://aboutme.google.com/"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+             <div class="footerNav">
+                <ul><li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#abt">About</a></li>
+                    <li><a href="donateBlood.html">Donate Blood</a></li>
+                    <li><a href="hospital.html">Hospital</a></li>
+                    <!-- <li><a href="">our Team</a></li> -->
+                </ul>
+            </div>
+
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2023; Designed by <span class="designer">Fatima Manzoor</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Change icon
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Initialize hospital data
+        const initializeHospitalData = () => {
+            const hospitals = [
+                {
+                    id: 1,
+                    name: "Aga Khan University Hospital",
+                    address: "Stadium Road",
+                    area: "Karachi",
+                    phone: "021-111 911 911",
+                    email: "info@aku.edu",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 8AM-10PM",
+                    donationCenter: "Blood Donation Center, Ground Floor",
+                    donationHours: "Monday-Saturday: 9AM-5PM",
+                    services: ["Emergency", "ICU", "Surgery", "Cardiology", "Oncology", "Pediatrics"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "12 units", urgent: false },
+                        { type: "A-", status: "low", quantity: "3 units", urgent: false },
+                        { type: "B+", status: "available", quantity: "8 units", urgent: false },
+                        { type: "B-", status: "available", quantity: "5 units", urgent: false },
+                        { type: "O+", status: "low", quantity: "4 units", urgent: false },
+                        { type: "O-", status: "urgent", quantity: "1 unit", urgent: true },
+                        { type: "AB+", status: "available", quantity: "6 units", urgent: false },
+                        { type: "AB-", status: "available", quantity: "2 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "Abbasi Shaheed Hospital",
+                    address: "Block M, North Nazimabad",
+                    area: "North Nazimabad",
+                    phone: "042-111 155 155",
+                    email: "info@abbasishaheed.org.pk",
+                    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053",
+                    operatingHours: "24/7 Emergency & OPD: 8AM-8PM",
+                    donationCenter: "Blood Bank, Main Building",
+                    donationHours: "Monday-Friday: 8AM-4PM",
+                    services: ["Oncology", "Radiotherapy", "Chemotherapy", "Palliative Care", "Research"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "9 units", urgent: false },
+                        { type: "A-", status: "low", quantity: "2 units", urgent: false },
+                        { type: "B+", status: "low", quantity: "3 units", urgent: false },
+                        { type: "O+", status: "urgent", quantity: "0 units", urgent: true },
+                        { type: "O-", status: "urgent", quantity: "0 units", urgent: true },
+                        { type: "AB+", status: "available", quantity: "7 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "Jinnah Postgraduate Medical Centre",
+                    address: "Rafiqui Shaheed Road",
+                    area: "Karachi",
+                    phone: "021-99201300",
+                    email: "info@jpmc.edu.pk",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 8AM-4PM",
+                    donationCenter: "Blood Bank, Near Emergency",
+                    donationHours: "Daily: 8AM-8PM",
+                    services: ["Emergency", "Trauma Center", "Surgery", "Internal Medicine", "Pediatrics"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "15 units", urgent: false },
+                        { type: "B+", status: "available", quantity: "10 units", urgent: false },
+                        { type: "B-", status: "available", quantity: "4 units", urgent: false },
+                        { type: "O+", status: "low", quantity: "3 units", urgent: false },
+                        { type: "AB+", status: "available", quantity: "5 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 4,
+                    name: "Liaquat National Hospital & Medical College",
+                    address: "Stadium Road",
+                    area: "Karachi",
+                    phone: "051-111 000 432",
+                    email: "info@ln.net.pk",
+                    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053",
+                    operatingHours: "Monday-Saturday: 8AM-10PM, Sunday: 10AM-6PM",
+                    donationCenter: "Blood Collection Unit, 1st Floor",
+                    donationHours: "Monday-Friday: 9AM-5PM, Saturday: 9AM-1PM",
+                    services: ["Diagnostics", "Laboratory", "Radiology", "Phlebotomy"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "7 units", urgent: false },
+                        { type: "A-", status: "available", quantity: "3 units", urgent: false },
+                        { type: "O+", status: "available", quantity: "6 units", urgent: false },
+                        { type: "AB+", status: "low", quantity: "2 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 5,
+                    name: "The Indus Hospital (Korangi Campus)",
+                    address: "Plot C-76, Sector 31/5, Opposite Darussalam Society, Korangi Crossing",
+                    area: "Korangi",
+                    phone: "051-9270405",
+                    email: "info@indushospital.com",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 8AM-2PM",
+                    donationCenter: "Blood Bank, Building C",
+                    donationHours: "Monday-Saturday: 8AM-2PM",
+                    services: ["Military Hospital", "Emergency", "Surgery", "Orthopedics", "Cardiology"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "20 units", urgent: false },
+                        { type: "B+", status: "available", quantity: "15 units", urgent: false },
+                        { type: "O+", status: "available", quantity: "18 units", urgent: false },
+                        { type: "O-", status: "low", quantity: "2 units", urgent: false },
+                        { type: "AB+", status: "available", quantity: "8 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 6,
+                    name: "Civil Hospital Karachi",
+                    address: "Baba-e-Urdu Road, Saddar",
+                    area: "Saddar",
+                    phone: "021-99215666",
+                    email: "info@chk.edu.pk",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 8AM-3PM",
+                    donationCenter: "Blood Bank, Main Building",
+                    donationHours: "Monday-Saturday: 9AM-4PM",
+                    services: ["Emergency", "Surgery", "Gynecology", "Pediatrics", "Neurology"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "10 units", urgent: false },
+                        { type: "B+", status: "low", quantity: "4 units", urgent: false },
+                        { type: "O+", status: "available", quantity: "8 units", urgent: false },
+                        { type: "O-", status: "urgent", quantity: "1 unit", urgent: true },
+                        { type: "AB+", status: "available", quantity: "5 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 7,
+                    name: "National Institute of Cardiovascular Diseases (NICVD)",
+                    address: "Rafiqui H. Shaheed Road",
+                    area: "Karachi",
+                    phone: "021-111-642-863",
+                    email: "info@nicvd.org",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 8AM-4PM",
+                    donationCenter: "Blood Bank, Ground Floor",
+                    donationHours: "Daily: 8AM-8PM",
+                    services: ["Cardiology", "Cardiac Surgery", "Emergency", "ICU", "Research"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "14 units", urgent: false },
+                        { type: "A-", status: "low", quantity: "2 units", urgent: false },
+                        { type: "B+", status: "available", quantity: "9 units", urgent: false },
+                        { type: "O+", status: "available", quantity: "12 units", urgent: false },
+                        { type: "O-", status: "low", quantity: "3 units", urgent: false },
+                        { type: "AB+", status: "available", quantity: "4 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 8,
+                    name: "Ziauddin Hospital Clifton",
+                    address: "4/B, Block 6, Clifton",
+                    area: "Clifton",
+                    phone: "021-35862937",
+                    email: "info@ziauddinhospital.com",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 9AM-9PM",
+                    donationCenter: "Blood Bank, 1st Floor",
+                    donationHours: "Monday-Saturday: 10AM-6PM",
+                    services: ["Emergency", "Surgery", "Obstetrics", "Gynecology", "Pediatrics"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "8 units", urgent: false },
+                        { type: "B+", status: "available", quantity: "7 units", urgent: false },
+                        { type: "O+", status: "low", quantity: "3 units", urgent: false },
+                        { type: "AB+", status: "available", quantity: "5 units", urgent: false },
+                        { type: "AB-", status: "low", quantity: "2 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 9,
+                    name: "Patel Hospital",
+                    address: "ST-1/A, Block 17, Gulistan-e-Jauhar",
+                    area: "Gulistan-e-Jauhar",
+                    phone: "021-34962100",
+                    email: "info@patelhospital.org",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 9AM-5PM",
+                    donationCenter: "Blood Bank, Ground Floor",
+                    donationHours: "Monday-Saturday: 9AM-5PM",
+                    services: ["Emergency", "Surgery", "Urology", "Nephrology", "Gastroenterology"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "11 units", urgent: false },
+                        { type: "B+", status: "available", quantity: "9 units", urgent: false },
+                        { type: "O+", status: "available", quantity: "13 units", urgent: false },
+                        { type: "O-", status: "urgent", quantity: "0 units", urgent: true },
+                        { type: "AB+", status: "low", quantity: "3 units", urgent: false }
+                    ]
+                },
+                {
+                    id: 10,
+                    name: "South City Hospital",
+                    address: "Plot ST-16, Block 8, Clifton",
+                    area: "Clifton",
+                    phone: "021-35862937",
+                    email: "info@southcityhospital.com",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073",
+                    operatingHours: "24/7 Emergency & OPD: 9AM-9PM",
+                    donationCenter: "Blood Bank, Ground Floor",
+                    donationHours: "Monday-Saturday: 10AM-6PM",
+                    services: ["Emergency", "Surgery", "Orthopedics", "Obstetrics", "Gynecology"],
+                    bloodAvailability: [
+                        { type: "A+", status: "available", quantity: "10 units", urgent: false },
+                        { type: "A-", status: "available", quantity: "4 units", urgent: false },
+                        { type: "B+", status: "low", quantity: "3 units", urgent: false },
+                        { type: "O+", status: "available", quantity: "9 units", urgent: false },
+                        { type: "AB+", status: "available", quantity: "6 units", urgent: false }
+                    ]
+                }
+            ];
+            
+            localStorage.setItem('hospitals', JSON.stringify(hospitals));
+            return hospitals;
+        };
+        
+        // Render hospital list
+        const renderHospitalList = (hospitals) => {
+            const hospitalList = document.getElementById('hospitalList');
+            
+            if (!hospitals || hospitals.length === 0) {
+                hospitalList.innerHTML = `
+                    <div class="no-hospitals">
+                        <i class="fas fa-hospital"></i>
+                        <p>No hospitals found matching your criteria</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            hospitalList.innerHTML = hospitals.map(hospital => {
+                // Count urgent blood types
+                const urgentBloodTypes = hospital.bloodAvailability.filter(blood => blood.urgent);
+                const hasUrgent = urgentBloodTypes.length > 0;
+                
+                return `
+                    <div class="hospital-item ${hasUrgent ? 'urgent' : ''}" data-id="${hospital.id}">
+                        <div class="hospital-header">
+                            <div class="hospital-top">
+                                <div>
+                                    <div class="hospital-name">${hospital.name}</div>
+                                    <div class="hospital-location">
+                                        <i class="fas fa-map-marker-alt"></i> ${hospital.address}, ${hospital.area}
+                                    </div>
+                                </div>
+                                ${hasUrgent ? `
+                                    <div class="hospital-urgent-badge">
+                                        <i class="fas fa-exclamation-circle"></i> ${urgentBloodTypes.length} Urgent
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                        <div class="hospital-body">
+                            <div class="hospital-info">
+                                <div class="hospital-contact">
+                                    <i class="fas fa-phone-alt"></i> ${hospital.phone}
+                                </div>
+                                <div class="hospital-hours">
+                                    <i class="fas fa-clock"></i> ${hospital.operatingHours}
+                                </div>
+                            </div>
+                            <div class="hospital-blood">
+                                <div class="blood-availability-title">
+                                    <i class="fas fa-tint"></i> Available Blood Types:
+                                </div>
+                                <div class="blood-badges">
+                                    ${hospital.bloodAvailability.map(blood => `
+                                        <div class="blood-badge ${blood.status} ${blood.urgent ? 'urgent' : ''}">
+                                            <i class="fas fa-${blood.status === 'available' ? 'check-circle' : 
+                                                              blood.status === 'low' ? 'exclamation-triangle' : 
+                                                              'exclamation-circle'}"></i>
+                                            ${blood.type}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add event listeners to hospital items
+            document.querySelectorAll('.hospital-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const hospitalId = this.dataset.id;
+                    const hospital = hospitals.find(h => h.id == hospitalId);
+                    showHospitalDetails(hospital);
+                });
+            });
+        };
+        
+        // Show hospital details in modal
+        const showHospitalDetails = (hospital) => {
+            document.getElementById('modal-hospital-name').textContent = hospital.name;
+            document.getElementById('hospital-image').src = hospital.image;
+            document.getElementById('detail-address').textContent = `${hospital.address}, ${hospital.area}`;
+            document.getElementById('detail-contact').innerHTML = `
+                <div><i class="fas fa-phone me-2"></i> ${hospital.phone}</div>
+                <div><i class="fas fa-envelope me-2"></i> ${hospital.email}</div>
+            `;
+            document.getElementById('operating-hours').textContent = hospital.operatingHours;
+            document.getElementById('donation-center-info').textContent = hospital.donationCenter;
+            document.getElementById('donation-hours').textContent = hospital.donationHours;
+            
+            // Render blood availability
+            const bloodAvailability = document.getElementById('blood-availability');
+            bloodAvailability.innerHTML = hospital.bloodAvailability.map(blood => `
+                <div class="blood-card ${blood.urgent ? 'urgent' : ''}">
+                    <div class="blood-type">${blood.type}</div>
+                    <div class="blood-status ${blood.status}">
+                        <i class="fas fa-${blood.status === 'available' ? 'check-circle' : 
+                                          blood.status === 'low' ? 'exclamation-triangle' : 
+                                          'exclamation-circle'}"></i>
+                        ${blood.status.charAt(0).toUpperCase() + blood.status.slice(1)}
+                    </div>
+                    <div class="blood-quantity">${blood.quantity}</div>
+                    ${blood.urgent ? `<div class="text-danger mt-2"><i class="fas fa-bell me-1"></i> Urgent Need</div>` : ''}
+                </div>
+            `).join('');
+            
+            // Render services
+            const servicesContainer = document.getElementById('hospital-services');
+            servicesContainer.innerHTML = hospital.services.map(service => `
+                <span class="service-badge">${service}</span>
+            `).join('');
+            
+            // Show modal
+            const modal = document.getElementById('hospitalDetailsModal');
+            modal.classList.add('show');
+        };
+        
+        // Close modal
+        const closeModal = () => {
+            const modal = document.getElementById('hospitalDetailsModal');
+            modal.classList.remove('show');
+        };
+        
+        // Filter hospitals
+        const filterHospitals = () => {
+            const bloodGroupFilter = document.getElementById('bloodGroupFilter').value;
+            const areaFilter = document.getElementById('areaFilter').value.toLowerCase();
+            const hospitalFilter = document.getElementById('hospitalFilter').value.toLowerCase();
+            
+            const hospitals = JSON.parse(localStorage.getItem('hospitals')) || [];
+            
+            const filteredHospitals = hospitals.filter(hospital => {
+                const matchesBloodGroup = bloodGroupFilter ? 
+                    hospital.bloodAvailability.some(blood => blood.type === bloodGroupFilter) : true;
+                
+                const matchesArea = areaFilter ? 
+                    hospital.area.toLowerCase().includes(areaFilter) || 
+                    hospital.address.toLowerCase().includes(areaFilter) : true;
+                
+                const matchesHospital = hospitalFilter ? 
+                    hospital.name.toLowerCase().includes(hospitalFilter) : true;
+                
+                return matchesBloodGroup && matchesArea && matchesHospital;
+            });
+            
+            renderHospitalList(filteredHospitals);
+        };
+        
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize sample data
+            const hospitals = initializeHospitalData();
+            
+            // Render hospitals
+            renderHospitalList(hospitals);
+            
+            // Set up event listeners for filters
+            document.getElementById('bloodGroupFilter').addEventListener('change', filterHospitals);
+            document.getElementById('areaFilter').addEventListener('input', filterHospitals);
+            document.getElementById('hospitalFilter').addEventListener('input', filterHospitals);
+            document.getElementById('resetFilters').addEventListener('click', () => {
+                document.getElementById('bloodGroupFilter').value = '';
+                document.getElementById('areaFilter').value = '';
+                document.getElementById('hospitalFilter').value = '';
+                filterHospitals();
+            });
+            
+            // Set up modal close handlers
+            document.querySelector('.modal-close').addEventListener('click', closeModal);
+            document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            document.getElementById('hospitalDetailsModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('hospitalDetailsModal')) {
+                    closeModal();
+                }
+            });
+        });
+
+
+
+
+
+        // Searchable dropdown functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const areaFilter = document.getElementById('areaFilter');
+    const dropdownList = areaFilter.nextElementSibling;
+    const dropdownOptions = dropdownList.querySelectorAll('.dropdown-option');
+    
+    // Show dropdown when input is focused
+    areaFilter.addEventListener('focus', function() {
+        dropdownList.classList.add('show');
+        filterDropdownOptions();
+    });
+    
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.searchable-dropdown')) {
+            dropdownList.classList.remove('show');
+        }
+    });
+    
+    // Filter dropdown options based on input
+    areaFilter.addEventListener('input', function() {
+        filterDropdownOptions();
+        filterHospitals(); // Trigger filtering when typing
+    });
+    
+    // Handle option selection
+    dropdownOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            areaFilter.value = this.textContent;
+            areaFilter.setAttribute('data-value', this.getAttribute('data-value'));
+            dropdownList.classList.remove('show');
+            filterHospitals();
+        });
+    });
+    
+    // Filter dropdown options based on input value
+    function filterDropdownOptions() {
+        const inputValue = areaFilter.value.toLowerCase();
+        
+        dropdownOptions.forEach(option => {
+            const optionText = option.textContent.toLowerCase();
+            if (optionText.includes(inputValue)) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        });
+        
+        // Show dropdown if there are matching options
+        const hasVisibleOptions = Array.from(dropdownOptions).some(option => 
+            option.style.display !== 'none'
+        );
+        
+        if (hasVisibleOptions) {
+            dropdownList.classList.add('show');
+        } else {
+            dropdownList.classList.remove('show');
+        }
+    }
+    
+    // Update filterHospitals function to use data-value attribute
+    const originalFilterHospitals = filterHospitals;
+    filterHospitals = function() {
+        const bloodGroupFilter = document.getElementById('bloodGroupFilter').value;
+        const areaFilter = document.getElementById('areaFilter');
+        const areaValue = areaFilter.getAttribute('data-value') || areaFilter.value.toLowerCase();
+        const hospitalFilter = document.getElementById('hospitalFilter').value.toLowerCase();
+        
+        const hospitals = JSON.parse(localStorage.getItem('hospitals')) || [];
+        
+        const filteredHospitals = hospitals.filter(hospital => {
+            const matchesBloodGroup = bloodGroupFilter ? 
+                hospital.bloodAvailability.some(blood => blood.type === bloodGroupFilter) : true;
+            
+            const matchesArea = areaValue && areaValue !== "all areas" ? 
+                hospital.area.toLowerCase().includes(areaValue) || 
+                hospital.address.toLowerCase().includes(areaValue) : true;
+            
+            const matchesHospital = hospitalFilter ? 
+                hospital.name.toLowerCase().includes(hospitalFilter) : true;
+            
+            return matchesBloodGroup && matchesArea && matchesHospital;
+        });
+        
+        renderHospitalList(filteredHospitals);
+    };
+});
+
+
+
+
+
+
+
+
+
+
+// Searchable dropdown functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // ---------- AREA FILTER DROPDOWN ----------
+  const areaFilter = document.getElementById('areaFilter');
+  const areaDropdownList = areaFilter.nextElementSibling;
+  const areaDropdownOptions = areaDropdownList.querySelectorAll('.dropdown-option');
+
+  areaFilter.addEventListener('focus', function() {
+    areaDropdownList.classList.add('show');
+    filterAreaDropdownOptions();
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.searchable-dropdown')) {
+      areaDropdownList.classList.remove('show');
+      hospitalDropdownList.classList.remove('show');
+    }
+  });
+
+  areaFilter.addEventListener('input', function() {
+    filterAreaDropdownOptions();
+    filterHospitals();
+  });
+
+  areaDropdownOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      areaFilter.value = this.textContent;
+      areaFilter.setAttribute('data-value', this.getAttribute('data-value'));
+      areaDropdownList.classList.remove('show');
+      filterHospitals();
+    });
+  });
+
+  function filterAreaDropdownOptions() {
+    const inputValue = areaFilter.value.toLowerCase();
+    areaDropdownOptions.forEach(option => {
+      const optionText = option.textContent.toLowerCase();
+      option.style.display = optionText.includes(inputValue) ? 'block' : 'none';
+    });
+    const hasVisibleOptions = Array.from(areaDropdownOptions).some(opt => opt.style.display !== 'none');
+    if (hasVisibleOptions) areaDropdownList.classList.add('show');
+    else areaDropdownList.classList.remove('show');
+  }
+
+  // ---------- HOSPITAL FILTER DROPDOWN ----------
+  const hospitalFilter = document.getElementById('hospitalFilter');
+  const hospitalDropdownList = hospitalFilter.nextElementSibling;
+  const hospitalDropdownOptions = hospitalDropdownList.querySelectorAll('.dropdown-option');
+
+  hospitalFilter.addEventListener('focus', function() {
+    hospitalDropdownList.classList.add('show');
+    filterHospitalDropdownOptions();
+  });
+
+  hospitalFilter.addEventListener('input', function() {
+    filterHospitalDropdownOptions();
+    filterHospitals();
+  });
+
+  hospitalDropdownOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      hospitalFilter.value = this.textContent;
+      hospitalFilter.setAttribute('data-value', this.getAttribute('data-value'));
+      hospitalDropdownList.classList.remove('show');
+      filterHospitals();
+    });
+  });
+
+  function filterHospitalDropdownOptions() {
+    const inputValue = hospitalFilter.value.toLowerCase();
+    hospitalDropdownOptions.forEach(option => {
+      const optionText = option.textContent.toLowerCase();
+      option.style.display = optionText.includes(inputValue) ? 'block' : 'none';
+    });
+    const hasVisibleOptions = Array.from(hospitalDropdownOptions).some(opt => opt.style.display !== 'none');
+    if (hasVisibleOptions) hospitalDropdownList.classList.add('show');
+    else hospitalDropdownList.classList.remove('show');
+  }
+
+  // ---------- UPDATE FILTER FUNCTION ----------
+  const originalFilterHospitals = filterHospitals;
+  filterHospitals = function() {
+    const bloodGroupFilter = document.getElementById('bloodGroupFilter').value;
+
+    const areaValue = areaFilter.getAttribute('data-value') || areaFilter.value.toLowerCase();
+    const hospitalValue = hospitalFilter.getAttribute('data-value') || hospitalFilter.value.toLowerCase();
+
+    const hospitals = JSON.parse(localStorage.getItem('hospitals')) || [];
+    const filteredHospitals = hospitals.filter(hospital => {
+      const matchesBloodGroup = bloodGroupFilter
+        ? hospital.bloodAvailability.some(blood => blood.type === bloodGroupFilter)
+        : true;
+      const matchesArea = areaValue && areaValue !== "all areas"
+        ? hospital.area.toLowerCase().includes(areaValue) || hospital.address.toLowerCase().includes(areaValue)
+        : true;
+      const matchesHospital = hospitalValue && hospitalValue !== "all hospitals"
+        ? hospital.name.toLowerCase().includes(hospitalValue)
+        : true;
+      return matchesBloodGroup && matchesArea && matchesHospital;
+    });
+    renderHospitalList(filteredHospitals);
+  };
+});
+
+
+
+
+
+// Blood donation FAQ data in JSON format
+const faqData = [
+    {
+        "id": "eligibility",
+        "question": "What are the eligibility criteria for blood donation?",
+        "answer": "To donate blood, you must: be at least 17 years old, weigh at least 50 kg, be in good health, not have donated blood in the last 56 days, and not have certain medical conditions or risk factors."
+    },
+    {
+        "id": "process",
+        "question": "What is the blood donation process?",
+        "answer": "The donation process involves: registration, medical history review, physical examination, the actual donation (which takes about 10 minutes), and a refreshment period afterward. The entire process usually takes about an hour."
+    },
+    {
+        "id": "benefits",
+        "question": "What are the benefits of blood donation?",
+        "answer": "Benefits include: free health screening, reduced risk of heart disease, potential cancer risk reduction, burning calories, and the satisfaction of saving lives. Most importantly, your donation can help up to three patients."
+    },
+    {
+        "id": "find",
+        "question": "How can I find blood donors?",
+        "answer": "You can find blood donors through: our Khoon-e-Hayat website, our mobile app, by calling our helpline at 123-456-7890, or by visiting our donation centers. We also have emergency donor search services."
+    },
+    {
+        "id": "frequency",
+        "question": "How often can I donate blood?",
+        "answer": "You can donate whole blood every 56 days (8 weeks). For platelets, you can donate more frequently - up to 24 times a year. Plasma donations can be made every 28 days."
+    },
+    {
+        "id": "types",
+        "question": "What blood types are needed most?",
+        "answer": "O-negative blood is always in high demand as it's the universal donor type. However, all blood types are needed regularly. Type O-positive is the most common blood type, so it's frequently needed as well."
+    },
+    {
+        "id": "after",
+        "question": "What should I do after donating blood?",
+        "answer": "After donation: rest for at least 10 minutes, enjoy the provided refreshments, drink extra fluids for the next 24-48 hours, avoid strenuous activity for 5 hours, and keep the bandage on for at least 4 hours."
+    },
+    {
+        "id": "safety",
+        "question": "Is blood donation safe?",
+        "answer": "Yes, blood donation is very safe. All equipment is sterile and used only once. You cannot get any disease from donating blood. The staff are trained professionals who follow strict safety protocols."
+    },
+    {
+        "id": "duration",
+        "question": "How long does a blood donation take?",
+        "answer": "The actual blood collection takes about 8-10 minutes. The entire process from registration to refreshments takes about 45 minutes to an hour."
+    },
+    {
+        "id": "storage",
+        "question": "How long can donated blood be stored?",
+        "answer": "Red blood cells can be stored for up to 42 days. Platelets can be stored for only 5 days. Plasma can be frozen and stored for up to a year."
+    },
+    // Basic Chat
+    {
+        "id": "how_are_you",
+        "question": "how are you?",
+        "answer": "I'm a chatbot, so I'm doing great! Thanks for asking."
+    },
+    {
+        "id": "hello",
+        "question": "hello",
+        "answer": "Hello there! How can I help you with Khoon-e-Hayat?"
+    },
+    {
+        "id": "hi",
+        "question": "hi",
+        "answer": "Hi there! Feel free to ask me anything about blood donation."
+    },
+    {
+        "id": "thank_you",
+        "question": "thank you",
+        "answer": "You're welcome! Is there anything else I can assist you with?"
+    },
+    {
+        "id": "bye",
+        "question": "bye",
+        "answer": "Goodbye! Stay safe and consider donating blood. Every drop counts!"
+    },
+    {
+        "id": "thanks",
+        "question": "thanks",
+        "answer": "You're welcome!"
+    },
+    // General Questions about Blood Donation
+    {
+        "id": "what_is_blood_donation",
+        "question": "what is blood donation?",
+        "answer": "Blood donation is a voluntary procedure where a person gives blood to be used for transfusions. It's a noble act that can save lives."
+    },
+    {
+        "id": "is_blood_donation_safe",
+        "question": "is blood donation safe?",
+        "answer": "Yes, blood donation is a very safe process. All equipment used is sterile, single-use, and disposed of after your donation."
+    },
+    {
+        "id": "how_long_donation_take",
+        "question": "how long does a blood donation take?",
+        "answer": "The donation process, including the health screening and recovery time, usually takes about 30-45 minutes. The actual blood collection takes only 10-15 minutes."
+    },
+    {
+        "id": "what_eat_before",
+        "question": "what should i eat before donating blood?",
+        "answer": "Before donating, it's best to have a healthy meal rich in iron and drink plenty of water. Avoid fatty foods."
+    },
+    {
+        "id": "what_do_after",
+        "question": "what should i do after donating blood?",
+        "answer": "After donating, rest for a few minutes and have some refreshments provided. Drink plenty of fluids and avoid strenuous activities for the rest of the day."
+    },
+    {
+        "id": "minimum_age",
+        "question": "how old do i have to be to donate blood?",
+        "answer": "You must be at least 18 years old to donate blood."
+    },
+    {
+        "id": "minimum_weight",
+        "question": "what is the minimum weight requirement for donating blood?",
+        "answer": "The minimum weight to donate blood is usually around 50 kg (110 lbs)."
+    },
+    {
+        "id": "donate_during_periods",
+        "question": "can a woman donate blood during her periods?",
+        "answer": "Yes, a woman can donate blood during her menstrual period as long as she feels well."
+    },
+    {
+        "id": "donate_with_tattoo",
+        "question": "can i donate blood if i have a tattoo?",
+        "answer": "You can donate blood, but you may need to wait for a certain period (e.g., 6 months to 1 year) after getting a tattoo, depending on the regulations in your area."
+    },
+    {
+        "id": "benefits_of_donation",
+        "question": "what are the benefits of donating blood?",
+        "answer": "Donating blood can reduce the risk of heart disease, burn calories, and provide a free health check-up. Most importantly, you get to save a life!"
+    },
+    {
+        "id": "donation_frequency",
+        "question": "how often can i donate blood?",
+        "answer": "You can usually donate blood every 56 days (about 8 weeks)."
+    },
+    {
+        "id": "importance_of_donation",
+        "question": "why is blood donation important?",
+        "answer": "Blood donation saves lives. It's crucial for patients undergoing surgeries, accident victims, and those with chronic illnesses like anemia or cancer."
+    },
+    {
+        "id": "types_of_donation",
+        "question": "what are the different types of blood donation?",
+        "answer": "There are several types, including whole blood donation, plasma donation, and platelet donation. The type of donation depends on what a patient needs."
+    },
+    {
+        "id": "what_happens_after",
+        "question": "what happens to the blood after donation?",
+        "answer": "Donated blood is tested for infectious diseases and then separated into its components (red cells, plasma, and platelets) to be given to different patients."
+    },
+    {
+        "id": "eat_before_donation",
+        "question": "can i eat before donating blood?",
+        "answer": "Yes, it is very important to eat a healthy meal and drink plenty of water before you donate. This helps prevent dizziness and light-headedness."
+    },
+    {
+        "id": "pain_during_donation",
+        "question": "is there any pain during blood donation?",
+        "answer": "You might feel a small pinch when the needle is inserted, but the process is generally not painful."
+    },
+    {
+        "id": "side_effects",
+        "question": "what are the side effects of donating blood?",
+        "answer": "Most people feel fine after donating. Some may experience minor side effects like dizziness, bruising, or feeling tired, but these usually go away quickly."
+    },
+    {
+        "id": "prepare_for_donation",
+        "question": "how do i prepare for a blood donation?",
+        "answer": "Make sure you get a good night's sleep, eat a healthy meal, and drink extra fluids before you go to the donation center."
+    },
+    {
+        "id": "types_of_blood",
+        "question": "what are the types of blood?",
+        "answer": "The main blood types are A, B, AB, and O. Each can be Rh-positive (+) or Rh-negative (-)."
+    },
+    {
+        "id": "pregnant_donate",
+        "question": "can a pregnant woman donate blood?",
+        "answer": "No, a woman cannot donate blood during pregnancy. It is recommended to wait at least 6 weeks after giving birth before donating."
+    },
+    {
+        "id": "donate_after_pregnancy",
+        "question": "how long after pregnancy can i donate blood?",
+        "answer": "You must wait at least 6 weeks after giving birth to donate blood. This waiting period ensures your body has enough time to recover."
+    },
+    {
+        "id": "donate_while_breastfeeding",
+        "question": "can i donate blood while breastfeeding?",
+        "answer": "Yes, you can generally donate blood while breastfeeding, as long as you meet all the other eligibility criteria. It is important to stay well-hydrated."
+    },
+    {
+        "id": "rules_after_pregnancy",
+        "question": "what are the rules for blood donation after pregnancy?",
+        "answer": "After pregnancy, the waiting period is typically 6 weeks. After that, you can donate as long as you are healthy and meet the standard donation requirements."
+    },
+    // Eligibility and Health-Related Questions
+    {
+        "id": "who_is_eligible",
+        "question": "who is eligible to donate blood?",
+        "answer": "Most healthy adults between 18 and 65 years old can donate. There are specific criteria regarding weight, health, and recent travel, which you can check on our website."
+    },
+    {
+        "id": "who_cannot_donate",
+        "question": "who cannot donate blood?",
+        "answer": "People with certain medical conditions, recent surgeries, or those on certain medications may not be able to donate. It's best to consult our eligibility guidelines."
+    },
+    {
+        "id": "high_blood_pressure",
+        "question": "can people with high blood pressure donate blood?",
+        "answer": "You can donate blood if your blood pressure is within a normal, controlled range on the day of donation."
+    },
+    {
+        "id": "diabetes_donate",
+        "question": "can people with diabetes donate blood?",
+        "answer": "Yes, if your diabetes is well-controlled through diet or oral medication, you may be able to donate. Please consult a doctor first."
+    },
+    {
+        "id": "sick_donate",
+        "question": "can i donate if i am feeling sick?",
+        "answer": "No, if you are feeling unwell or have a fever, it's best to wait until you are fully recovered before donating."
+    },
+    // Questions about Khoon-e-Hayaat
+    {
+        "id": "what_is_khoon_e_hayaat",
+        "question": "what is khoon-e-hayaat?",
+        "answer": "Khoon-e-Hayaat is a platform dedicated to saving lives by connecting blood donors with those in need. We encourage everyone to donate blood and be a lifesaver!"
+    },
+    {
+        "id": "mission_of_khoon_e_hayaat",
+        "question": "what is the mission of khoon-e-hayaat?",
+        "answer": "Our mission is to create a strong network of blood donors to ensure no one suffers due to a lack of blood."
+    },
+    {
+        "id": "join_khoon_e_hayaat",
+        "question": "how can i join khoon-e-hayaat?",
+        "answer": "You can join us by registering as a donor on our website. It's a simple and quick process!"
+    },
+    {
+        "id": "register_as_donor",
+        "question": "how do i register as a blood donor?",
+        "answer": "You can register on our website's 'Donate' page. Just fill in your details, and you'll be a part of our life-saving community."
+    },
+    {
+        "id": "find_donor_near_me",
+        "question": "how can i find a blood donor near me?",
+        "answer": "You can use our website's search feature to find registered donors in your area. Simply enter your location and blood type."
+    },
+    {
+        "id": "more_information",
+        "question": "i need more information about khoon-e-hayaat.",
+        "answer": "For detailed information, please visit the 'About Us' section on our website or contact us directly."
+    }
+];
+
+// DOM elements for chatbot
+const chatButtonContainer = document.getElementById('chatButtonContainer');
+const chatbotContainer = document.getElementById('chatbotContainer');
+const closeBtn = document.getElementById('closeBtn');
+const chatMessages = document.getElementById('chatMessages');
+const userInput = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
+const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+
+// Event listeners for chatbot
+chatButtonContainer.addEventListener('click', () => {
+    chatbotContainer.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+    chatbotContainer.classList.remove('active');
+});
+
+sendBtn.addEventListener('click', sendMessage);
+userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+suggestionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const questionId = btn.getAttribute('data-question');
+        const faqItem = faqData.find(item => item.id === questionId);
+        if (faqItem) {
+            displayUserMessage(faqItem.question);
+            setTimeout(() => {
+                displayBotMessage(faqItem.answer);
+            }, 500);
+        }
+    });
+});
+
+// Functions for chatbot
+function sendMessage() {
+    const message = userInput.value.trim();
+    if (message === '') return;
+    
+    displayUserMessage(message);
+    userInput.value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Process message and respond
+    setTimeout(() => {
+        removeTypingIndicator();
+        const response = findResponse(message);
+        displayBotMessage(response);
+    }, 1500);
+}
+
+function displayUserMessage(message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message user';
+    messageDiv.innerHTML = `
+        <div class="message-content">${message}</div>
+        <div class="message-avatar">
+            <i class="fas fa-user"></i>
+        </div>
+    `;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function displayBotMessage(message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-content">${message}</div>
+    `;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showTypingIndicator() {
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'message bot';
+    typingDiv.id = 'typingIndicator';
+    typingDiv.innerHTML = `
+        <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    `;
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    const typingIndicator = document.getElementById('typingIndicator');
+    if (typingIndicator) {
+        typingIndicator.remove();
+    }
+}
+
+function findResponse(message) {
+    const lowerCaseMessage = message.toLowerCase();
+    
+    // Check for exact matches in FAQ data
+    for (const item of faqData) {
+        if (lowerCaseMessage.includes(item.id) || 
+            lowerCaseMessage.includes(item.question.toLowerCase().substring(0, 15))) {
+            return item.answer;
+        }
+    }
+    
+    // Check for keywords
+    if (lowerCaseMessage.includes('eligibility') || lowerCaseMessage.includes('eligible') || lowerCaseMessage.includes('requirement')) {
+        return faqData.find(item => item.id === 'eligibility').answer;
+    }
+    
+    if (lowerCaseMessage.includes('process') || lowerCaseMessage.includes('how to donate') || lowerCaseMessage.includes('procedure')) {
+        return faqData.find(item => item.id === 'process').answer;
+    }
+    
+    if (lowerCaseMessage.includes('benefit') || lowerCaseMessage.includes('advantage') || lowerCaseMessage.includes('why donate')) {
+        return faqData.find(item => item.id === 'benefits').answer;
+    }
+    
+    if (lowerCaseMessage.includes('find donor') || lowerCaseMessage.includes('need blood') || lowerCaseMessage.includes('where to find')) {
+        return faqData.find(item => item.id === 'find').answer;
+    }
+    
+    if (lowerCaseMessage.includes('how often') || lowerCaseMessage.includes('frequency') || lowerCaseMessage.includes('next donation')) {
+        return faqData.find(item => item.id === 'frequency').answer;
+    }
+    
+    if (lowerCaseMessage.includes('blood type') || lowerCaseMessage.includes('which blood') || lowerCaseMessage.includes('blood group')) {
+        return faqData.find(item => item.id === 'types').answer;
+    }
+    
+    if (lowerCaseMessage.includes('after donation') || lowerCaseMessage.includes('post donation') || lowerCaseMessage.includes('after giving')) {
+        return faqData.find(item => item.id === 'after').answer;
+    }
+    
+    if (lowerCaseMessage.includes('safe') || lowerCaseMessage.includes('risk') || lowerCaseMessage.includes('danger')) {
+        return faqData.find(item => item.id === 'safety').answer;
+    }
+    
+    if (lowerCaseMessage.includes('how long') || lowerCaseMessage.includes('duration') || lowerCaseMessage.includes('time')) {
+        return faqData.find(item => item.id === 'duration').answer;
+    }
+    
+    if (lowerCaseMessage.includes('storage') || lowerCaseMessage.includes('store') || lowerCaseMessage.includes('keep blood')) {
+        return faqData.find(item => item.id === 'storage').answer;
+    }
+    
+    // Default response
+    return "I'm sorry, I don't have information about that specific question. You can try asking about eligibility, donation process, benefits, or finding donors. You can also call our helpline at 123-456-7890 for more assistance.";
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,4521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Registration</title>
+    <link rel="icon" href="images/logoFinal.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/364-3647802_blood-symbol-png-blood-donation-app-logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+        html {
+        scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #900000;
+            --primary-light: #ff6b7a;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: rgb(30, 241, 93);
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --dark-green: rgb(11, 106, 39);
+            --navbar-dark: #900000;
+            --navbar-primary: rgb(11, 106, 39);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('images/Med.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px; /* Added padding for fixed navbar */
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .my-5 {
+            margin: 3rem 0;
+        }
+        
+        .text-muted {
+            color: var(--secondary);
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: #900000;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            padding: 0 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            max-width: 180px;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .nav-link {
+            color: #f5f5f5;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(11, 106, 39);
+            z-index: -1;
+            border-radius: 6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .nav-link:hover:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            color: var(--light);
+            font-weight: 700;
+            padding-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        /* Form & Info Container Styles */
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .form-container, .info-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-box {
+            background-color: transparent rgba(245, 241, 241, 0.3);
+            backdrop-filter: blur(10px) brightness(1.4);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .info-box h2 {
+            color: rgb(88, 221, 48);
+            margin-top: 0;
+            padding-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .info-box p {
+            margin-top: 15px;
+        }
+        .fact-box, .highlight-box, .do-dont {
+            margin-top: 15px;
+        }
+        
+        .fact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .fact-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .fact-box, .highlight-box {
+            background-color: #fff3e0;
+            border-left: 4px solid rgb(11, 106, 39);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .do-dont {
+            display: flex;
+            column-gap: 20px;
+        }
+        
+        .do, .dont {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .do {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--dark-green);
+        }
+        
+        .dont {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+        
+        .do h3, .dont h3 {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .do h3 { color: var(--dark-green); }
+        .dont h3 { color: #f44336; }
+        
+        .steps {
+            counter-reset: step-counter;
+        }
+        .steps  h3 {
+            color: rgb(88, 221, 48);
+        }
+        .steps p {
+            color: white;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Form Styles */
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section h2 {
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .radio-option input {
+            margin-right: 8px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            outline: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .radio-option input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .radio-option input:checked::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        
+        .checkbox-option {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-option input {
+            margin-right: 8px;
+        }
+        
+        .checkbox-option label {
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+        
+        button[type="submit"] {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: background-color 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #a00;
+        }
+        
+        .required:after {
+            content: " *";
+            color: red;
+        }
+        
+        .form-note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        input.error-border, select.error-border, textarea.error-border {
+            border-color: red;
+        }
+        
+        .hidden-details {
+            display: none;
+            margin-top: 10px;
+            padding-left: 25px;
+        }
+        
+        .hidden-details textarea {
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        .day-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .day-checkbox {
+            display: flex;
+            align-items: center;
+        }
+        
+        .day-checkbox input {
+            margin-right: 8px;
+        }
+        
+        /* Preferred Time Checkboxes */
+        .time-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .time-checkbox {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            transition: all 0.2s;
+        }
+        
+        .time-checkbox:hover {
+            background: #e9ecef;
+        }
+        
+        .time-checkbox input {
+            margin-right: 10px;
+        }
+        
+        .time-checkbox label {
+            font-weight: normal;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+        
+        /* Donor Availability Section */
+        .donor-availability-section {
+            background-color: transparent rgba(245, 241, 241, 0.3);
+            backdrop-filter: blur(10px) brightness(1.4);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            width: 100%;
+            max-width: 1200px;
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-control {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-control label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .form-select, .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-secondary {
+            background-color: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline-secondary:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .donor-list {
+            margin-top: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .donor-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background-color: transparent;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.5s;
+            z-index: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        .donor-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            z-index: -1;
+            background-color: rgb(11, 106, 39);
+            transition: .5s;
+        }
+        .donor-item:hover::before {
+            height: 100%;
+        }
+        .donor-item:hover {
+            color: white;
+        }
+        
+        .donor-item:last-child {
+            border-bottom: none;
+        }
+        
+        .donor-info {
+            flex: 1;
+        }
+        
+        .donor-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--success);
+            margin-bottom: 5px;
+        }
+        
+        .donor-contact {
+            color: var(--light);
+            font-size: 14px;
+        }
+        
+        .donor-location {
+            color: white;
+            font-size: 14px;
+        }
+        
+        .blood-group {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .no-donors {
+            text-align: center;
+            padding: 30px;
+            color: var(--secondary);
+            font-size: 18px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            overflow: auto;
+        }
+        
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 10% auto;
+            max-width: 500px;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .modal-title {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #aaa;
+        }
+        
+        .btn-close:hover {
+            color: #000;
+        }
+        
+        .modal-body {
+            padding: 20px;
+            flex: 1 1 auto;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .bg-danger {
+            background-color: var(--danger) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary) !important;
+        }
+        
+        .text-white {
+            color: white !important;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+        }
+        
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+        
+        .border {
+            border: 1px solid #dee2e6 !important;
+        }
+        
+        .rounded {
+            border-radius: 5px !important;
+        }
+        
+        .mt-3 {
+            margin-top: 1rem !important;
+        }
+        
+        .mt-4 {
+            margin-top: 1.5rem !important;
+        }
+        
+        .p-3 {
+            padding: 1rem !important;
+        }
+        
+        .me-2 {
+            margin-right: 0.5rem !important;
+        }
+        
+        /* Donor Details Modal */
+        .donor-details-modal .modal-body {
+            padding: 20px 25px;
+        }
+        
+        .donor-detail {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .donor-detail:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            color: var(--primary);
+        }
+        
+        .btn-secondary {
+            background-color: #900000;
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+        }
+        
+        .btn-primary {
+            background-color: #900000;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+             background-color: var(--primary);
+        }
+        
+        .me-1 {
+            margin-right: 0.25rem !important;
+        }
+        
+        /* Custom styles */
+        .disabled-form {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        /* Footer */
+        footer{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/download (8).jpg');;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;       
+        }
+        .footerContainer{
+            width: 100%;
+            padding: 20px 30px;
+        }
+        .socialIcons{
+            display: flex;
+            justify-content: center;
+        }
+        .socialIcons a {
+            text-decoration: none;
+            padding: 12px;
+            background-color: rgb(0, 130, 39); 
+            margin: 15px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .socialIcons a i {
+            font-size: 1.9em;
+            color: white; /* white icons */
+            opacity: 0.9;
+        }
+        /* Hover effect */
+        .socialIcons a:hover {
+            background-color: white;
+            transition: 0.5s;
+        }
+        .socialIcons a:hover i {
+            color: rgb(0, 130, 39); 
+            transition: 0.5s;
+        }
+        .footerNav ul{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        .footerNav ul li a{
+            color: white;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        .footerNav ul li a:hover{
+            color: rgb(30, 241, 93);
+            opacity: 1;
+        }
+        .footerBottom {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/download (8).jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 10px;
+            text-align: center;
+        }
+        .footerBottom p{
+            color: white;
+            margin-top: 0; 
+        }
+        .designer{
+            color: white;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin: 0px 5px;
+        }
+        .footerBottom {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .footerBottom p {
+            display: inline-block;
+            position: relative;
+            padding: 10px 20px;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            margin-top: 0;   
+        }
+        .footerBottom p::before {
+            content: "";
+            position: absolute;
+            top: 0;  
+            left: -20px; 
+            right: -20px; 
+            height: 1px;
+            background-color: #ccc;
+        }
+        .footerBottom .designer {
+            font-weight: bold;
+            color: rgb(220, 225, 221);
+        }
+        .logo-foot {
+            height: 50px;
+            margin: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 30px;
+            padding-top: 60px;
+        }
+       .logo-foot img {
+            width: 100%;
+            max-width: 180px; 
+            height: auto;
+            transition: var(--transition);
+        }
+        .logo-foot img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .donor-availability-section {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .do-dont {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .info-box, .form-container {
+                padding: 20px;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: #900000;
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.3s ease;
+                z-index: 100;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .nav-link {
+                width: 80%;
+                justify-content: center;
+                margin: 0 auto;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .radio-group {
+                gap: 10px;
+            }
+            
+            .time-checkboxes {
+                grid-template-columns: 1fr;
+            }
+            
+            .day-checkboxes {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .footerNav ul{
+                flex-direction: column;
+            } 
+            .footerNav ul li{
+                width:100%;
+                text-align: center;
+                margin: 10px;
+            }
+            .socialIcons a{
+                padding: 8px;
+                margin: 4px;
+            }
+            
+            .donor-availability-section {
+                padding: 20px;
+                margin-top: 30px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .donor-name {
+                font-size: 16px;
+            }
+            
+            .donor-contact, .donor-location {
+                font-size: 13px;
+            }
+            
+            .blood-group {
+                font-size: 14px;
+                padding: 4px 12px;
+            }
+            
+            .no-donors {
+                font-size: 16px;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .do-dont {
+                flex-direction: column;
+            }
+            
+            .form-container {
+                padding: 15px;
+            }
+            
+            .info-box {
+                padding: 15px;
+            }
+            
+            .donor-availability-section {
+                padding: 15px;
+                margin-top: 25px;
+            }
+            
+            .donor-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .blood-group {
+                align-self: flex-start;
+            }
+            
+            .modal-dialog {
+                margin: 5% auto;
+                width: 90%;
+            }
+            
+            .nav-container {
+                height: 70px;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 18px;
+            }
+            
+            .form-container, .info-container {
+                padding: 12px;
+            }
+            
+            .form-section h2 {
+                font-size: 18px;
+            }
+            
+            .donor-availability-section {
+                padding: 12px;
+                margin-top: 20px;
+            }
+            
+            .donor-item {
+                padding: 12px 15px;
+            }
+            
+            .donor-name {
+                font-size: 15px;
+            }
+            
+            .donor-contact, .donor-location {
+                font-size: 12px;
+            }
+            
+            .blood-group {
+                font-size: 13px;
+                padding: 3px 10px;
+            }
+            
+            .no-donors {
+                font-size: 15px;
+                padding: 15px;
+            }
+            
+            .nav-container {
+                height: 60px;
+            }
+            
+            body {
+                padding-top: 60px;
+            }
+        }
+        
+        /* Enhanced responsive styles for all screen sizes */
+        @media (max-width: 1400px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            .logo img {
+                max-width: 160px;
+            }
+            
+            .nav-link {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+            
+            .nav-link i {
+                font-size: 16px;
+                margin-right: 6px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                max-width: 720px;
+            }
+            
+            .nav-container {
+                height: 70px;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+            
+            .logo img {
+                max-width: 140px;
+            }
+            
+            .nav-menu {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+            
+            .nav-link {
+                padding: 15px 0;
+                width: 100%;
+                font-size: 16px;
+            }
+            
+            .hamburger {
+                font-size: 24px;
+            }
+            
+            .form-container, .info-container {
+                min-width: 100%;
+            }
+            
+            .filter-control {
+                min-width: 100%;
+            }
+            
+            #resetFilters {
+                width: 100% !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                padding-bottom: 15px;
+            }
+            
+            .content-wrapper {
+                gap: 20px;
+            }
+            
+            .form-container, .info-box {
+                padding: 15px;
+            }
+            
+            .form-section {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+            
+            .form-section h2 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+            
+            .form-group {
+                margin-bottom: 12px;
+            }
+            
+            input[type="text"],
+            input[type="number"],
+            input[type="date"],
+            input[type="email"],
+            input[type="tel"],
+            select,
+            textarea {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .radio-option {
+                margin-bottom: 8px;
+            }
+            
+            .checkbox-option {
+                margin-bottom: 6px;
+            }
+            
+            .day-checkboxes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .time-checkboxes {
+                grid-template-columns: 1fr;
+            }
+            
+            .fact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 12px;
+            }
+            
+            .fact-icon {
+                margin-bottom: 8px;
+                margin-right: 0;
+            }
+            
+            .step {
+                padding-left: 40px;
+                margin-bottom: 15px;
+            }
+            
+            .step:before {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+            }
+            
+            .donor-availability-section {
+                padding: 15px;
+                margin-top: 20px;
+            }
+            
+            .filter-section {
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            
+            .donor-item {
+                padding: 12px;
+            }
+            
+            .donor-name {
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+            
+            .donor-contact, .donor-location {
+                font-size: 12px;
+            }
+            
+            .blood-group {
+                font-size: 12px;
+                padding: 3px 10px;
+            }
+            
+            .no-donors {
+                padding: 20px 15px;
+                font-size: 14px;
+            }
+            
+            .modal-dialog {
+                margin: 15% auto;
+                width: 95%;
+            }
+            
+            .modal-header {
+                padding: 12px 15px;
+            }
+            
+            .modal-body {
+                padding: 15px;
+            }
+            
+            .modal-footer {
+                padding: 12px 15px;
+            }
+            
+            .socialIcons a {
+                padding: 10px;
+                margin: 8px;
+            }
+            
+            .socialIcons a i {
+                font-size: 1.5em;
+            }
+            
+            .footerNav ul li a {
+                font-size: 1.1em;
+                margin: 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+                padding-bottom: 12px;
+            }
+            
+            .content-wrapper {
+                gap: 15px;
+            }
+            
+            .form-container, .info-box {
+                padding: 12px;
+                border-radius: 8px;
+            }
+            
+            .form-section {
+                margin-bottom: 15px;
+                padding-bottom: 12px;
+            }
+            
+            .form-section h2 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .form-group {
+                margin-bottom: 10px;
+            }
+            
+            label {
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+            
+            input[type="text"],
+            input[type="number"],
+            input[type="date"],
+            input[type="email"],
+            input[type="tel"],
+            select,
+            textarea {
+                padding: 8px;
+                font-size: 13px;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .checkbox-option {
+                margin-bottom: 5px;
+            }
+            
+            .checkbox-option label {
+                font-size: 13px;
+            }
+            
+            .day-checkboxes {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .day-checkbox label {
+                font-size: 13px;
+            }
+            
+            .time-checkboxes {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .time-checkbox {
+                padding: 8px;
+            }
+            
+            .time-checkbox label {
+                font-size: 13px;
+            }
+            
+            button[type="submit"] {
+                padding: 10px 20px;
+                font-size: 14px;
+                margin-top: 20px;
+            }
+            
+            .fact-box, .highlight-box {
+                padding: 12px;
+            }
+            
+            .do, .dont {
+                padding: 12px;
+            }
+            
+            .do h3, .dont h3 {
+                font-size: 14px;
+            }
+            
+            .do ul, .dont ul {
+                font-size: 13px;
+                padding-left: 20px;
+            }
+            
+            .step {
+                padding-left: 35px;
+                margin-bottom: 12px;
+            }
+            
+            .step:before {
+                width: 22px;
+                height: 22px;
+                font-size: 12px;
+            }
+            
+            .step h3 {
+                font-size: 14px;
+            }
+            
+            .step p {
+                font-size: 13px;
+            }
+            
+            .donor-availability-section {
+                padding: 12px;
+                margin-top: 15px;
+            }
+            
+            .filter-section {
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            
+            .filter-control label {
+                font-size: 14px;
+            }
+            
+            .form-select, .form-control {
+                padding: 8px;
+                font-size: 13px;
+            }
+            
+            .btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            
+            .donor-item {
+                padding: 10px;
+            }
+            
+            .donor-name {
+                font-size: 14px;
+                margin-bottom: 2px;
+            }
+            
+            .donor-contact, .donor-location {
+                font-size: 12px;
+            }
+            
+            .blood-group {
+                font-size: 11px;
+                padding: 2px 8px;
+            }
+            
+            .no-donors {
+                padding: 15px 10px;
+                font-size: 13px;
+            }
+            
+            .modal-dialog {
+                margin: 20% auto;
+                width: 95%;
+            }
+            
+            .modal-header {
+                padding: 10px 12px;
+            }
+            
+            .modal-title {
+                font-size: 16px;
+            }
+            
+            .modal-body {
+                padding: 12px;
+            }
+            
+            .modal-footer {
+                padding: 10px 12px;
+            }
+            
+            .btn-close {
+                font-size: 20px;
+            }
+            
+            .socialIcons a {
+                padding: 8px;
+                margin: 5px;
+                width: 36px;
+                height: 36px;
+            }
+            
+            .socialIcons a i {
+                font-size: 1.2em;
+            }
+            
+            .footerNav ul li a {
+                font-size: 1em;
+                margin: 8px 5px;
+            }
+            
+            .footerBottom p {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+            
+            .logo-foot img {
+                max-width: 140px;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .container {
+                padding: 0 8px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+            }
+            
+            .form-container, .info-box {
+                padding: 10px;
+            }
+            
+            .form-section h2 {
+                font-size: 15px;
+            }
+            
+            label {
+                font-size: 13px;
+            }
+            
+            input[type="text"],
+            input[type="number"],
+            input[type="date"],
+            input[type="email"],
+            input[type="tel"],
+            select,
+            textarea {
+                padding: 7px;
+                font-size: 12px;
+            }
+            
+            .day-checkboxes {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-checkbox label {
+                font-size: 12px;
+            }
+            
+            button[type="submit"] {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .do h3, .dont h3 {
+                font-size: 13px;
+            }
+            
+            .do ul, .dont ul {
+                font-size: 12px;
+            }
+            
+            .step {
+                padding-left: 30px;
+            }
+            
+            .step:before {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+            }
+            
+            .step h3 {
+                font-size: 13px;
+            }
+            
+            .step p {
+                font-size: 12px;
+            }
+            
+            .donor-item {
+                padding: 8px;
+            }
+            
+            .donor-name {
+                font-size: 13px;
+            }
+            
+            .donor-contact, .donor-location {
+                font-size: 11px;
+            }
+            
+            .blood-group {
+                font-size: 10px;
+                padding: 2px 6px;
+            }
+            
+            .no-donors {
+                font-size: 12px;
+            }
+            
+            .modal-dialog {
+                width: 98%;
+            }
+            
+            .modal-header {
+                padding: 8px 10px;
+            }
+            
+            .modal-title {
+                font-size: 15px;
+            }
+            
+            .modal-body {
+                padding: 10px;
+            }
+            
+            .modal-footer {
+                padding: 8px 10px;
+            }
+            
+            .socialIcons a {
+                padding: 6px;
+                margin: 3px;
+                width: 32px;
+                height: 32px;
+            }
+            
+            .socialIcons a i {
+                font-size: 1em;
+            }
+            
+            .footerNav ul li a {
+                font-size: 0.9em;
+                margin: 5px 3px;
+            }
+            
+            .footerBottom p {
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+            
+            .logo-foot img {
+                max-width: 120px;
+            }
+        }
+        
+        /* Chatbot Styles */
+        .chat-button-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background-color: #900000;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+            background-color: #b80000;
+        }
+        
+        .chat-button i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 90%;
+            max-width: 380px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            height: 600px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-container.active {
+            display: flex;
+        }
+        
+        .chatbot-header {
+            background-color: rgb(0, 130, 39);
+            color: white;
+            padding: 0px 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h2 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chatbot-header p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            display: flex;
+            align-items: flex-start;
+            max-width: 80%;
+        }
+        
+        .message.bot {
+            align-self: flex-start;
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        
+        .message-content {
+            padding: 12px 15px;
+            border-radius: 18px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .bot .message-content {
+            background-color: #900000;
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user .message-content {
+            background-color: #e6e6e6;
+            color: #333;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .bot .message-avatar {
+            background-color: rgb(0, 130, 39);
+        }
+        
+        .user .message-avatar {
+            background-color: rgb(11, 106, 39);
+        }
+        
+        .chatbot-input {
+            padding: 15px;
+            background-color: white;
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+        
+        .input-field {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .send-btn {
+            background-color: rgb(0, 130, 39);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .send-btn:hover {
+            background-color: rgb(22, 182, 70);
+        }
+        
+        .suggestions {
+            padding: 15px;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid #eee;
+        }
+        
+        .suggestion-btn {
+            padding: 8px 12px;
+            background-color: #f1f1f1;
+            color: black;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestion-btn:hover {
+            background-color: #900000;
+            color: white;
+            border-color: #900000;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            padding: 15px;
+            align-items: center;
+        }
+        
+        .typing-indicator span {
+            height: 10px;
+            width: 10px;
+            background-color: #900000;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Enhanced Responsive Chatbot */
+        @media (max-width: 1200px) {
+            .chatbot-container {
+                max-width: 350px;
+                height: 550px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .chatbot-container {
+                max-width: 320px;
+                height: 500px;
+            }
+            
+            .chat-button {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .chat-button i {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .chatbot-container {
+                width: 90%;
+                height: 70vh;
+                bottom: 80px;
+                right: 5%;
+                max-width: none;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .chat-button-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .chat-button {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .chat-button i {
+                font-size: 20px;
+            }
+            
+            .chatbot-header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .chatbot-header p {
+                font-size: 0.8rem;
+            }
+            
+            .message-content {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+            
+            .message-avatar {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .suggestion-btn {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+            
+            .input-field {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .send-btn {
+                width: 36px;
+                height: 36px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .chatbot-container {
+                width: 95%;
+                height: 75vh;
+                bottom: 70px;
+                right: 2.5%;
+            }
+            
+            .chatbot-header h2 {
+                font-size: 1rem;
+            }
+            
+            .chatbot-header p {
+                font-size: 0.75rem;
+            }
+            
+            .message-content {
+                font-size: 0.85rem;
+                padding: 8px 10px;
+            }
+            
+            .message-avatar {
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
+            }
+            
+            .suggestion-btn {
+                font-size: 0.7rem;
+                padding: 5px 8px;
+            }
+            
+            .input-field {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .send-btn {
+                width: 32px;
+                height: 32px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chatbot-container {
+                width: 98%;
+                height: 80vh;
+                bottom: 60px;
+                right: 1%;
+            }
+            
+            .chat-button-container {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .chat-button {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .chat-button i {
+                font-size: 18px;
+            }
+            
+            .chatbot-header h2 {
+                font-size: 0.9rem;
+            }
+            
+            .chatbot-header p {
+                font-size: 0.7rem;
+            }
+            
+            .message-content {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+            }
+            
+            .message-avatar {
+                width: 25px;
+                height: 25px;
+                font-size: 0.9rem;
+            }
+            
+            .suggestion-btn {
+                font-size: 0.65rem;
+                padding: 4px 6px;
+            }
+            
+            .input-field {
+                padding: 6px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .send-btn {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .chatbot-container {
+                height: 85vh;
+            }
+            
+            .chatbot-header h2 {
+                font-size: 0.85rem;
+            }
+            
+            .chatbot-header p {
+                font-size: 0.65rem;
+            }
+            
+            .message-content {
+                font-size: 0.75rem;
+                padding: 5px 7px;
+            }
+            
+            .message-avatar {
+                width: 22px;
+                height: 22px;
+                font-size: 0.8rem;
+            }
+            
+            .suggestion-btn {
+                font-size: 0.6rem;
+                padding: 3px 5px;
+            }
+            
+            .input-field {
+                padding: 5px 7px;
+                font-size: 0.7rem;
+            }
+            
+            .send-btn {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- navbar -->
+      <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+             <a class="brand-logo" href="index.html">
+                <img loading="eager" decoding="async" src="images/finalLogo-01.png"
+                    alt="D Cake Shop | Delicious Cakes for Everyone" width="130" height="25">
+            </a>            
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="index.html#abt" class="nav-link">
+                        <i class="fas fa-info-circle"></i>About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="bloodTypeCompatibility.html" class="nav-link">  <!-- Updated href -->
+                        <i class="fas fa-tint"></i>Blood Type
+                    </a>
+                </li>
+                <li class="nav-item">
+                <a href="donateBlood.html" class="nav-link">
+                    <i class="fas fa-hand-holding-heart"></i>Donate Blood
+                </a>
+                 </li>
+                <li class="nav-item">
+                    <a href="hospital.html" class="nav-link">
+                        <i class="fas fa-hospital"></i>Hospital
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>Impact
+                    </a>
+                </li>
+                
+            </ul>
+            
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <!-- Navbar ends -->
+
+    <main class="container">
+        <!-- Donor Registration Section -->
+        <section id="donor-section" class="my-5">
+            <h2 class="section-title" style="color: white; text-align: center;" >Become a Blood Donor</h2>
+            <div class="content-wrapper">
+                <div class="form-container">
+                    <h2 style="color: #900000; text-align: center; margin-top: 0; font-size: 25px; font-weight: 600; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Become a Blood Donor</h2>
+                    <p style="text-align: center; margin-bottom: 30px;">Fill out this form to register as a blood donor</p>
+                    
+                    <form id="donorForm">
+                        <div class="form-section">
+                            <h2>Personal Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="fullName" class="required">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                                <div class="error" id="fullNameError">Please enter your full name (letters only)</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fatherName" class="required">Father's Name</label>
+                                <input type="text" id="fatherName" name="fatherName" required>
+                                <div class="error" id="fatherNameError">Please enter father's name (letters only)</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cnic" class="required">CNIC Number</label>
+                                <input type="text" id="cnic" name="cnic" placeholder="XXXXX-XXXXXXX-X" required>
+                                <div class="error" id="cnicError">Please enter a valid CNIC in format XXXXX-XXXXXXX-X</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dob" class="required">Date of Birth</label>
+                                <input type="date" id="dob" name="dob" required>
+                                <div class="error" id="dobError">You must be at least 17 years old to donate blood</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="required">Gender</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="male" name="gender" value="male" required>
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female">Female</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="other" name="gender" value="other">
+                                        <label for="other">Other</label>
+                                    </div>
+                                </div>
+                                <div class="error" id="genderError">Please select your gender</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="03XXXXXXXXX" required>
+                                <div class="error" id="phoneError">Please enter a valid 11-digit phone number starting with 03</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="example@email.com">
+                                <div class="error" id="emailError">Please enter a valid email address</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address" class="required">Address</label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                                <div class="error" id="addressError">Please enter your address</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="area" class="required">Area/District</label>
+                                <select id="area" name="area" required>
+                                    <option value="">Select Area</option>
+                                    <option value="Defence, Karachi">Defence, Karachi</option>
+                                    <option value="Clifton, Karachi">Clifton, Karachi</option>
+                                    <option value="Gulshan-e-Iqbal, Karachi">Gulshan-e-Iqbal, Karachi</option>
+                                    <option value="North Nazimabad, Karachi">North Nazimabad, Karachi</option>
+                                    <option value="Gulistan-e-Jauhar, Karachi">Gulistan-e-Jauhar, Karachi</option>
+                                    <option value="Bahadurabad, Karachi">Bahadurabad, Karachi</option>
+                                    <option value="PECHS, Karachi">PECHS, Karachi</option>
+                                    <option value="Tariq Road, Karachi">Tariq Road, Karachi</option>
+                                    <option value="Saddar, Karachi">Saddar, Karachi</option>
+                                    <option value="Johar Mor, Karachi">Johar Mor, Karachi</option>
+                                    <option value="Liaquatabad, Karachi">Liaquatabad, Karachi</option>
+                                    <option value="Nazimabad, Karachi">Nazimabad, Karachi</option>
+                                    <option value="Federal B Area, Karachi">Federal B Area, Karachi</option>
+                                    <option value="Gulshan-e-Hadeed, Karachi">Gulshan-e-Hadeed, Karachi</option>
+                                    <option value="Landhi, Karachi">Landhi, Karachi</option>
+                                    <option value="Korangi, Karachi">Korangi, Karachi</option>
+                                    <option value="Shah Faisal Colony, Karachi">Shah Faisal Colony, Karachi</option>
+                                    <option value="Malir, Karachi">Malir, Karachi</option>
+                                    <option value="Bin Qasim, Karachi">Bin Qasim, Karachi</option>
+                                    <option value="Orangi Town, Karachi">Orangi Town, Karachi</option>
+                                    <option value="SITE Area, Karachi">SITE Area, Karachi</option>
+                                    <option value="Manghopir, Karachi">Manghopir, Karachi</option>
+                                    <option value="Gadap Town, Karachi">Gadap Town, Karachi</option>
+                                    <option value="Baldia Town, Karachi">Baldia Town, Karachi</option>
+                                    <option value="Keamari, Karachi">Keamari, Karachi</option>
+                                    <option value="Lyari, Karachi">Lyari, Karachi</option>
+                                    <option value="Jamshed Town, Karachi">Jamshed Town, Karachi</option>
+                                    <option value="Gulberg, Karachi">Gulberg, Karachi</option>
+                                    <option value="Jamaica Town, Karachi">Jamaica Town, Karachi</option>
+                                    <option value="New Karachi, Karachi">New Karachi, Karachi</option>
+                                    <option value="North Karachi, Karachi">North Karachi, Karachi</option>
+                                    <option value="Buffer Zone, Karachi">Buffer Zone, Karachi</option>
+                                    <option value="F.B. Area, Karachi">F.B. Area, Karachi</option>
+                                    <option value="Surjani Town, Karachi">Surjani Town, Karachi</option>
+                                    <option value="Qasimabad, Karachi">Qasimabad, Karachi</option>
+                                    <option value="Hyderi, Karachi">Hyderi, Karachi</option>
+                                    <option value="Water Pump, Karachi">Water Pump, Karachi</option>
+                                    <option value="Nagan Chowrangi, Karachi">Nagan Chowrangi, Karachi</option>
+                                    <option value="Sakhi Hassan, Karachi">Sakhi Hassan, Karachi</option>
+                                    <option value="Banaras, Karachi">Banaras, Karachi</option>
+                                    <option value="Gulshan-e-Maymar, Karachi">Gulshan-e-Maymar, Karachi</option>
+                                    <option value="Scheme 33, Karachi">Scheme 33, Karachi</option>
+                                    <option value="Safora Goth, Karachi">Safora Goth, Karachi</option>
+                                    <option value="Gulshan-e-Zia, Karachi">Gulshan-e-Zia, Karachi</option>
+                                    <option value="Gulshan-e-Bahar, Karachi">Gulshan-e-Bahar, Karachi</option>
+                                    <option value="Gulshan-e-Sikandar, Karachi">Gulshan-e-Sikandar, Karachi</option>
+                                    <option value="Gulshan-e-Khayam, Karachi">Gulshan-e-Khayam, Karachi</option>
+                                    <option value="Gulshan-e-Rizwan, Karachi">Gulshan-e-Rizwan, Karachi</option>
+                                    <option value="Gulshan-e-Mustafa, Karachi">Gulshan-e-Mustafa, Karachi</option>
+                                    <option value="Gulshan-e-Farooq, Karachi">Gulshan-e-Farooq, Karachi</option>
+                                    <option value="Gulshan-e-Umer, Karachi">Gulshan-e-Umer, Karachi</option>
+                                    <option value="Gulshan-e-Usman, Karachi">Gulshan-e-Usman, Karachi</option>
+                                    <option value="Gulshan-e-Abid, Karachi">Gulshan-e-Abid, Karachi</option>
+                                    <option value="Gulshan-e-Habib, Karachi">Gulshan-e-Habib, Karachi</option>
+                                    <option value="Gulshan-e-Ali, Karachi">Gulshan-e-Ali, Karachi</option>
+                                    <option value="Gulshan-e-Hassan, Karachi">Gulshan-e-Hassan, Karachi</option>
+                                    <option value="Gulshan-e-Hussain, Karachi">Gulshan-e-Hussain, Karachi</option>
+                                    <option value="Gulshan-e-Jamal, Karachi">Gulshan-e-Jamal, Karachi</option>
+                                    <option value="Gulshan-e-Kamal, Karachi">Gulshan-e-Kamal, Karachi</option>
+                                    <option value="Gulshan-e-Nasir, Karachi">Gulshan-e-Nasir, Karachi</option>
+                                    <option value="Gulshan-e-Osman, Karachi">Gulshan-e-Osman, Karachi</option>
+                                    <option value="Gulshan-e-Rashid, Karachi">Gulshan-e-Rashid, Karachi</option>
+                                    <option value="Gulshan-e-Saeed, Karachi">Gulshan-e-Saeed, Karachi</option>
+                                    <option value="Gulshan-e-Tariq, Karachi">Gulshan-e-Tariq, Karachi</option>
+                                    <option value="Gulshan-e-Waqar, Karachi">Gulshan-e-Waqar, Karachi</option>
+                                    <option value="Gulshan-e-Yasir, Karachi">Gulshan-e-Yasir, Karachi</option>
+                                    <option value="Gulshan-e-Zafar, Karachi">Gulshan-e-Zafar, Karachi</option>
+                                    <option value="Gulshan-e-Zubair, Karachi">Gulshan-e-Zubair, Karachi</option>
+                                    <option value="Gulshan-e-Ahmed, Karachi">Gulshan-e-Ahmed, Karachi</option>
+                                    <option value="Gulshan-e-Bilal, Karachi">Gulshan-e-Bilal, Karachi</option>
+                                    <option value="Gulshan-e-Danish, Karachi">Gulshan-e-Danish, Karachi</option>
+                                    <option value="Gulshan-Ejaz, Karachi">Gulshan-Ejaz, Karachi</option>
+                                    <option value="Gulshan-Faisal, Karachi">Gulshan-Faisal, Karachi</option>
+                                    <option value="Gulshan-Ghaffar, Karachi">Gulshan-Ghaffar, Karachi</option>
+                                    <option value="Gulshan-Hamza, Karachi">Gulshan-Hamza, Karachi</option>
+                                    <option value="Gulshan-Imran, Karachi">Gulshan-Imran, Karachi</option>
+                                    <option value="Gulshan-Junaid, Karachi">Gulshan-Junaid, Karachi</option>
+                                    <option value="Gulshan-Khalid, Karachi">Gulshan-Khalid, Karachi</option>
+                                    <option value="Gulshan-Latif, Karachi">Gulshan-Latif, Karachi</option>
+                                    <option value="Gulshan-Murtaza, Karachi">Gulshan-Murtaza, Karachi</option>
+                                    <option value="Gulshan-Nadeem, Karachi">Gulshan-Nadeem, Karachi</option>
+                                    <option value="Gulshan-Pervaiz, Karachi">Gulshan-Pervaiz, Karachi</option>
+                                    <option value="Gulshan-Qasim, Karachi">Gulshan-Qasim, Karachi</option>
+                                    <option value="Gulshan-Rafiq, Karachi">Gulshan-Rafiq, Karachi</option>
+                                    <option value="Gulshan-Salman, Karachi">Gulshan-Salman, Karachi</option>
+                                    <option value="Gulshan-Tanveer, Karachi">Gulshan-Tanveer, Karachi</option>
+                                    <option value="Gulshan-Umer, Karachi">Gulshan-Umer, Karachi</option>
+                                    <option value="Gulshan-Viqar, Karachi">Gulshan-Viqar, Karachi</option>
+                                    <option value="Gulshan-Wahab, Karachi">Gulshan-Wahab, Karachi</option>
+                                    <option value="Gulshan-Xavier, Karachi">Gulshan-Xavier, Karachi</option>
+                                    <option value="Gulshan-Younus, Karachi">Gulshan-Younus, Karachi</option>
+                                    <option value="Gulshan-Zahid, Karachi">Gulshan-Zahid, Karachi</option>
+                                </select>
+                                <div class="error" id="areaError">Please enter your area/district</div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h2>Blood Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="bloodType" class="required">Blood Type</label>
+                                <select id="bloodType" name="bloodType" required>
+                                    <option value="">Select Blood Type</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                                <div class="error" id="bloodTypeError">Please select your blood type</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastDonation">Last Blood Donation Date (if any)</label>
+                                <input type="date" id="lastDonation" name="lastDonation">
+                                <p class="form-note">Leave blank if you've never donated before</p>
+                                <div class="error" id="lastDonationError">Donation date cannot be in the future</div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h2>Health Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="weight" class="required">Weight (kg)</label>
+                                <input type="number" id="weight" name="weight" min="40" required>
+                                <div class="error" id="weightError">Minimum 45kg required for blood donation</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Do you have any of these conditions?</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="hiv" name="conditions" value="hiv">
+                                        <label for="hiv">HIV/AIDS</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="hepatitis" name="conditions" value="hepatitis">
+                                        <label for="hepatitis">Hepatitis B or C</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="malaria" name="conditions" value="malaria">
+                                        <label for="malaria">Malaria (in last 3 months)</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="tuberculosis" name="conditions" value="tuberculosis">
+                                        <label for="tuberculosis">Tuberculosis</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="none" name="conditions" value="none">
+                                        <label for="none">None of the above</label>
+                                    </div>
+                                </div>
+                                <div class="error" id="conditionsError">Please select at least one option</div>
+                            </div>
+                            
+                            <!-- Health questions with radio buttons and conditional details -->
+                            <div class="form-group">
+                                <label>Have you had any illness in the last 2 weeks?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="illness_yes" name="illness" value="yes">
+                                        <label for="illness_yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="illness_no" name="illness" value="no">
+                                        <label for="illness_no">No</label>
+                                    </div>
+                                </div>
+                                <div class="hidden-details" id="illnessDetails">
+                                    <label for="illnessReason">Please specify your illness:</label>
+                                    <textarea id="illnessReason" name="illnessReason" rows="2"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Are you currently taking any medications?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="meds_yes" name="medications" value="yes">
+                                        <label for="meds_yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="meds_no" name="medications" value="no">
+                                        <label for="meds_no">No</label>
+                                    </div>
+                                </div>
+                                <div class="hidden-details" id="medsDetails">
+                                    <label for="medsReason">Please specify the medications you're taking:</label>
+                                    <textarea id="medsReason" name="medsReason" rows="2"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" id="pregnancyField" style="display: none;">
+                                <label class="required">Are you currently pregnant or have given birth in the last 6 weeks?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="pregnant_yes" name="pregnancy" value="yes">
+                                        <label for="pregnant_yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="pregnant_no" name="pregnancy" value="no">
+                                        <label for="pregnant_no">No</label>
+                                    </div>
+                                </div>
+                                <div class="error" id="pregnancyError">Please select an option</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Have you had any surgery in the last 6 months?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="surgery_yes" name="surgery" value="yes">
+                                        <label for="surgery_yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="surgery_no" name="surgery" value="no">
+                                        <label for="surgery_no">No</label>
+                                    </div>
+                                </div>
+                                <div class="hidden-details" id="surgeryDetails">
+                                    <label for="surgeryReason">Please specify the surgery:</label>
+                                    <textarea id="surgeryReason" name="surgeryReason" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h2>Availability</h2>
+                            
+                            <div class="form-group">
+                                <label>Preferred Days for Donation</label>
+                                <div class="day-checkboxes">
+                                    <div class="day-checkbox">
+                                        <input type="checkbox" id="monday" name="preferredDays" value="monday">
+                                        <label for="monday">Monday</label>
+                                    </div>
+                                    <div class="day-checkbox">
+                                        <input type="checkbox" id="tuesday" name="preferredDays" value="tuesday">
+                                        <label for="tuesday">Tuesday</label>
+                                    </div>
+                                    <div class="day-checkbox">
+                                        <input type="checkbox" id="wednesday" name="preferredDays" value="wednesday">
+                                        <label for="wednesday">Wednesday</label>
+                                    </div>
+                                    <div class="day-checkbox">
+                                        <input type="checkbox" id="thursday" name="preferredDays" value="thursday">
+                                        <label for="thursday">Thursday</label>
+                                    </div>
+                                    <div class="day-checkbox">
+                                        <input type="checkbox" id="friday" name="preferredDays" value="friday">
+                                        <label for="friday">Friday</label>
+                                    </div>
+                                    <div class="day-checkbox">
+                                        <input type="checkbox" id="saturday" name="preferredDays" value="saturday">
+                                        <label for="saturday">Saturday</label>
+                                    </div>
+                                    <div class="day-checkbox">
+                                        <input type="checkbox" id="sunday" name="preferredDays" value="sunday">
+                                        <label for="sunday">Sunday</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="preferredTime">Preferred Time</label>
+                                <div class="time-checkboxes">
+                                    <div class="time-checkbox">
+                                        <input type="checkbox" id="time_any" name="preferredTime" value="any">
+                                        <label for="time_any">Any Time</label>
+                                    </div>
+                                    <div class="time-checkbox">
+                                        <input type="checkbox" id="time_morning" name="preferredTime" value="morning">
+                                        <label for="time_morning">Morning (9AM-12PM)</label>
+                                    </div>
+                                    <div class="time-checkbox">
+                                        <input type="checkbox" id="time_afternoon" name="preferredTime" value="afternoon">
+                                        <label for="time_afternoon">Afternoon (12PM-4PM)</label>
+                                    </div>
+                                    <div class="time-checkbox">
+                                        <input type="checkbox" id="time_evening" name="preferredTime" value="evening">
+                                        <label for="time_evening">Evening (4PM-7PM)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Would you like to receive emergency blood requests?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="emergency_yes" name="emergency" value="yes">
+                                        <label for="emergency_yes">Yes, contact me in emergencies</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="emergency_no" name="emergency" value="no">
+                                        <label for="emergency_no">No, only contact for scheduled donations</label>
+                                    </div>
+                                </div>
+                                <div class="error" id="emergencyError">Please select an option</div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h2>Consent</h2>
+                            
+                            <div class="form-group">
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <label for="terms" class="required">I confirm that all information provided is accurate and I meet the eligibility criteria for blood donation</label>
+                                </div>
+                                <div class="error" id="termsError">You must accept this to proceed</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    <label for="privacy" class="required">I agree to the privacy policy and understand how my data will be used</label>
+                                </div>
+                                <div class="error" id="privacyError">You must accept this to proceed</div>
+                            </div>
+                        </div>
+                        <button type="submit" id="submitBtn">Register as Blood Donor</button>
+                    </form>
+                </div>
+                <div class="info-container">
+                    <div class="info-box">
+                        <h2>Why Donate Blood?</h2>
+                        <div class="fact-box">
+                            <div class="fact-item">
+                                <div class="fact-icon"><i class="fas fa-heartbeat"></i></div>
+                                <div>
+                                    <h3>Save Lives</h3>
+                                    <p>One donation can save up to 3 lives</p>
+                                </div>
+                            </div>
+                            <div class="fact-item">
+                                <div class="fact-icon"><i class="fas fa-users"></i></div>
+                                <div>
+                                    <h3>Community Need</h3>
+                                    <p>Every 2 seconds someone needs blood</p>
+                                </div>
+                            </div>
+                            <div class="fact-item">
+                                <div class="fact-icon"><i class="fas fa-burn"></i></div>
+                                <div>
+                                    <h3>Health Benefits</h3>
+                                    <p>Donating blood burns about 650 calories</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color: white;"><em>Blood cannot be manufactured - it can only come from generous donors like you. By donating blood, you're giving someone another chance at life.</em></p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Are You Eligible to Donate?</h2>
+                        <div class="highlight-box">
+                            <p><strong>Basic Requirements:</strong></p>
+                            <ul>
+                                <li>Age between 18-65 years</li>
+                                <li>Weight at least 50kg (110 lbs)</li>
+                                <li>Good general health</li>
+                                <li>No tattoos/piercings in last 6 months</li>
+                                <li>No major surgery in last 6 months</li>
+                                <li>Not pregnant or breastfeeding</li>
+                                <li>No cold/flu symptoms</li>
+                                <li>Hemoglobin level at least 12.5g/dL</li>
+                            </ul>
+                        </div>
+                        <p style="color: white;"><em>Final eligibility determined at donation center after health screening.</em></p>
+                    </div>
+                    <div class="info-box">
+                        <h2>After Donation Care</h2>
+                        <div class="do-dont">
+                            <div class="do">
+                                <h3><i class="fas fa-check-circle"></i> Do's</h3>
+                                <ul>
+                                    <li>Drink extra fluids for 48 hours</li>
+                                    <li>Eat iron-rich foods</li>
+                                    <li>Keep bandage on for 4-6 hours</li>
+                                    <li>Rest for 24 hours if possible</li>
+                                </ul>
+                            </div>
+                            <div class="dont">
+                                <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                                <ul>
+                                    <li>Don't smoke for 2 hours</li>
+                                    <li>Avoid alcohol for 24 hours</li>
+                                    <li>Don't lift heavy objects for 24 hours</li>
+                                    <li>Avoid strenuous exercise for 24 hours</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <h2 style="color: white;">The Donation Process</h2>
+                        <div class="steps">
+                            <div class="step">
+                                <h3>Registration</h3>
+                                <p>Complete donor registration form and provide identification.</p>
+                            </div>
+                            <div class="step">
+                                <h3>Health Screening</h3>
+                                <p>Confidential health history review and mini-physical.</p>
+                            </div>
+                            <div class="step">
+                                <h3>Donation</h3>
+                                <p>Actual blood donation takes 8-10 minutes.</p>
+                            </div>
+                            <div class="step">
+                                <h3>Refreshment</h3>
+                                <p>Enjoy snacks and drinks while resting before leaving.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Donor Availability Section -->
+        <section id="availability-section" class="my-5">
+            <div class="donor-availability-section">
+                <h2 style="margin-top: 0;" class="section-title">Available Blood Donors</h2>
+                <p style="color: rgb(88, 221, 48); margin-bottom: 7px; " class="text-muted">Search for registered blood donors by blood group</p>
+                
+                <div class="filter-section">
+                    <div class="filter-control">
+                        <label for="bloodGroupFilter" style="color: white;">Filter by Blood Group</label>
+                        <select id="bloodGroupFilter" class="form-select">
+                            <option value="">All Blood Groups</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-control">
+                        <label for="areaFilter" style="color: white;">Filter by Area/District</label>
+                        <select id="areaFilter" class="form-select">
+                            <option value="">All Areas</option>
+                            <option value="Defence, Karachi">Defence, Karachi</option>
+                            <option value="Clifton, Karachi">Clifton, Karachi</option>
+                            <option value="Gulshan-e-Iqbal, Karachi">Gulshan-e-Iqbal, Karachi</option>
+                            <option value="North Nazimabad, Karachi">North Nazimabad, Karachi</option>
+                            <option value="Gulistan-e-Jauhar, Karachi">Gulistan-e-Jauhar, Karachi</option>
+                            <option value="Bahadurabad, Karachi">Bahadurabad, Karachi</option>
+                            <option value="PECHS, Karachi">PECHS, Karachi</option>
+                            <option value="Tariq Road, Karachi">Tariq Road, Karachi</option>
+                            <option value="Saddar, Karachi">Saddar, Karachi</option>
+                            <option value="Johar Mor, Karachi">Johar Mor, Karachi</option>
+                            <option value="Liaquatabad, Karachi">Liaquatabad, Karachi</option>
+                            <option value="Nazimabad, Karachi">Nazimabad, Karachi</option>
+                            <option value="Federal B Area, Karachi">Federal B Area, Karachi</option>
+                            <option value="Gulshan-e-Hadeed, Karachi">Gulshan-e-Hadeed, Karachi</option>
+                            <option value="Landhi, Karachi">Landhi, Karachi</option>
+                            <option value="Korangi, Karachi">Korangi, Karachi</option>
+                            <option value="Shah Faisal Colony, Karachi">Shah Faisal Colony, Karachi</option>
+                            <option value="Malir, Karachi">Malir, Karachi</option>
+                            <option value="Bin Qasim, Karachi">Bin Qasim, Karachi</option>
+                            <option value="Orangi Town, Karachi">Orangi Town, Karachi</option>
+                            <option value="SITE Area, Karachi">SITE Area, Karachi</option>
+                            <option value="Manghopir, Karachi">Manghopir, Karachi</option>
+                            <option value="Gadap Town, Karachi">Gadap Town, Karachi</option>
+                            <option value="Baldia Town, Karachi">Baldia Town, Karachi</option>
+                            <option value="Keamari, Karachi">Keamari, Karachi</option>
+                            <option value="Lyari, Karachi">Lyari, Karachi</option>
+                            <option value="Jamshed Town, Karachi">Jamshed Town, Karachi</option>
+                            <option value="Gulberg, Karachi">Gulberg, Karachi</option>
+                            <option value="Jamaica Town, Karachi">Jamaica Town, Karachi</option>
+                            <option value="New Karachi, Karachi">New Karachi, Karachi</option>
+                            <option value="North Karachi, Karachi">North Karachi, Karachi</option>
+                            <option value="Buffer Zone, Karachi">Buffer Zone, Karachi</option>
+                            <option value="F.B. Area, Karachi">F.B. Area, Karachi</option>
+                            <option value="Surjani Town, Karachi">Surjani Town, Karachi</option>
+                            <option value="Qasimabad, Karachi">Qasimabad, Karachi</option>
+                            <option value="Hyderi, Karachi">Hyderi, Karachi</option>
+                            <option value="Water Pump, Karachi">Water Pump, Karachi</option>
+                            <option value="Nagan Chowrangi, Karachi">Nagan Chowrangi, Karachi</option>
+                            <option value="Sakhi Hassan, Karachi">Sakhi Hassan, Karachi</option>
+                            <option value="Banaras, Karachi">Banaras, Karachi</option>
+                            <option value="Gulshan-e-Maymar, Karachi">Gulshan-e-Maymar, Karachi</option>
+                            <option value="Scheme 33, Karachi">Scheme 33, Karachi</option>
+                            <option value="Safora Goth, Karachi">Safora Goth, Karachi</option>
+                            <option value="Gulshan-e-Zia, Karachi">Gulshan-e-Zia, Karachi</option>
+                            <option value="Gulshan-e-Bahar, Karachi">Gulshan-e-Bahar, Karachi</option>
+                            <option value="Gulshan-e-Sikandar, Karachi">Gulshan-e-Sikandar, Karachi</option>
+                            <option value="Gulshan-e-Khayam, Karachi">Gulshan-e-Khayam, Karachi</option>
+                            <option value="Gulshan-e-Rizwan, Karachi">Gulshan-e-Rizwan, Karachi</option>
+                            <option value="Gulshan-e-Mustafa, Karachi">Gulshan-e-Mustafa, Karachi</option>
+                            <option value="Gulshan-e-Farooq, Karachi">Gulshan-e-Farooq, Karachi</option>
+                            <option value="Gulshan-e-Umer, Karachi">Gulshan-e-Umer, Karachi</option>
+                            <option value="Gulshan-e-Usman, Karachi">Gulshan-e-Usman, Karachi</option>
+                            <option value="Gulshan-e-Abid, Karachi">Gulshan-e-Abid, Karachi</option>
+                            <option value="Gulshan-e-Habib, Karachi">Gulshan-e-Habib, Karachi</option>
+                            <option value="Gulshan-e-Ali, Karachi">Gulshan-e-Ali, Karachi</option>
+                            <option value="Gulshan-e-Hassan, Karachi">Gulshan-e-Hassan, Karachi</option>
+                            <option value="Gulshan-e-Hussain, Karachi">Gulshan-e-Hussain, Karachi</option>
+                            <option value="Gulshan-e-Jamal, Karachi">Gulshan-e-Jamal, Karachi</option>
+                            <option value="Gulshan-e-Kamal, Karachi">Gulshan-e-Kamal, Karachi</option>
+                            <option value="Gulshan-e-Nasir, Karachi">Gulshan-e-Nasir, Karachi</option>
+                            <option value="Gulshan-e-Osman, Karachi">Gulshan-e-Osman, Karachi</option>
+                            <option value="Gulshan-e-Rashid, Karachi">Gulshan-e-Rashid, Karachi</option>
+                            <option value="Gulshan-e-Saeed, Karachi">Gulshan-e-Saeed, Karachi</option>
+                            <option value="Gulshan-e-Tariq, Karachi">Gulshan-e-Tariq, Karachi</option>
+                            <option value="Gulshan-e-Waqar, Karachi">Gulshan-e-Waqar, Karachi</option>
+                            <option value="Gulshan-e-Yasir, Karachi">Gulshan-e-Yasir, Karachi</option>
+                            <option value="Gulshan-e-Zafar, Karachi">Gulshan-e-Zafar, Karachi</option>
+                            <option value="Gulshan-e-Zubair, Karachi">Gulshan-e-Zubair, Karachi</option>
+                            <option value="Gulshan-e-Ahmed, Karachi">Gulshan-e-Ahmed, Karachi</option>
+                            <option value="Gulshan-e-Bilal, Karachi">Gulshan-e-Bilal, Karachi</option>
+                            <option value="Gulshan-e-Danish, Karachi">Gulshan-e-Danish, Karachi</option>
+                            <option value="Gulshan-Ejaz, Karachi">Gulshan-Ejaz, Karachi</option>
+                            <option value="Gulshan-Faisal, Karachi">Gulshan-Faisal, Karachi</option>
+                            <option value="Gulshan-Ghaffar, Karachi">Gulshan-Ghaffar, Karachi</option>
+                            <option value="Gulshan-Hamza, Karachi">Gulshan-Hamza, Karachi</option>
+                            <option value="Gulshan-Imran, Karachi">Gulshan-Imran, Karachi</option>
+                            <option value="Gulshan-Junaid, Karachi">Gulshan-Junaid, Karachi</option>
+                            <option value="Gulshan-Khalid, Karachi">Gulshan-Khalid, Karachi</option>
+                            <option value="Gulshan-Latif, Karachi">Gulshan-Latif, Karachi</option>
+                            <option value="Gulshan-Murtaza, Karachi">Gulshan-Murtaza, Karachi</option>
+                            <option value="Gulshan-Nadeem, Karachi">Gulshan-Nadeem, Karachi</option>
+                            <option value="Gulshan-Pervaiz, Karachi">Gulshan-Pervaiz, Karachi</option>
+                            <option value="Gulshan-Qasim, Karachi">Gulshan-Qasim, Karachi</option>
+                            <option value="Gulshan-Rafiq, Karachi">Gulshan-Rafiq, Karachi</option>
+                            <option value="Gulshan-Salman, Karachi">Gulshan-Salman, Karachi</option>
+                            <option value="Gulshan-Tanveer, Karachi">Gulshan-Tanveer, Karachi</option>
+                            <option value="Gulshan-Umer, Karachi">Gulshan-Umer, Karachi</option>
+                            <option value="Gulshan-Viqar, Karachi">Gulshan-Viqar, Karachi</option>
+                            <option value="Gulshan-Wahab, Karachi">Gulshan-Wahab, Karachi</option>
+                            <option value="Gulshan-Xavier, Karachi">Gulshan-Xavier, Karachi</option>
+                            <option value="Gulshan-Younus, Karachi">Gulshan-Younus, Karachi</option>
+                            <option value="Gulshan-Zahid, Karachi">Gulshan-Zahid, Karachi</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-control">
+                        <label>&nbsp;</label>
+                        <button id="resetFilters" class="resbtn btn-secondary w-100" style="color: white; width: 365px; height: 50px; background-color: #900000;">Reset Filters</button>
+                    </div>
+                </div>
+                
+                <div class="donor-list" id="donorList">
+                    <!-- Donor items will be populated here -->
+                    <div class="no-donors">
+                        <i class="fas fa-user-friends fa-3x mb-3 text-muted"></i>
+                        <p>No donors available. Be the first to register!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Pregnancy Safety Modal -->
+    <div class="modal" id="pregnancyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Pregnancy Safety Notice</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i> 
+                        <strong>Important:</strong> You cannot donate blood during pregnancy or for 6 weeks after giving birth.
+                    </div>
+                    
+                    <h5 class="mt-3">Why pregnancy prevents donation?</h5>
+                    <ul class="mt-3">
+                        <li><strong>Health risks:</strong> Pregnancy affects your iron levels and overall health</li>
+                        <li><strong>Baby safety:</strong> Donating blood during pregnancy could be harmful to your baby</li>
+                        <li><strong>Recovery period:</strong> Your body needs time to recover after childbirth</li>
+                    </ul>
+                    
+                    <div class="mt-4 p-3 bg-light border rounded">
+                        <h5><i class="fas fa-lightbulb me-2 text-warning"></i>When can you donate?</h5>
+                        <p>You can safely donate blood 6 months after delivery, provided you're not breastfeeding and meet all other eligibility criteria.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Donor Details Modal -->
+    <div class="modal" id="donorDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content donor-details-modal">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-user-circle me-2"></i>Donor Details</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="donor-detail">
+                        <div class="detail-label">Name</div>
+                        <div class="detail-value" id="detail-name">Fatima Manzoor</div>
+                    </div>
+                    <div class="donor-detail">
+                        <div class="detail-label">Contact</div>
+                        <div class="detail-value" id="detail-contact">03422269753</div>
+                    </div>
+                    <div class="donor-detail">
+                        <div class="detail-label">District</div>
+                        <div class="detail-value" id="detail-district">Orangi Town, Karachi</div>
+                    </div>
+                    <div class="donor-detail">
+                        <div class="detail-label">Blood Group</div>
+                        <div class="detail-value" id="detail-blood">O+</div>
+                    </div>
+                    <div class="donor-detail">
+                        <div class="detail-label">Personal Info</div>
+                        <div class="detail-value" id="detail-gender">Female</div>
+                    </div>
+                    <div class="donor-detail">
+                        <div class="detail-label">Last Donation</div>
+                        <div class="detail-value" id="detail-last-donation">2023-09-01</div>
+                    </div>
+                    <div class="donor-detail">
+                        <div class="detail-label">Emergency Contact</div>
+                        <div class="detail-value" id="detail-emergency">Yes</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-phone-alt me-1"></i> Contact Donor
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <a class="brand-logo logo-foot" href="#home">
+            <img loading="eager" decoding="async" src="images/finalLogo-01.png">
+        </a>            
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footerNav">
+                <ul><li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Donate Blood</a></li>
+                    <li><a href="">Hospital</a></li>
+                    <!-- <li><a href="">our Team</a></li> -->
+                </ul>
+            </div>    
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2023; Designed by <span class="designer">Fatima Manzoor.</span></p>
+        </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="chat-button-container" id="chatButtonContainer">
+        <button class="chat-button" id="chatButton">
+            <i class="fas fa-comment"></i>
+        </button>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div>
+                <h2><i class="fas fa-tint"></i> Khoon-e-Hayaat</h2>
+                <p style="color: white; font-size: 17px;">Blood Donation Chatbot</p>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! I'm your blood donation assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+
+        <div class="suggestions" id="suggestions">
+            <button class="suggestion-btn" data-question="eligibility">Eligibility Criteria</button>
+            <button class="suggestion-btn" data-question="process">Donation Process</button>
+            <button class="suggestion-btn" data-question="benefits">Benefits</button>
+            <button class="suggestion-btn" data-question="find">Find Donors</button>
+        </div>
+
+        <div class="chatbot-input">
+            <input type="text" class="input-field" id="userInput" placeholder="Type your message...">
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Navbar mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Change icon
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Initialize sample data
+        const initializeSampleData = () => {
+            if (!localStorage.getItem('registeredDonors')) {
+                const sampleDonors = [
+                    {
+                        fullName: "Fatima Manzoor",
+                        fatherName: "Ahmed Manzoor",
+                        cnic: "42101-1234567-1",
+                        dob: "1990-05-15",
+                        gender: "female",
+                        phone: "03422269753",
+                        email: "fatima@example.com",
+                        address: "House 123, Street 45",
+                        area: "Orangi Town, Karachi",
+                        bloodType: "O+",
+                        lastDonation: "2023-09-01",
+                        weight: "58",
+                        conditions: ["none"],
+                        illness: "no",
+                        medications: "no",
+                        surgery: "no",
+                        preferredDays: ["saturday", "sunday"],
+                        preferredTime: ["afternoon"],
+                        emergency: "yes",
+                        registrationDate: "2023-01-10"
+                    },
+                    {
+                        fullName: "Ali Khan",
+                        fatherName: "Sohail Khan",
+                        cnic: "35202-7654321-9",
+                        dob: "1988-11-22",
+                        gender: "male",
+                        phone: "03001234567",
+                        email: "ali@example.com",
+                        address: "Apartment 5B, Gulshan Plaza",
+                        area: "Gulshan-e-Iqbal, Karachi",
+                        bloodType: "A+",
+                        lastDonation: "2023-08-15",
+                        weight: "72",
+                        conditions: ["none"],
+                        illness: "no",
+                        medications: "no",
+                        surgery: "no",
+                        preferredDays: ["friday"],
+                        preferredTime: ["morning"],
+                        emergency: "yes",
+                        registrationDate: "2022-11-05"
+                    },
+                    {
+                        fullName: "Sara Ahmed",
+                        fatherName: "Kamran Ahmed",
+                        cnic: "41303-9876543-2",
+                        dob: "1995-03-08",
+                        gender: "female",
+                        phone: "03111234567",
+                        email: "sara@example.com",
+                        address: "Flat 302, Tower B",
+                        area: "Clifton, Karachi",
+                        bloodType: "B-",
+                        lastDonation: "2023-07-20",
+                        weight: "55",
+                        conditions: ["none"],
+                        illness: "no",
+                        medications: "no",
+                        surgery: "no",
+                        preferredDays: ["saturday"],
+                        preferredTime: ["evening"],
+                        emergency: "no",
+                        registrationDate: "2023-02-18"
+                    },
+                    {
+                        fullName: "Ahmed Hassan",
+                        fatherName: "Hassan Raza",
+                        cnic: "37404-5678912-3",
+                        dob: "1992-09-30",
+                        gender: "male",
+                        phone: "03211234567",
+                        email: "ahmed@example.com",
+                        address: "House 78, Block C",
+                        area: "North Nazimabad, Karachi",
+                        bloodType: "AB+",
+                        lastDonation: "2023-06-10",
+                        weight: "68",
+                        conditions: ["none"],
+                        illness: "no",
+                        medications: "no",
+                        surgery: "no",
+                        preferredDays: ["sunday"],
+                        preferredTime: ["morning"],
+                        emergency: "yes",
+                        registrationDate: "2022-12-22"
+                    }
+                ];
+                localStorage.setItem('registeredDonors', JSON.stringify(sampleDonors));
+            }
+        };
+        // Show/hide pregnancy field based on gender selection
+        const genderRadios = document.querySelectorAll('input[name="gender"]');
+        const pregnancyField = document.getElementById('pregnancyField');
+        const submitBtn = document.getElementById('submitBtn');
+        genderRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'female') {
+                    pregnancyField.style.display = 'block';
+                } else {
+                    pregnancyField.style.display = 'none';
+                    // Reset pregnancy selection if not female
+                    document.getElementById('pregnant_yes').checked = false;
+                    document.getElementById('pregnant_no').checked = false;
+                    // Enable form if it was disabled
+                    document.getElementById('donorForm').classList.remove('disabled-form');
+                    submitBtn.disabled = false;
+                }
+            });
+        });
+        // Handle pregnancy selection
+        document.getElementById('pregnant_yes').addEventListener('change', function() {
+            if (this.checked) {
+                // Show the pregnancy modal
+                document.getElementById('pregnancyModal').style.display = 'block';
+                
+                // Disable the form and submit button
+                document.getElementById('donorForm').classList.add('disabled-form');
+                submitBtn.disabled = true;
+            }
+        });
+        document.getElementById('pregnant_no').addEventListener('change', function() {
+            if (this.checked) {
+                // Enable the form and submit button
+                document.getElementById('donorForm').classList.remove('disabled-form');
+                submitBtn.disabled = false;
+            }
+        });
+        // Toggle health details based on radio selections
+        document.getElementById('illness_yes').addEventListener('change', function() {
+            document.getElementById('illnessDetails').style.display = this.checked ? 'block' : 'none';
+        });
+        // Add event listener for illness_no to hide details when selected
+        document.getElementById('illness_no').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('illnessDetails').style.display = 'none';
+            }
+        });
+        document.getElementById('meds_yes').addEventListener('change', function() {
+            document.getElementById('medsDetails').style.display = this.checked ? 'block' : 'none';
+        });
+        // Add event listener for meds_no to hide details when selected
+        document.getElementById('meds_no').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('medsDetails').style.display = 'none';
+            }
+        });
+        document.getElementById('surgery_yes').addEventListener('change', function() {
+            document.getElementById('surgeryDetails').style.display = this.checked ? 'block' : 'none';
+        });
+        // Add event listener for surgery_no to hide details when selected
+        document.getElementById('surgery_no').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('surgeryDetails').style.display = 'none';
+            }
+        });
+        // Get all condition checkboxes
+        const noneCheckbox = document.getElementById('none');
+        const conditionCheckboxes = document.querySelectorAll('input[name="conditions"]:not(#none)');
+        // Toggle "none" checkbox when others are checked
+        conditionCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    noneCheckbox.checked = false;
+                } else if (!Array.from(conditionCheckboxes).some(cb => cb.checked)) {
+                    noneCheckbox.checked = true;
+                }
+            });
+        });
+        // Handle none checkbox
+        noneCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                conditionCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            }
+        });
+        // Time availability validation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all time preference checkboxes
+            const timePreferenceCheckboxes = document.querySelectorAll('input[name="preferredTime"]');
+            
+            // Add event listeners to all time preference checkboxes
+            timePreferenceCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    // Check if this is the "any" checkbox (assuming "any" is the value for "Any time")
+                    if (this.value === 'any') {
+                        // If "any" is checked, uncheck and disable all other time checkboxes
+                        if (this.checked) {
+                            timePreferenceCheckboxes.forEach(cb => {
+                                if (cb.value !== 'any') {
+                                    cb.checked = false;
+                                    cb.disabled = true;
+                                }
+                            });
+                        } else {
+                            // If "any" is unchecked, enable all other time checkboxes
+                            timePreferenceCheckboxes.forEach(cb => {
+                                if (cb.value !== 'any') {
+                                    cb.disabled = false;
+                                }
+                            });
+                        }
+                    } else {
+                        // If a specific time is checked, uncheck the "any" checkbox
+                        if (this.checked) {
+                            timePreferenceCheckboxes.forEach(cb => {
+                                if (cb.value === 'any') {
+                                    cb.checked = false;
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+        });
+        // Render donor list
+        const renderDonorList = (donors) => {
+            const donorList = document.getElementById('donorList');
+            
+            if (!donors || donors.length === 0) {
+                donorList.innerHTML = `
+                    <div class="no-donors">
+                        <i class="fas fa-user-friends fa-3x mb-3 text-muted"></i>
+                        <p>No donors found matching your criteria</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            donorList.innerHTML = donors.map(donor => `
+                <div class="donor-item" data-donor='${JSON.stringify(donor)}'>
+                    <div class="donor-info">
+                        <div class="donor-name">${donor.fullName}</div>
+                        <div class="donor-contact">${donor.phone}</div>
+                        <div class="donor-location">${donor.area}</div>
+                    </div>
+                    <div class="blood-group">${donor.bloodType}</div>
+                </div>
+            `).join('');
+            
+            // Add event listeners to donor items
+            document.querySelectorAll('.donor-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const donor = JSON.parse(this.dataset.donor);
+                    showDonorDetails(donor);
+                });
+            });
+        };
+        // Show donor details in modal
+        const showDonorDetails = (donor) => {
+            document.getElementById('detail-name').textContent = donor.fullName;
+            document.getElementById('detail-contact').textContent = donor.phone;
+            document.getElementById('detail-district').textContent = donor.area;
+            document.getElementById('detail-blood').textContent = donor.bloodType;
+            document.getElementById('detail-gender').textContent = donor.gender === 'female' ? 'Female' : 'Male';
+            document.getElementById('detail-last-donation').textContent = donor.lastDonation || 'Never';
+            document.getElementById('detail-emergency').textContent = donor.emergency === 'yes' ? 'Yes' : 'No';
+            
+            document.getElementById('donorDetailsModal').style.display = 'block';
+        };
+        // Filter donors
+        const filterDonors = () => {
+            const bloodGroupFilter = document.getElementById('bloodGroupFilter').value;
+            const areaFilter = document.getElementById('areaFilter').value;
+            
+            const donors = JSON.parse(localStorage.getItem('registeredDonors')) || [];
+            
+            const filteredDonors = donors.filter(donor => {
+                const matchesBloodGroup = bloodGroupFilter ? donor.bloodType === bloodGroupFilter : true;
+                const matchesArea = areaFilter ? donor.area === areaFilter : true;
+                
+                return matchesBloodGroup && matchesArea;
+            });
+            
+            renderDonorList(filteredDonors);
+        };
+        // Reset filters
+        document.getElementById('resetFilters').addEventListener('click', () => {
+            document.getElementById('bloodGroupFilter').value = '';
+            document.getElementById('areaFilter').value = '';
+            filterDonors();
+        });
+        // Calculate age from date of birth
+        const calculateAge = (birthDate) => {
+            const today = new Date();
+            const birth = new Date(birthDate);
+            let age = today.getFullYear() - birth.getFullYear();
+            const monthDiff = today.getMonth() - birth.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                age--;
+            }
+            
+            return age;
+        };
+        // Create beautiful success modal
+        const createSuccessModal = () => {
+            // Check if modal already exists
+            if (document.getElementById('successModal')) {
+                return;
+            }
+            
+            // Create modal elements
+            const modal = document.createElement('div');
+            modal.id = 'successModal';
+            modal.className = 'modal success-modal';
+            
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content success-content';
+            
+            const modalHeader = document.createElement('div');
+            modalHeader.className = 'modal-header success-header';
+            
+            const modalBody = document.createElement('div');
+            modalBody.className = 'modal-body success-body';
+            
+            const modalFooter = document.createElement('div');
+            modalFooter.className = 'modal-footer success-footer';
+            
+            // Add content to modal
+            modalHeader.innerHTML = `
+                <div class="success-icon-container">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Registration Successful!</h2>
+                </div>
+            `;
+            
+            modalBody.innerHTML = `
+                <div class="success-message">
+                    <p>Thank you for registering as a blood donor!</p>
+                    <p>Your information has been saved successfully.</p>
+                    <div class="donor-count">
+                        <p>You are donor #<span id="donorCount">${JSON.parse(localStorage.getItem('registeredDonors')).length}</span></p>
+                    </div>
+                </div>
+            `;
+            
+            modalFooter.innerHTML = `
+                <button id="successModalClose" class="btn btn-success">Continue</button>
+            `;
+            
+            // Assemble modal
+            modalContent.appendChild(modalHeader);
+            modalContent.appendChild(modalBody);
+            modalContent.appendChild(modalFooter);
+            modal.appendChild(modalContent);
+            
+            // Add modal to body
+            document.body.appendChild(modal);
+            
+            // Add event listener to close button
+            document.getElementById('successModalClose').addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // Add event listener to close modal when clicking outside
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+
+        // Create age error modal
+        const createAgeErrorModal = () => {
+            // Check if modal already exists
+            if (document.getElementById('ageErrorModal')) {
+                return;
+            }
+            
+            // Create modal elements
+            const modal = document.createElement('div');
+            modal.id = 'ageErrorModal';
+            modal.className = 'modal age-error-modal';
+            
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content age-error-content';
+            
+            const modalHeader = document.createElement('div');
+            modalHeader.className = 'modal-header age-error-header';
+            
+            const modalBody = document.createElement('div');
+            modalBody.className = 'modal-body age-error-body';
+            
+            const modalFooter = document.createElement('div');
+            modalFooter.className = 'modal-footer age-error-footer';
+            
+            // Add content to modal
+            modalHeader.innerHTML = `
+                <div class="age-error-icon-container">
+                    <div class="age-error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h2>Age Requirement Not Met</h2>
+                </div>
+            `;
+            
+            modalBody.innerHTML = `
+                <div class="age-error-message">
+                    <p>Sorry, you are not eligible to donate blood as your age is below 17.</p>
+                    <p>Thank you for your interest in blood donation. Please consider registering again once you meet the age requirement.</p>
+                </div>
+            `;
+            
+            modalFooter.innerHTML = `
+                <button id="ageErrorModalClose" class="btn btn-age-error">I Understand</button>
+            `;
+            
+            // Assemble modal
+            modalContent.appendChild(modalHeader);
+            modalContent.appendChild(modalBody);
+            modalContent.appendChild(modalFooter);
+            modal.appendChild(modalContent);
+            
+            // Add modal to body
+            document.body.appendChild(modal);
+            
+            // Add event listener to close button
+            document.getElementById('ageErrorModalClose').addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // Add event listener to close modal when clicking outside
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Add CSS styles for the age error modal
+            const style = document.createElement('style');
+            style.textContent = `
+                .age-error-modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1000;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    animation: fadeIn 0.4s;
+                }
+                
+                .age-error-content {
+                    margin: 10% auto;
+                    padding: 0;
+                    border-radius: 15px;
+                    width: 90%;
+                    max-width: 500px;
+                    animation: slideIn 0.4s;
+                    overflow: hidden;
+                }
+                
+                .age-error-header {
+                    background-color: #900000;
+                    color: white;
+                    padding: 30px 20px;
+                    text-align: center;
+                }
+                
+                .age-error-icon-container {
+                    align-items: center;
+                }
+                
+                .age-error-icon {
+                    text-align: center;
+                    font-size: 64px;
+                    margin-bottom: 15px;
+                    animation: scaleIn 0.5s ease-in-out;
+                }
+                
+                .age-error-header h2 {
+                    background-color: #900000;
+                    color: white;
+                    margin: 0;
+                    font-size: 28px;
+                    font-weight: 600;
+                    text-align: center;
+                }
+                
+                .age-error-body {
+                    padding: 30px 20px;
+                    text-align: center;
+                }
+                
+                .age-error-message p {
+                    margin: 0 0 15px;
+                    font-size: 16px;
+                    color: #333;
+                }
+                
+                .age-error-footer {
+                    padding: 15px 20px;
+                    text-align: center;
+                    background-color: #f9f9f9;
+                    border-top: 1px solid #eee;
+                }
+                
+                .btn-age-error {
+                    background-color: rgb(11, 106, 39);
+                    color: white;
+                    border: none;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    border-radius: 30px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    font-weight: 600;
+                }
+                
+                .btn-age-error:hover {
+                    background-color: rgb(88, 221, 48);
+                    color: black;
+                    transform: translateY(-2px);
+                }
+            `;
+            
+            document.head.appendChild(style);
+        };
+
+        // Show success modal
+        const showSuccessModal = () => {
+            const modal = document.getElementById('successModal');
+            if (modal) {
+                // Update donor count
+                const donorCount = JSON.parse(localStorage.getItem('registeredDonors')).length;
+                document.getElementById('donorCount').textContent = donorCount;
+                
+                // Show modal
+                modal.style.display = 'block';
+            }
+        };
+
+        // Show age error modal
+        const showAgeErrorModal = () => {
+            const modal = document.getElementById('ageErrorModal');
+            if (modal) {
+                // Show modal
+                modal.style.display = 'block';
+            }
+        };
+
+        // Create error slider at the top of the page
+        const createErrorSlider = () => {
+            // Check if slider already exists
+            if (document.getElementById('errorSlider')) {
+                return;
+            }
+            
+            const slider = document.createElement('div');
+            slider.id = 'errorSlider';
+            slider.className = 'error-slider';
+            
+            document.body.appendChild(slider);
+            
+            // Hide slider after 3 seconds
+            setTimeout(() => {
+                slider.style.display = 'none';
+            }, 3000);
+        };
+
+        // Handle form submission
+        document.getElementById('donorForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let isValid = true;
+            let firstErrorElement = null;
+            
+            // Reset all error states
+            document.querySelectorAll('.error').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.error-border').forEach(el => {
+                el.classList.remove('error-border');
+            });
+            document.querySelectorAll('.error-highlight').forEach(el => {
+                el.classList.remove('error-highlight');
+            });
+            
+            // Remove any existing error slider
+            const existingSlider = document.getElementById('errorSlider');
+            if (existingSlider) {
+                existingSlider.remove();
+            }
+            
+            // Validate required fields
+            const requiredFields = [
+                { id: 'fullName', errorId: 'fullNameError', message: 'Please enter your full name (letters only)', 
+                  validate: (value) => /^[a-zA-Z\s]+$/.test(value) },
+                { id: 'fatherName', errorId: 'fatherNameError', message: 'Please enter father\'s name (letters only)', 
+                  validate: (value) => /^[a-zA-Z\s]+$/.test(value) },
+                { id: 'cnic', errorId: 'cnicError', message: 'Please enter a valid CNIC in format XXXXX-XXXXXXX-X', 
+                  validate: (value) => /^\d{5}-\d{7}-\d{1}$/.test(value) },
+                { id: 'dob', errorId: 'dobError', message: 'Donors must be at least 17 years old', 
+                  validate: (value) => calculateAge(value) >= 17 },
+                { id: 'phone', errorId: 'phoneError', message: 'Please enter a valid 11-digit phone number starting with 03', 
+                  validate: (value) => /^03\d{9}$/.test(value) },
+                { id: 'address', errorId: 'addressError', message: 'Please enter your address' },
+                { id: 'area', errorId: 'areaError', message: 'Please enter your area/district' },
+                { id: 'bloodType', errorId: 'bloodTypeError', message: 'Please select your blood type' },
+                { id: 'weight', errorId: 'weightError', message: 'Minimum 45kg required for blood donation', 
+                  validate: (value) => value >= 45 },
+                { id: 'terms', errorId: 'termsError', message: 'You must accept this to proceed', 
+                  validate: (el) => el.checked },
+                { id: 'privacy', errorId: 'privacyError', message: 'You must accept this to proceed', 
+                  validate: (el) => el.checked }
+            ];
+            
+            // Validate gender selection
+            const genderSelected = document.querySelector('input[name="gender"]:checked');
+            if (!genderSelected) {
+                document.getElementById('genderError').style.display = 'block';
+                isValid = false;
+                if (!firstErrorElement) firstErrorElement = document.getElementById('genderError');
+            }
+            
+            // Validate pregnancy if female
+            if (genderSelected && genderSelected.value === 'female') {
+                const pregnancySelected = document.querySelector('input[name="pregnancy"]:checked');
+                if (!pregnancySelected) {
+                    document.getElementById('pregnancyError').style.display = 'block';
+                    isValid = false;
+                    if (!firstErrorElement) firstErrorElement = document.getElementById('pregnancyError');
+                }
+            }
+            
+            // Validate last donation date
+            const lastDonationInput = document.getElementById('lastDonation');
+            if (lastDonationInput.value) {
+                const donationDate = new Date(lastDonationInput.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                if (donationDate > today) {
+                    document.getElementById('lastDonationError').style.display = 'block';
+                    lastDonationInput.classList.add('error-border');
+                    isValid = false;
+                    if (!firstErrorElement) firstErrorElement = lastDonationInput;
+                }
+            }
+            
+            // Validate email if provided
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            if (email && !emailPattern.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                document.getElementById('email').classList.add('error-border');
+                isValid = false;
+                if (!firstErrorElement) firstErrorElement = document.getElementById('email');
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+                document.getElementById('email').classList.remove('error-border');
+            }
+            
+            // Check if DOB is provided but age is less than 17
+            const dobInput = document.getElementById('dob');
+            if (dobInput.value) {
+                const age = calculateAge(dobInput.value);
+                if (age < 17) {
+                    // Show age error modal
+                    showAgeErrorModal();
+                    return;
+                }
+            }
+            
+            // Validate all required fields
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                const value = element.type === 'checkbox' ? element : element.value;
+                const errorElement = document.getElementById(field.errorId);
+                
+                if (field.validate) {
+                    const valid = field.validate(value);
+                    if (!valid) {
+                        errorElement.style.display = 'block';
+                        element.classList.add('error-border');
+                        isValid = false;
+                        if (!firstErrorElement) firstErrorElement = element;
+                    }
+                } else if (!value) {
+                    errorElement.style.display = 'block';
+                    element.classList.add('error-border');
+                    isValid = false;
+                    if (!firstErrorElement) firstErrorElement = element;
+                }
+            });
+            
+            // If the form is not valid, scroll to the first error
+            if (!isValid) {
+                // Create error slider at the top of the page
+                createErrorSlider();
+                
+                // Add highlight effect to the first error element
+                if (firstErrorElement) {
+                    firstErrorElement.classList.add('error-highlight');
+                    
+                    // Remove highlight after 3 seconds
+                    setTimeout(() => {
+                        firstErrorElement.classList.remove('error-highlight');
+                    }, 3000);
+                }
+                
+                // Find the form container to adjust scroll position
+                const formContainer = document.querySelector('.form-container');
+                const containerRect = formContainer.getBoundingClientRect();
+                const errorRect = firstErrorElement.getBoundingClientRect();
+                
+                // Calculate the position to scroll to
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const targetPosition = errorRect.top + scrollTop - containerRect.top - 20;
+                
+                // Smooth scroll to the error element
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Focus on the error element if it's an input
+                if (firstErrorElement.tagName === 'INPUT' || 
+                    firstErrorElement.tagName === 'SELECT' || 
+                    firstErrorElement.tagName === 'TEXTAREA') {
+                    setTimeout(() => {
+                        firstErrorElement.focus();
+                    }, 500);
+                }
+                
+                return;
+            }
+            
+            // If the form is valid, process the data
+            const donor = {
+                fullName: document.getElementById('fullName').value,
+                fatherName: document.getElementById('fatherName').value,
+                cnic: document.getElementById('cnic').value,
+                dob: document.getElementById('dob').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                area: document.getElementById('area').value,
+                bloodType: document.getElementById('bloodType').value,
+                lastDonation: document.getElementById('lastDonation').value,
+                weight: document.getElementById('weight').value,
+                conditions: Array.from(document.querySelectorAll('input[name="conditions"]:checked')).map(cb => cb.value),
+                illness: document.querySelector('input[name="illness"]:checked').value,
+                illnessReason: document.getElementById('illnessReason').value,
+                medications: document.querySelector('input[name="medications"]:checked').value,
+                medsReason: document.getElementById('medsReason').value,
+                surgery: document.querySelector('input[name="surgery"]:checked').value,
+                surgeryReason: document.getElementById('surgeryReason').value,
+                preferredDays: Array.from(document.querySelectorAll('input[name="preferredDays"]:checked')).map(cb => cb.value),
+                preferredTime: Array.from(document.querySelectorAll('input[name="preferredTime"]:checked')).map(cb => cb.value),
+                emergency: document.querySelector('input[name="emergency"]:checked').value,
+                registrationDate: new Date().toISOString().split('T')[0]
+            };
+            
+            // Handle pregnancy if applicable
+            if (donor.gender === 'female') {
+                donor.pregnancy = document.querySelector('input[name="pregnancy"]:checked')?.value || 'no';
+            }
+            
+            // Save to localStorage
+            const storedDonors = JSON.parse(localStorage.getItem('registeredDonors')) || [];
+            storedDonors.push(donor);
+            localStorage.setItem('registeredDonors', JSON.stringify(storedDonors));
+            
+            // Reset form and update donor list
+            this.reset();
+            filterDonors();
+            
+            // Show success modal instead of alert
+            showSuccessModal();
+        });
+
+        // Set max date for last donation to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('lastDonation').max = today;
+            
+            // Set max date for DOB to today (min age 17 years would be calculated in validation)
+            document.getElementById('dob').max = today;
+            
+            // Initialize sample data
+            initializeSampleData();
+            
+            // Create success modal
+            createSuccessModal();
+            
+            // Create age error modal
+            createAgeErrorModal();
+            
+            // Render donors
+            filterDonors();
+            
+            // Set up event listeners for filters
+            document.getElementById('bloodGroupFilter').addEventListener('change', filterDonors);
+            document.getElementById('areaFilter').addEventListener('change', filterDonors);
+            
+            // Close modals when clicking on close button
+            document.querySelectorAll('.btn-close, .btn-secondary').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.style.display = 'none';
+                    });
+                });
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Add CSS styles for the success modal and error highlight
+            const style = document.createElement('style');
+            style.textContent = `
+                .success-modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1000;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    animation: fadeIn 0.4s;
+                }
+                
+                .success-content {
+                    background-color: #fff;
+                    margin: 10% auto;
+                    padding: 0;
+                    border-radius: 15px;
+                    width: 90%;
+                    max-width: 500px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    animation: slideIn 0.4s;
+                    overflow: hidden;
+                }
+                
+                .success-header {
+                    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                    color: white;
+                    padding: 30px 20px;
+                    text-align: center;
+                }
+                
+                .success-icon-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .success-icon {
+                    font-size: 64px;
+                    margin-bottom: 15px;
+                    animation: scaleIn 0.5s ease-in-out;
+                }
+                
+                .success-header h2 {
+                    margin: 0;
+                    font-size: 28px;
+                    font-weight: 600;
+                }
+                
+                .success-body {
+                    padding: 30px 20px;
+                    text-align: center;
+                }
+                
+                .success-message p {
+                    margin: 0 0 15px;
+                    font-size: 16px;
+                    color: #333;
+                }
+                
+                .donor-count {
+                    margin-top: 20px;
+                    padding: 10px;
+                    background-color: #f5f5f5;
+                    border-radius: 8px;
+                }
+                
+                .donor-count p {
+                    margin: 0;
+                    font-weight: 600;
+                    color: #2E7D32;
+                }
+                
+                .donor-count span {
+                    font-size: 20px;
+                }
+                
+                .success-footer {
+                    padding: 15px 20px;
+                    text-align: center;
+                    background-color: #f9f9f9;
+                    border-top: 1px solid #eee;
+                }
+                
+                .btn-success {
+                    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                    color: white;
+                    border: none;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    border-radius: 30px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    font-weight: 600;
+                }
+                
+                .btn-success:hover {
+                    background: linear-gradient(135deg, #5CBF60, #3E8D42);
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+                }
+                
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                
+                @keyframes slideIn {
+                    from { 
+                        transform: translateY(-50px);
+                        opacity: 0;
+                    }
+                    to { 
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes scaleIn {
+                    from { transform: scale(0); }
+                    to { transform: scale(1); }
+                }
+                
+                /* Error highlight styles */
+                .error-highlight {
+                    position: relative;
+                    animation: errorPulse 2s infinite;
+                }
+                
+                .error-highlight::before {
+                    content: '';
+                    position: absolute;
+                    top: -5px;
+                    left: -5px;
+                    right: -5px;
+                    bottom: -5px;
+                    border: 2px solid #ff4d4d;
+                    border-radius: 5px;
+                    z-index: 1;
+                    animation: errorBorder 1.5s infinite;
+                }
+                
+                @keyframes errorPulse {
+                    0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.4); }
+                    70% { box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+                }
+                
+                @keyframes errorBorder {
+                    0% { opacity: 1; }
+                    50% { opacity: 0.5; }
+                    100% { opacity: 1; }
+                }
+                
+                .error-slider {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background: linear-gradient(90deg, #ff4d4d, #ff8080, #ff4d4d);
+                    background-size: 200% 100%;
+                    animation: gradientSlide 1.5s infinite linear;
+                    z-index: 1001;
+                }
+                
+                @keyframes gradientSlide {
+                    0% { background-position: 200% 0; }
+                    100% { background-position: -200% 0; }
+                }
+            `;
+            
+            document.head.appendChild(style);
+        });
+
+        // Chatbot functionality
+        // DOM elements
+        const chatButtonContainer = document.getElementById('chatButtonContainer');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeBtn = document.getElementById('closeBtn');
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+
+        // Event listeners
+        chatButtonContainer.addEventListener('click', () => {
+            chatbotContainer.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        suggestionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const questionId = btn.getAttribute('data-question');
+                const faqItem = faqData.find(item => item.id === questionId);
+                if (faqItem) {
+                    displayUserMessage(faqItem.question);
+                    setTimeout(() => {
+                        displayBotMessage(faqItem.answer);
+                    }, 500);
+                }
+            });
+        });
+
+        // Functions
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return;
+
+            displayUserMessage(message);
+            userInput.value = '';
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Process message and respond
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = findResponse(message);
+                displayBotMessage(response);
+            }, 1500);
+        }
+
+        function displayUserMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `
+                <div class="message-content">${message}</div>
+                <div class="message-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function displayBotMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">${message}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        function findResponse(message) {
+            const lowerCaseMessage = message.toLowerCase();
+
+            // Check for exact matches in FAQ data
+            for (const item of faqData) {
+                if (lowerCaseMessage.includes(item.id) ||
+                    lowerCaseMessage.includes(item.question.toLowerCase().substring(0, 15))) {
+                    return item.answer;
+                }
+            }
+
+            // Check for keywords
+            if (lowerCaseMessage.includes('eligibility') || lowerCaseMessage.includes('eligible') || lowerCaseMessage.includes('requirement')) {
+                return faqData.find(item => item.id === 'eligibility').answer;
+            }
+
+            if (lowerCaseMessage.includes('process') || lowerCaseMessage.includes('how to donate') || lowerCaseMessage.includes('procedure')) {
+                return faqData.find(item => item.id === 'process').answer;
+            }
+
+            if (lowerCaseMessage.includes('benefit') || lowerCaseMessage.includes('advantage') || lowerCaseMessage.includes('why donate')) {
+                return faqData.find(item => item.id === 'benefits').answer;
+            }
+
+            if (lowerCaseMessage.includes('find donor') || lowerCaseMessage.includes('need blood') || lowerCaseMessage.includes('where to find')) {
+                return faqData.find(item => item.id === 'find').answer;
+            }
+
+            if (lowerCaseMessage.includes('how often') || lowerCaseMessage.includes('frequency') || lowerCaseMessage.includes('next donation')) {
+                return faqData.find(item => item.id === 'frequency').answer;
+            }
+
+            if (lowerCaseMessage.includes('blood type') || lowerCaseMessage.includes('which blood') || lowerCaseMessage.includes('blood group')) {
+                return faqData.find(item => item.id === 'types').answer;
+            }
+
+            if (lowerCaseMessage.includes('after donation') || lowerCaseMessage.includes('post donation') || lowerCaseMessage.includes('after giving')) {
+                return faqData.find(item => item.id === 'after').answer;
+            }
+
+            if (lowerCaseMessage.includes('safe') || lowerCaseMessage.includes('risk') || lowerCaseMessage.includes('danger')) {
+                return faqData.find(item => item.id === 'safety').answer;
+            }
+
+            if (lowerCaseMessage.includes('how long') || lowerCaseMessage.includes('duration') || lowerCaseMessage.includes('time')) {
+                return faqData.find(item => item.id === 'duration').answer;
+            }
+
+            if (lowerCaseMessage.includes('storage') || lowerCaseMessage.includes('store') || lowerCaseMessage.includes('keep blood')) {
+                return faqData.find(item => item.id === 'storage').answer;
+            }
+
+            // Default response
+            return "I'm sorry, I don't have information about that specific question. You can try asking about eligibility, donation process, benefits, or finding donors. You can also call our helpline at 123-456-7890 for more assistance.";
+        }
+
+        // Blood donation FAQ data in JSON format
+        const faqData = [
+            {
+                "id": "eligibility",
+                "question": "What are the eligibility criteria for blood donation?",
+                "answer": "To donate blood, you must: be at least 17 years old, weigh at least 50 kg, be in good health, not have donated blood in the last 56 days, and not have certain medical conditions or risk factors."
+            },
+            {
+                "id": "process",
+                "question": "What is the blood donation process?",
+                "answer": "The donation process involves: registration, medical history review, physical examination, the actual donation (which takes about 10 minutes), and a refreshment period afterward. The entire process usually takes about an hour."
+            },
+            {
+                "id": "benefits",
+                "question": "What are the benefits of blood donation?",
+                "answer": "Benefits include: free health screening, reduced risk of heart disease, potential cancer risk reduction, burning calories, and the satisfaction of saving lives. Most importantly, your donation can help up to three patients."
+            },
+            {
+                "id": "find",
+                "question": "How can I find blood donors?",
+                "answer": "You can find blood donors through: our Khoon-e-Hayat website, our mobile app, by calling our helpline at 123-456-7890, or by visiting our donation centers. We also have emergency donor search services."
+            },
+            {
+                "id": "frequency",
+                "question": "How often can I donate blood?",
+                "answer": "You can donate whole blood every 56 days (8 weeks). For platelets, you can donate more frequently - up to 24 times a year. Plasma donations can be made every 28 days."
+            },
+            {
+                "id": "types",
+                "question": "What blood types are needed most?",
+                "answer": "O-negative blood is always in high demand as it's the universal donor type. However, all blood types are needed regularly. Type O-positive is the most common blood type, so it's frequently needed as well."
+            },
+            {
+                "id": "after",
+                "question": "What should I do after donating blood?",
+                "answer": "After donation: rest for at least 10 minutes, enjoy the provided refreshments, drink extra fluids for the next 24-48 hours, avoid strenuous activity for 5 hours, and keep the bandage on for at least 4 hours."
+            },
+            {
+                "id": "safety",
+                "question": "Is blood donation safe?",
+                "answer": "Yes, blood donation is very safe. All equipment is sterile and used only once. You cannot get any disease from donating blood. The staff are trained professionals who follow strict safety protocols."
+            },
+            {
+                "id": "duration",
+                "question": "How long does a blood donation take?",
+                "answer": "The actual blood collection takes about 8-10 minutes. The entire process from registration to refreshments takes about 45 minutes to an hour."
+            },
+            {
+                "id": "storage",
+                "question": "How long can donated blood be stored?",
+                "answer": "Red blood cells can be stored for up to 42 days. Platelets can be stored for only 5 days. Plasma can be frozen and stored for up to a year."
+            },
+            // Basic Chat
+            {
+                "id": "how_are_you",
+                "question": "how are you?",
+                "answer": "I'm a chatbot, so I'm doing great! Thanks for asking."
+            },
+            {
+                "id": "hello",
+                "question": "hello",
+                "answer": "Hello there! How can I help you with Khoon-e-Hayat?"
+            },
+            {
+                "id": "hi",
+                "question": "hi",
+                "answer": "Hi there! Feel free to ask me anything about blood donation."
+            },
+            {
+                "id": "thank_you",
+                "question": "thank you",
+                "answer": "You're welcome! Is there anything else I can assist you with?"
+            },
+            {
+                "id": "bye",
+                "question": "bye",
+                "answer": "Goodbye! Stay safe and consider donating blood. Every drop counts!"
+            },
+            {
+                "id": "thanks",
+                "question": "thanks",
+                "answer": "You're welcome!"
+            },
+            // General Questions about Blood Donation
+            {
+                "id": "what_is_blood_donation",
+                "question": "what is blood donation?",
+                "answer": "Blood donation is a voluntary procedure where a person gives blood to be used for transfusions. It's a noble act that can save lives."
+            },
+            {
+                "id": "is_blood_donation_safe",
+                "question": "is blood donation safe?",
+                "answer": "Yes, blood donation is a very safe process. All equipment used is sterile, single-use, and disposed of after your donation."
+            },
+            {
+                "id": "how_long_donation_take",
+                "question": "how long does a blood donation take?",
+                "answer": "The donation process, including the health screening and recovery time, usually takes about 30-45 minutes. The actual blood collection takes only 10-15 minutes."
+            },
+            {
+                "id": "what_eat_before",
+                "question": "what should i eat before donating blood?",
+                "answer": "Before donating, it's best to have a healthy meal rich in iron and drink plenty of water. Avoid fatty foods."
+            },
+            {
+                "id": "what_do_after",
+                "question": "what should i do after donating blood?",
+                "answer": "After donating, rest for a few minutes and have some refreshments provided. Drink plenty of fluids and avoid strenuous activities for the rest of the day."
+            },
+            {
+                "id": "minimum_age",
+                "question": "how old do i have to be to donate blood?",
+                "answer": "You must be at least 18 years old to donate blood."
+            },
+            {
+                "id": "minimum_weight",
+                "question": "what is the minimum weight requirement for donating blood?",
+                "answer": "The minimum weight to donate blood is usually around 50 kg (110 lbs)."
+            },
+            {
+                "id": "donate_during_periods",
+                "question": "can a woman donate blood during her periods?",
+                "answer": "Yes, a woman can donate blood during her menstrual period as long as she feels well."
+            },
+            {
+                "id": "donate_with_tattoo",
+                "question": "can i donate blood if i have a tattoo?",
+                "answer": "You can donate blood, but you may need to wait for a certain period (e.g., 6 months to 1 year) after getting a tattoo, depending on the regulations in your area."
+            },
+            {
+                "id": "benefits_of_donation",
+                "question": "what are the benefits of donating blood?",
+                "answer": "Donating blood can reduce the risk of heart disease, burn calories, and provide a free health check-up. Most importantly, you get to save a life!"
+            },
+            {
+                "id": "donation_frequency",
+                "question": "how often can i donate blood?",
+                "answer": "You can usually donate blood every 56 days (about 8 weeks)."
+            },
+            {
+                "id": "importance_of_donation",
+                "question": "why is blood donation important?",
+                "answer": "Blood donation saves lives. It's crucial for patients undergoing surgeries, accident victims, and those with chronic illnesses like anemia or cancer."
+            },
+            {
+                "id": "types_of_donation",
+                "question": "what are the different types of blood donation?",
+                "answer": "There are several types, including whole blood donation, plasma donation, and platelet donation. The type of donation depends on what a patient needs."
+            },
+            {
+                "id": "what_happens_after",
+                "question": "what happens to the blood after donation?",
+                "answer": "Donated blood is tested for infectious diseases and then separated into its components (red cells, plasma, and platelets) to be given to different patients."
+            },
+            {
+                "id": "eat_before_donation",
+                "question": "can i eat before donating blood?",
+                "answer": "Yes, it is very important to eat a healthy meal and drink plenty of water before you donate. This helps prevent dizziness and light-headedness."
+            },
+            {
+                "id": "pain_during_donation",
+                "question": "is there any pain during blood donation?",
+                "answer": "You might feel a small pinch when the needle is inserted, but the process is generally not painful."
+            },
+            {
+                "id": "side_effects",
+                "question": "what are the side effects of donating blood?",
+                "answer": "Most people feel fine after donating. Some may experience minor side effects like dizziness, bruising, or feeling tired, but these usually go away quickly."
+            },
+            {
+                "id": "prepare_for_donation",
+                "question": "how do i prepare for a blood donation?",
+                "answer": "Make sure you get a good night's sleep, eat a healthy meal, and drink extra fluids before you go to the donation center."
+            },
+            {
+                "id": "types_of_blood",
+                "question": "what are the types of blood?",
+                "answer": "The main blood types are A, B, AB, and O. Each can be Rh-positive (+) or Rh-negative (-)."
+            },
+            {
+                "id": "pregnant_donate",
+                "question": "can a pregnant woman donate blood?",
+                "answer": "No, a woman cannot donate blood during pregnancy. It is recommended to wait at least 6 weeks after giving birth before donating."
+            },
+            {
+                "id": "donate_after_pregnancy",
+                "question": "how long after pregnancy can i donate blood?",
+                "answer": "You must wait at least 6 weeks after giving birth to donate blood. This waiting period ensures your body has enough time to recover."
+            },
+            {
+                "id": "donate_while_breastfeeding",
+                "question": "can i donate blood while breastfeeding?",
+                "answer": "Yes, you can generally donate blood while breastfeeding, as long as you meet all the other eligibility criteria. It is important to stay well-hydrated."
+            },
+            {
+                "id": "rules_after_pregnancy",
+                "question": "what are the rules for blood donation after pregnancy?",
+                "answer": "After pregnancy, the waiting period is typically 6 weeks. After that, you can donate as long as you are healthy and meet the standard donation requirements."
+            },
+            // Eligibility and Health-Related Questions
+            {
+                "id": "who_is_eligible",
+                "question": "who is eligible to donate blood?",
+                "answer": "Most healthy adults between 18 and 65 years old can donate. There are specific criteria regarding weight, health, and recent travel, which you can check on our website."
+            },
+            {
+                "id": "who_cannot_donate",
+                "question": "who cannot donate blood?",
+                "answer": "People with certain medical conditions, recent surgeries, or those on certain medications may not be able to donate. It's best to consult our eligibility guidelines."
+            },
+            {
+                "id": "high_blood_pressure",
+                "question": "can people with high blood pressure donate blood?",
+                "answer": "You can donate blood if your blood pressure is within a normal, controlled range on the day of donation."
+            },
+            {
+                "id": "diabetes_donate",
+                "question": "can people with diabetes donate blood?",
+                "answer": "Yes, if your diabetes is well-controlled through diet or oral medication, you may be able to donate. Please consult a doctor first."
+            },
+            {
+                "id": "sick_donate",
+                "question": "can i donate if i am feeling sick?",
+                "answer": "No, if you are feeling unwell or have a fever, it's best to wait until you are fully recovered before donating."
+            },
+            // Questions about Khoon-e-Hayaat
+            {
+                "id": "what_is_khoon_e_hayaat",
+                "question": "what is khoon-e-hayaat?",
+                "answer": "Khoon-e-Hayaat is a platform dedicated to saving lives by connecting blood donors with those in need. We encourage everyone to donate blood and be a lifesaver!"
+            },
+            {
+                "id": "mission_of_khoon_e_hayaat",
+                "question": "what is the mission of khoon-e-hayaat?",
+                "answer": "Our mission is to create a strong network of blood donors to ensure no one suffers due to a lack of blood."
+            },
+            {
+                "id": "join_khoon_e_hayaat",
+                "question": "how can i join khoon-e-hayaat?",
+                "answer": "You can join us by registering as a donor on our website. It's a simple and quick process!"
+            },
+            {
+                "id": "register_as_donor",
+                "question": "how do i register as a blood donor?",
+                "answer": "You can register on our website's 'Donate' page. Just fill in your details, and you'll be a part of our life-saving community."
+            },
+            {
+                "id": "find_donor_near_me",
+                "question": "how can i find a blood donor near me?",
+                "answer": "You can use our website's search feature to find registered donors in your area. Simply enter your location and blood type."
+            },
+            {
+                "id": "more_information",
+                "question": "i need more information about khoon-e-hayaat.",
+                "answer": "For detailed information, please visit the 'About Us' section on our website or contact us directly."
+            }
+        ];
+    </script>
+</body>
+</html>
