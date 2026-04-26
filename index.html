@@ -80,6 +80,11 @@
             color: white;
             margin-bottom: 15px;
         }
+
+                .nav-link.active {
+    background: rgb(11, 106, 39);
+    color: white;
+}
         
         /* About Section */
         .about-section {
@@ -2929,6 +2934,36 @@ const videos = document.querySelectorAll('.hero video');
             // Default response
             return "I'm sorry, I don't have information about that specific question. You can try asking about eligibility, donation process, benefits, or finding donors. You can also call our helpline at 123-456-7890 for more assistance.";
         }
+
+        const links = document.querySelectorAll(".nav-link");
+
+    function setActiveLink() {
+        let hash = window.location.hash;
+
+        // agar koi hash nahi ho to home default
+        if (!hash) {
+            hash = "#home";
+        }
+
+        links.forEach(link => {
+            link.classList.remove("active");
+
+            if (link.getAttribute("href") === hash) {
+                link.classList.add("active");
+            }
+        });
+    }
+
+    // page load par correct active set kare
+    window.addEventListener("load", setActiveLink);
+
+    // click par bhi update ho
+    links.forEach(link => {
+        link.addEventListener("click", function () {
+            links.forEach(l => l.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
         
 </script>
 </body>

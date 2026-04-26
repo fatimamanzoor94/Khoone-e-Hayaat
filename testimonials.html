@@ -1242,6 +1242,11 @@
                 margin: 4px;
             }
         }  
+
+                        .nav-link.active {
+    background: rgb(11, 106, 39);
+    color: white;
+}
         
     </style>
 </head>
@@ -1259,7 +1264,7 @@
             
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link active">
+                    <a href="index.html" class="nav-link">
                         <i class="fas fa-home"></i>Home
                     </a>
                 </li>
@@ -1286,7 +1291,7 @@
                     </a>
                 </li>
                  <li class="nav-item">
-                    <a href="testimonials.html" class="nav-link">
+                    <a href="testimonials.html" class="nav-link active">
                         <i class="fas fa-chart-line"></i>Impact
                     </a>
                 </li>
@@ -2007,6 +2012,19 @@
             return "I'm sorry, I don't have information about that specific question. You can try asking about eligibility, donation process, benefits, or finding donors. You can also call our helpline at 123-456-7890 for more assistance.";
         }
         
+
+        const links = document.querySelectorAll(".nav-link");
+
+    links.forEach(link => {
+        link.addEventListener("click", function () {
+
+            // sab se pehle sab se active remove karo
+            links.forEach(l => l.classList.remove("active"));
+
+            // jis par click hua usay active karo
+            this.classList.add("active");
+        });
+    });
     </script>
 </body>
 </html>

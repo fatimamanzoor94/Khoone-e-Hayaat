@@ -37,6 +37,11 @@
             padding: 0 20px;
         }
         
+                        .nav-link.active {
+    background: rgb(11, 106, 39);
+    color: white;
+}
+
         /* Improved responsive typography */
         h1, h2, h3 {
             font-size: clamp(1.5rem, 5vw, 2.5rem);
@@ -1870,7 +1875,7 @@
             
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link active">
+                    <a href="index.html" class="nav-link">
                         <i class="fas fa-home"></i>Home
                     </a>
                 </li>
@@ -1882,7 +1887,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="bloodTypeCompatibility.html" class="nav-link">  <!-- Updated href -->
+                    <a href="bloodTypeCompatibility.html" class="nav-link active">  <!-- Updated href -->
                         <i class="fas fa-tint"></i>Blood Type
                     </a>
                 </li>
@@ -2877,6 +2882,19 @@
             // Default response
             return "I'm sorry, I don't have information about that specific question. You can try asking about eligibility, donation process, benefits, or finding donors. You can also call our helpline at 123-456-7890 for more assistance.";
         }
+
+        const links = document.querySelectorAll(".nav-link");
+
+    links.forEach(link => {
+        link.addEventListener("click", function () {
+
+            // sab se pehle sab se active remove karo
+            links.forEach(l => l.classList.remove("active"));
+
+            // jis par click hua usay active karo
+            this.classList.add("active");
+        });
+    });
     </script>
 </body>
 </html>
